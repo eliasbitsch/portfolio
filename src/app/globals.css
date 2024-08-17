@@ -29,14 +29,7 @@
   }
 }
 
-/* styles/global.css */
-.navbar {
-  backdrop-filter: saturate(180%) blur(5px);
-  /* Adjust the blur level as needed */
-  /* background-color: #191F2CCC; */
-  background-color: rgba(26, 32, 44, 0.8);
-  /* Adjust transparency and color */
-}
+
 
 /* global.css */
 html,
