@@ -25,40 +25,42 @@ export default function Page() {
     >
       {/* SVG Patterns with Fixed Margins */}
       <svg
-        width="150"
-        height="300"
+        width="300"
+        height="500"
         style={{
-          position: 'fixed',
-          bottom: '0',
-          left: '0',
+          position: 'absolute',
+          top: '80%',
+          left: '30%',
+          transform: 'translate(-150%, -50%)',
           zIndex: 0,
-          opacity: 0.3,
+
         }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="40" height="40">
-            <rect x="10" y="10" width="20" height="20" fill="#3C5AF0" />
+          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
+            <rect x="5" y="5" width="4" height="4" fill="#374151" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#squarePattern1)" />
       </svg>
 
       <svg
-        width="150"
-        height="150"
+        width="300"
+        height="300"
         style={{
-          position: 'fixed',
-          top: '0',
-          right: '0',
+          position: 'absolute',
+          top: '20%',
+          right: '30%',
+          transform: 'translate(150%, -50%)',
           zIndex: 0,
-          opacity: 0.3,
+
         }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="40" height="40">
-            <rect x="10" y="10" width="20" height="20" fill="#3C5AF0" />
+          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
+            <rect x="5" y="5" width="4" height="4" fill="#374151" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#squarePattern2)" />
@@ -83,6 +85,7 @@ export default function Page() {
         mb={3}
         color="white"
         lineHeight="1.5"
+        maxWidth="45%" // Responsive width
         mx={[5, 10, 20]} // Responsive margins
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
