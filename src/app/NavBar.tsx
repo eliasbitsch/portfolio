@@ -35,8 +35,9 @@ const NavBar = () => {
             zIndex="docked"
             py={4}
             px={6}
-            borderBottom="1px"
-            borderColor="gray.700"
+            boxShadow="0 5px 15px rgba(0, 0, 0, 0.2);"
+
+
         >
             <Flex align="center" justify="space-between">
                 {/* Left-aligned items */}
@@ -49,14 +50,16 @@ const NavBar = () => {
                                     py={2}
                                     borderRadius="md"
                                     mx={2}
-                                    bg={isActive('/') ? 'blue.500' : 'transparent'}
+                                    bg={isActive('/') ? 'gray.700' : 'transparent'}
                                     color={isActive('/') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'blue.500', color: 'white' }}
+                                    _hover={{ bg: 'gray.700', color: 'white' }}
+                                    transition="background-color 0.2s ease, color 0.2s ease"
+
                                 >
                                     Home
                                 </Text>
                             </Link>
-                            <Link href="/about" passHref prefetch={true}>
+                            <Link href="/about" passHref>
                                 <Text
                                     px={4}
                                     py={2}
@@ -78,9 +81,11 @@ const NavBar = () => {
                                     py={2}
                                     borderRadius="md"
                                     mx={2}
-                                    bg={isActive('/skillset') ? 'blue.500' : 'transparent'}
+                                    bg={isActive('/skillset') ? 'gray.700' : 'transparent'}
                                     color={isActive('/skillset') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'blue.500', color: 'white' }}
+                                    _hover={{ bg: 'gray.700', color: 'white' }}
+                                    transition="background-color 0.2s ease, color 0.2s ease"
+
                                 >
                                     Skillset
                                 </Text>
@@ -91,9 +96,11 @@ const NavBar = () => {
                                     py={2}
                                     borderRadius="md"
                                     mx={2}
-                                    bg={isActive('/projects') ? 'blue.500' : 'transparent'}
+                                    bg={isActive('/projects') ? 'gray.700' : 'transparent'}
                                     color={isActive('/projects') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'blue.500', color: 'white' }}
+                                    _hover={{ bg: 'gray.700', color: 'white' }}
+                                    transition="background-color 0.2s ease, color 0.2s ease"
+
                                 >
                                     Projects
                                 </Text>

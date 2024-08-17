@@ -1,6 +1,6 @@
-import NavBar from './NavBar' // Import the NavBar component
-import { Providers } from './providers'
-import { fonts } from './fonts'
+import NavBar from './NavBar'; // Import the NavBar component
+import { Providers } from './providers';
+import { fonts } from './fonts';
 import './globals.css'; // Import your global CSS file
 
 export default function RootLayout({
@@ -17,5 +17,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  )
+  );
 }
