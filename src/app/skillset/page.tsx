@@ -1,4 +1,24 @@
 'use client';
+
+import React, { useState } from 'react';
+import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem } from '@chakra-ui/react';
+import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
+
+// Example skills data
+const skillsData = [
+    { id: 1, category: 'Programming', name: 'React', description: 'Web development', icon: FaLaptopCode },
+    { id: 2, category: 'Electronics', name: 'EasyEDA', description: 'Electronics', icon: FaMicrochip },
+    { id: 3, category: 'Electronics', name: 'KiCad', description: 'Electronics', icon: FaMicrochip },
+    { id: 4, category: 'Electronics', name: 'Soldering', description: 'Electronics', icon: FaMicrochip },
+    { id: 5, category: 'Electronics', name: 'Microcontrollers', description: 'Electronics', icon: FaMicrochip },
+    { id: 6, category: 'CAD Design', name: 'Fusion 360', description: 'CAD Design', icon: FaWrench },
+    { id: 7, category: 'Programming', name: 'Next.js', description: 'Web development', icon: FaLaptopCode },
+    { id: 8, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
+    { id: 9, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
+    { id: 10, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
+    // Add more skills as needed
+];
+'use client';
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem } from '@chakra-ui/react';
 import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
@@ -19,6 +39,16 @@ const skillsData = [
 ];
 
 export default function Skillset() {
+    const [selectedCategory, setSelectedCategory] = useState('All');
+
+    const handleFilterChange = (category: string) => {
+        setSelectedCategory(category);
+    };
+
+    const filteredSkills = selectedCategory === 'All'
+        ? skillsData
+        : skillsData.filter(skill => skill.category === selectedCategory);
+
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const handleFilterChange = (category: string) => {
