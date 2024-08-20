@@ -18,37 +18,8 @@ const skillsData = [
     { id: 10, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
     // Add more skills as needed
 ];
-'use client';
-import React, { useState } from 'react';
-import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem } from '@chakra-ui/react';
-import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
-
-// Example skills data
-const skillsData = [
-    { id: 1, category: 'Programming', name: 'React', description: 'Web development', icon: FaLaptopCode },
-    { id: 2, category: 'Electronics', name: 'EasyEDA', description: 'Electronics', icon: FaMicrochip },
-    { id: 3, category: 'Electronics', name: 'KiCad', description: 'Electronics', icon: FaMicrochip },
-    { id: 4, category: 'Electronics', name: 'Soldering', description: 'Electronics', icon: FaMicrochip },
-    { id: 5, category: 'Electronics', name: 'Microcontrollers', description: 'Electronics', icon: FaMicrochip },
-    { id: 6, category: 'CAD Design', name: 'Fusion 360', description: 'CAD Design', icon: FaWrench },
-    { id: 7, category: 'Programming', name: 'Next.js', description: 'Web development', icon: FaLaptopCode },
-    { id: 8, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
-    { id: 9, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
-    { id: 10, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
-    // Add more skills as needed
-];
 
 export default function Skillset() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
-
-    const handleFilterChange = (category: string) => {
-        setSelectedCategory(category);
-    };
-
-    const filteredSkills = selectedCategory === 'All'
-        ? skillsData
-        : skillsData.filter(skill => skill.category === selectedCategory);
-
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const handleFilterChange = (category: string) => {
@@ -122,12 +93,13 @@ export default function Skillset() {
                         backgroundColor: 'currentColor', // Match the color of the text
                     }} />
                 </Box>
-
             </Box>
+
             <Box textAlign="center">
                 <Box
-                    fontSize="gl" mt={4} display="inline-block" position="relative">A list of my technical skills. </Box>
+                    fontSize="lg" mt={4} display="inline-block" position="relative">A list of my technical skills.</Box>
             </Box>
+
             <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
                 {[
                     { label: "All", icon: FaBolt, category: "All" },
@@ -145,7 +117,6 @@ export default function Skillset() {
                             borderRadius="full"
                             cursor="pointer"
                             onClick={() => handleFilterChange(item.category)}
-                            //border={`2px solid ${selectedCategory === item.category ? 'green' : 'transparent'}`}
                             padding="0.5rem 1rem" // Adjust this padding to make space for the border
                             transition="border 0.1s ease-in-out, box-shadow 0.1s ease-in-out"
                             boxShadow={selectedCategory === item.category ? ' 0 0 0 3px rgba(66, 153, 225, 0.6)' : 'none'}
@@ -158,9 +129,6 @@ export default function Skillset() {
                     </WrapItem>
                 ))}
             </Wrap>
-
-
-
 
             <SimpleGrid
                 columns={[1, 2]}
@@ -181,7 +149,6 @@ export default function Skillset() {
                             boxShadow: 'lg', // Add a shadow for better visual effect
                         }}
                         transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
-
                     >
                         <HStack>
                             <Box as={skill.icon} boxSize="20px" />
@@ -191,9 +158,8 @@ export default function Skillset() {
                             </Box>
                         </HStack>
                     </Box>
-                ))
-                }
-            </SimpleGrid >
-        </Box >
+                ))}
+            </SimpleGrid>
+        </Box>
     );
 }

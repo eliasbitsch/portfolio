@@ -28,8 +28,6 @@ export default function Page() {
       <svg
         width="300"
         height="500"
-        width="300"
-        height="500"
         style={{
           position: 'absolute',
           top: "30rem",
@@ -42,8 +40,6 @@ export default function Page() {
         <defs>
           <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
             <rect x="5" y="5" width="4" height="4" fill="#374151" />
-          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#squarePattern1)" />
@@ -52,13 +48,7 @@ export default function Page() {
       <svg
         width="300"
         height="300"
-        width="300"
-        height="300"
         style={{
-          position: 'absolute',
-          top: '20%',
-          right: '30%',
-          transform: 'translate(150%, -50%)',
           position: 'absolute',
           top: '20%',
           right: '30%',
@@ -68,8 +58,6 @@ export default function Page() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
           <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
             <rect x="5" y="5" width="4" height="4" fill="#374151" />
           </pattern>
@@ -96,7 +84,6 @@ export default function Page() {
         mb={3}
         color="white"
         lineHeight="1.5"
-        maxWidth="45%" // Responsive width
         maxWidth="45%" // Responsive width
         mx={[5, 10, 20]} // Responsive margins
         initial={{ opacity: 0, x: '-20vw' }}
