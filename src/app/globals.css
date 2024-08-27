@@ -37,3 +37,63 @@ body {
   background-color: gray.900;
   /* Chakra's gray.900 */
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+.card {
+  opacity: 0;
+  /* transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+}
+
+.card.animate {
+  animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out;
+  opacity: 1;
+}
+
+/* .card.exit {
+  animation: fadeOut 0.5s ease-out, slideDown 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+} */

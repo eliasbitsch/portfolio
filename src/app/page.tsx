@@ -16,23 +16,23 @@ export default function Page() {
       p={5}
       bg="gray.900"
       minH="90vh"
-      mt={20}
       display="flex"
       flexDirection="column"
       alignItems="center"
       textAlign="center"
       position="relative"
       overflow="hidden"
+      mt={20}
     >
       {/* SVG Patterns with Fixed Margins */}
       <svg
         width="300"
-        height="500"
+        height="400"
         style={{
           position: 'absolute',
           top: "30rem",
           left: '30%',
-          transform: 'translate(-150%, -50%)',
+          transform: 'translate(-180%, -50%)',
           zIndex: 0,
         }}
         xmlns="http://www.w3.org/2000/svg"
@@ -47,12 +47,12 @@ export default function Page() {
 
       <svg
         width="300"
-        height="300"
+        height="750"
         style={{
           position: 'absolute',
-          top: '20%',
+          top: '0%',
           right: '30%',
-          transform: 'translate(150%, -50%)',
+          transform: 'translate(180%, -50%)',
           zIndex: 0,
         }}
         xmlns="http://www.w3.org/2000/svg"
@@ -84,14 +84,14 @@ export default function Page() {
         mb={3}
         color="white"
         lineHeight="1.5"
-        maxWidth="45%" // Responsive width
+        maxWidth="600px" // Responsive width
         mx={[5, 10, 20]} // Responsive margins
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Programmer, Mechatronics Engineer, and Robotics Engineer</b>
+        I am a <b>Programmer, Mechatronics Engineer &  Robotics Engineer</b>
         <br />
         dedicated to advancing technology through innovative development.
         <br />
@@ -102,10 +102,11 @@ export default function Page() {
         systems.
       </MotionText>
 
+
       {/* Social Media & Resume Links with Hover Text */}
       <HStack spacing={10} mt={6} zIndex={1}>
         <VStack spacing={2}>
-          <Link href="https://github.com/your-github-profile" isExternal>
+          <Link href="https://github.com/eliasbitsch" isExternal>
             <Tooltip label="GitHub" placement="bottom" bg="gray.800" color="white">
               <span><FaGithub size="2rem" color="white" /></span>
             </Tooltip>
@@ -113,7 +114,7 @@ export default function Page() {
           <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>GitHub</Text>
         </VStack>
         <VStack spacing={2}>
-          <Link href="mailto:your-email@example.com" isExternal>
+          <Link href="mailto:eliasbitsch@protonmail.com" isExternal>
             <Tooltip label="Email" placement="bottom" bg="gray.800" color="white">
               <span><EmailIcon size="2rem" color="white" /></span>
             </Tooltip>
@@ -121,7 +122,7 @@ export default function Page() {
           <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>Email</Text>
         </VStack>
         <VStack spacing={2}>
-          <Link href="https://www.linkedin.com/in/your-linkedin-profile" isExternal>
+          <Link href="https://www.linkedin.com/in/elias-bitsch-a1b617239/" isExternal>
             <Tooltip label="LinkedIn" placement="bottom" bg="gray.800" color="white">
               <span><FaLinkedin size="2rem" color="#0A66C2" /></span>
             </Tooltip>
@@ -129,7 +130,7 @@ export default function Page() {
           <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>LinkedIn</Text>
         </VStack>
         <VStack spacing={2}>
-          <Link href="path-to-your-resume.pdf" isExternal>
+          <Link href="/assets/resume.pdf" isExternal>
             <Tooltip label="Resume" placement="bottom" bg="gray.800" color="white">
               <span><FaFileAlt size="2rem" color="white" /></span>
             </Tooltip>
@@ -137,6 +138,7 @@ export default function Page() {
           <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>Resume</Text>
         </VStack>
       </HStack>
+
 
       <Text fontSize="sm" color="gray.500" mt={8} zIndex={1}>
         © {currentYear} Elias Bitsch. All rights reserved.
