@@ -59,7 +59,8 @@ export default function Projects() {
   return (
     <Box p={5}
       bg="gray.900"
-      minH="100vh"
+      minH="90vh"
+      display="flex"
       flexDirection="column"
       alignItems="center"
       position="relative"
@@ -67,7 +68,48 @@ export default function Projects() {
       mt={20}
     >
 
-      <Box textAlign="center">
+      {/* SVG Patterns with Fixed Margins */}
+      <svg
+        width="350"
+        height="400"
+        style={{
+          position: 'absolute',
+          top: "30rem",
+          left: '35%',
+          transform: 'translate(-180%, -50%)',
+          zIndex: 0,
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
+            <rect x="5" y="5" width="4" height="4" fill="#374151" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#squarePattern1)" />
+      </svg>
+
+      <svg
+        width="350"
+        height="750"
+        style={{
+          position: 'absolute',
+          top: '0%',
+          right: '35%',
+          transform: 'translate(180%, -50%)',
+          zIndex: 0,
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
+            <rect x="5" y="5" width="4" height="4" fill="#374151" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#squarePattern2)" />
+      </svg>
+
+      <Box textAlign="left" maxWidth="800px" width="100%" mx="auto">
         <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
           Projects
           <hr style={{
@@ -78,50 +120,41 @@ export default function Projects() {
             backgroundColor: 'currentColor', // Match the color of the text
           }} />
         </Box>
-
-        <Box textAlign="center">
-          <Box
-            fontSize="gl" mt={4} display="inline-block" position="relative">A selection of projects I've worked on throughout my engineering journey </Box>
-        </Box>
-
       </Box>
+
+      <Box mt={4} maxWidth="800px" width="100%" mx="auto">
+        <Text fontSize="lg">A selection of projects I've worked on throughout my engineering journey</Text>
+      </Box>
+
+
       <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'All' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('All')}>
-            <TagLeftIcon boxSize="12px" as={FaBolt} />
-            <TagLabel>All</TagLabel>
-          </Tag>
-        </WrapItem>
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'Web Development' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('Web Development')}>
-            <TagLeftIcon boxSize="12px" as={FaLaptopCode} />
-            <TagLabel>Web Development</TagLabel>
-          </Tag>
-        </WrapItem>
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'Electronics' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('Electronics')}>
-            <TagLeftIcon boxSize="12px" as={FaMicrochip} />
-            <TagLabel>Electronics</TagLabel>
-          </Tag>
-        </WrapItem>
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'Art & Design' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('Art & Design')}>
-            <TagLeftIcon boxSize="12px" as={FaPalette} />
-            <TagLabel>Art & Design</TagLabel>
-          </Tag>
-        </WrapItem>
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'Libraries & Services' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('Libraries & Services')}>
-            <TagLeftIcon boxSize="12px" as={FaBook} />
-            <TagLabel>Libraries & Services</TagLabel>
-          </Tag>
-        </WrapItem>
-        <WrapItem>
-          <Tag size="lg" variant={selectedCategory === 'Other' ? 'solid' : 'outline'} bg="gray.700" borderRadius="full" cursor="pointer" onClick={() => handleFilterChange('Other')}>
-            <TagLeftIcon boxSize="12px" as={FaWrench} />
-            <TagLabel>Other</TagLabel>
-          </Tag>
-        </WrapItem>
+        {[
+          { label: "All", icon: FaBolt, category: "All" },
+          { label: "Programming", icon: FaLaptopCode, category: "Programming" },
+          { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
+          { label: "Art & Design", icon: FaPalette, category: "Art & Design" },
+          { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
+          { label: "Other", icon: FaWrench, category: "Other" },
+        ].map((item) => (
+          <WrapItem key={item.category}>
+            <Tag
+              size="lg"
+              color="#718096"
+              bg="gray.800"
+              borderRadius="full"
+              cursor="pointer"
+              onClick={() => handleFilterChange(item.category)}
+              padding="0.5rem 1rem" // Adjust this padding to make space for the border
+              transition="border 0.1s ease-in-out, box-shadow 0.1s ease-in-out"
+              boxShadow={selectedCategory === item.category ? ' 0 0 0 3px rgba(66, 153, 225, 0.6)' : 'none'}
+              display="flex"
+              alignItems="center"
+            >
+              <TagLeftIcon boxSize="12px" as={item.icon} />
+              <TagLabel>{item.label}</TagLabel>
+            </Tag>
+          </WrapItem>
+        ))}
       </Wrap>
 
       <SimpleGrid
@@ -155,6 +188,6 @@ export default function Projects() {
           </Box>
         ))}
       </SimpleGrid>
-    </Box>
+    </Box >
   );
 }

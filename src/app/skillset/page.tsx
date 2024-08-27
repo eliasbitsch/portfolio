@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem } from '@chakra-ui/react';
+import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
 import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
 
 // Example skills data
 const skillsData = [
@@ -16,7 +17,16 @@ const skillsData = [
     { id: 8, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
     { id: 9, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
     { id: 10, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
-    // Add more skills as needed
+    { id: 11, category: 'Programming', name: 'React', description: 'Web development', icon: FaLaptopCode },
+    { id: 12, category: 'Electronics', name: 'EasyEDA', description: 'Electronics', icon: FaMicrochip },
+    { id: 13, category: 'Electronics', name: 'KiCad', description: 'Electronics', icon: FaMicrochip },
+    { id: 14, category: 'Electronics', name: 'Soldering', description: 'Electronics', icon: FaMicrochip },
+    { id: 15, category: 'Electronics', name: 'Microcontrollers', description: 'Electronics', icon: FaMicrochip },
+    { id: 16, category: 'CAD Design', name: 'Fusion 360', description: 'CAD Design', icon: FaWrench },
+    { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: FaLaptopCode },
+    { id: 18, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
+    { id: 19, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
+    { id: 20, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
 ];
 
 export default function Skillset() {
@@ -26,6 +36,10 @@ export default function Skillset() {
         setSelectedCategory(category);
     };
 
+    // Create refs for all skills
+    const skillRefs = skillsData.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
+
+    // Filter skills based on the selected category
     const filteredSkills = selectedCategory === 'All'
         ? skillsData
         : skillsData.filter(skill => skill.category === selectedCategory);
@@ -35,6 +49,7 @@ export default function Skillset() {
             p={5}
             bg="gray.900"
             minH="90vh"
+            display="flex"
             flexDirection="column"
             alignItems="center"
             position="relative"
@@ -43,13 +58,13 @@ export default function Skillset() {
         >
             {/* SVG Patterns with Fixed Margins */}
             <svg
-                width="300"
-                height="500"
+                width="350"
+                height="400"
                 style={{
                     position: 'absolute',
                     top: "30rem",
-                    left: '30%',
-                    transform: 'translate(-150%, -50%)',
+                    left: '35%',
+                    transform: 'translate(-180%, -50%)',
                     zIndex: 0,
                 }}
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,13 +78,13 @@ export default function Skillset() {
             </svg>
 
             <svg
-                width="300"
-                height="300"
+                width="350"
+                height="750"
                 style={{
                     position: 'absolute',
-                    top: '20%',
-                    right: '30%',
-                    transform: 'translate(150%, -50%)',
+                    top: '0%',
+                    right: '35%',
+                    transform: 'translate(180%, -50%)',
                     zIndex: 0,
                 }}
                 xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +97,7 @@ export default function Skillset() {
                 <rect width="100%" height="100%" fill="url(#squarePattern2)" />
             </svg>
 
-            <Box textAlign="center">
+            <Box textAlign="left" maxWidth="600px" width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
                     Skillset
                     <hr style={{
@@ -95,9 +110,8 @@ export default function Skillset() {
                 </Box>
             </Box>
 
-            <Box textAlign="center">
-                <Box
-                    fontSize="lg" mt={4} display="inline-block" position="relative">A list of my technical skills.</Box>
+            <Box mt={4} maxWidth="600px" width="100%" mx="auto">
+                <Text fontSize="lg">A list of my technical skills.</Text>
             </Box>
 
             <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
@@ -136,29 +150,37 @@ export default function Skillset() {
                 mt={8}
                 mx="auto"
                 maxWidth={600}
+                width={'100%'}
                 justifyContent="center"
             >
-                {filteredSkills.map(skill => (
-                    <Box
-                        key={skill.id}
-                        bg="gray.700"
-                        p={4}
-                        borderRadius="lg"
-                        _hover={{
-                            transform: 'translateY(-5px)', // Move up on hover
-                            boxShadow: 'lg', // Add a shadow for better visual effect
-                        }}
-                        transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
-                    >
-                        <HStack>
-                            <Box as={skill.icon} boxSize="20px" />
-                            <Box>
-                                <Box fontWeight="bold">{skill.name}</Box>
-                                <Box fontSize="sm" color="gray.400">{skill.description}</Box>
-                            </Box>
-                        </HStack>
-                    </Box>
-                ))}
+                {filteredSkills.map((skill) => {
+                    const index = skillsData.findIndex(s => s.id === skill.id); // Find the original index
+                    const { ref, inView } = skillRefs[index]; // Use the original index to get the correct ref
+
+                    return (
+                        <Box
+                            key={skill.id}
+                            ref={ref}
+                            className={`card ${inView ? 'animate' : 'exit'}`}
+                            bg="gray.700"
+                            p={4}
+                            borderRadius="lg"
+                            _hover={{
+                                transform: 'translateY(-5px)', // Move up on hover
+                                boxShadow: 'lg', // Add a shadow for better visual effect
+                            }}
+                            transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
+                        >
+                            <HStack>
+                                <Box as={skill.icon} boxSize="20px" />
+                                <Box>
+                                    <Box fontWeight="bold">{skill.name}</Box>
+                                    <Box fontSize="sm" color="gray.400">{skill.description}</Box>
+                                </Box>
+                            </HStack>
+                        </Box>
+                    );
+                })}
             </SimpleGrid>
         </Box>
     );

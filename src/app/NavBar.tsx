@@ -12,13 +12,28 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 const NavBar = () => {
-    const { isOpen, onToggle } = useDisclosure();
+    const { isOpen, onToggle, onClose } = useDisclosure();
     const isDesktop = useBreakpointValue({ base: false, md: true });
     const pathname = usePathname();
+    const menuRef = useRef(null);
 
     const isActive = (href: string) => pathname === href;
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent): void => {
+            if (menuRef.current && !(menuRef.current as HTMLElement).contains(event.target as Node)) {
+                onClose();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [onClose]);
 
     return (
         <Box
@@ -33,16 +48,14 @@ const NavBar = () => {
             bg="rgba(26, 32, 44, 0.8)"
             color="white"
             backdropFilter="saturate(180%) blur(5px)" // Add blur to the navbar
+            ref={menuRef}
         >
-            <Flex align="center" justify="space-between" >
+            <Flex align="center" justify="space-between">
                 {!isDesktop && (
                     <IconButton
                         aria-label="Toggle Menu"
                         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        //variant="outline"
-
                         _hover={{ bg: 'rgba(255, 255, 255, 0.16)', color: 'white' }}
-
                         onClick={onToggle}
                         mr="auto"
                         borderRadius="0.7rem"
@@ -50,8 +63,6 @@ const NavBar = () => {
                         color="white"
                     />
                 )}
-
-
 
                 {isDesktop && (
                     <Flex ml={200} justifyContent="flex-start" fontSize="lg" alignItems="center">
@@ -115,97 +126,75 @@ const NavBar = () => {
                 )}
             </Flex>
 
-            {
-                !isDesktop && isOpen && (
-                    // <Box
-                    //     position="fixed"
-                    //     top="60px" // Adjust based on your navbar height
-                    //     left={0}
-                    //     right={0}
-                    //     px={6}
-                    //     py={4}
-                    //     bg="rgba(26, 32, 44, 0.8)"
-                    //     color="white"
-                    //     backdropFilter='auto'
-                    //     backdropBlur='8px'
-                    //     zIndex="dropdown" // Ensure it’s above other content
-                    // >
-
-
-                    <Box
-                        position="sticky"
-                        top="100%"
-                        zIndex="docked"
-                        py={4}
-                        mx={0}
-
-
-                    >
-                        <VStack spacing={2} display="flex" alignItems="left"
-
-                        >
-                            <Link href="/" passHref>
-                                <Text
-                                    py={1}
-                                    px={4}
-                                    borderRadius="md"
-                                    width="100%"
-                                    bg={isActive('/home') ? 'gray.700' : 'transparent'}
-                                    color={isActive('/home') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'gray.700', color: 'white' }}
-                                    transition="background-color 0.2s ease, color 0.2s ease"
-                                >
-                                    Home
-                                </Text>
-                            </Link>
-                            <Link href="/about" passHref>
-                                <Text
-                                    py={1}
-                                    px={4}
-                                    borderRadius="md"
-                                    width="100%"
-                                    bg={isActive('/home') ? 'gray.700' : 'transparent'}
-                                    color={isActive('/home') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'gray.700', color: 'white' }}
-                                    transition="background-color 0.2s ease, color 0.2s ease"
-                                >
-                                    About
-                                </Text>
-                            </Link>
-                            <Link href="/skillset" passHref>
-                                <Text
-                                    py={1}
-                                    px={4}
-                                    borderRadius="md"
-                                    width="100%"
-                                    bg={isActive('/skillset') ? 'gray.700' : 'transparent'}
-                                    color={isActive('/skillset') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'gray.700', color: 'white' }}
-                                    transition="background-color 0.2s ease, color 0.2s ease"
-                                >
-                                    Skillset
-                                </Text>
-                            </Link>
-                            <Link href="/projects" passHref>
-                                <Text
-                                    py={1}
-                                    px={4}
-                                    borderRadius="md"
-                                    width="100%"
-                                    bg={isActive('/projects') ? 'gray.700' : 'transparent'}
-                                    color={isActive('/projects') ? 'white' : 'gray.300'}
-                                    _hover={{ bg: 'gray.700', color: 'white' }}
-                                    transition="background-color 0.2s ease, color 0.2s ease"
-                                >
-                                    Projects
-                                </Text>
-                            </Link>
-                        </VStack>
-
-                    </Box>
-                )
-            }
-        </Box >
+            {!isDesktop && isOpen && (
+                <Box
+                    position="sticky"
+                    top="100%"
+                    zIndex="docked"
+                    py={4}
+                    mx={0}
+                >
+                    <VStack spacing={2} display="flex" alignItems="left">
+                        <Link href="/" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/home') ? 'gray.700' : 'transparent'}
+                                color={isActive('/home') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Home
+                            </Text>
+                        </Link>
+                        <Link href="/about" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/home') ? 'gray.700' : 'transparent'}
+                                color={isActive('/home') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                About
+                            </Text>
+                        </Link>
+                        <Link href="/skillset" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/skillset') ? 'gray.700' : 'transparent'}
+                                color={isActive('/skillset') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Skillset
+                            </Text>
+                        </Link>
+                        <Link href="/projects" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/projects') ? 'gray.700' : 'transparent'}
+                                color={isActive('/projects') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Projects
+                            </Text>
+                        </Link>
+                    </VStack>
+                </Box>
+            )}
+        </Box>
     );
 };
 
