@@ -3,45 +3,49 @@
 import React, { useState } from 'react';
 import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text } from '@chakra-ui/react';
 import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
+import { FaGears } from "react-icons/fa6";
 
 // Example projects data
 const projectsData = [
   {
     id: 1,
-    category: 'Web Development',
+    category: 'Electronics',
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
-    imageUrl: 'https://image.geo.de/34423086/t/u8/v1/w1440/r0/-/katze-as-97589769.jpg',
-    tags: ['React', 'Chakra UI', 'JavaScript'],
+    imageUrl: '/images/circuit-crusher.jpg',
+    tags: ['Arduino', 'Robotics', 'Sumo-Bot'],
     icon: FaLaptopCode
   },
   {
     id: 2,
-    category: 'Electronics',
-    title: 'Smart Home System',
-    description: 'An IoT-based smart home system for controlling appliances.',
-    imageUrl: '/images/smarthome.png',
-    tags: ['IoT', 'Arduino', 'Home Automation'],
-    icon: FaMicrochip
+    category: 'Programming',
+    title: 'Path Planning Robot',
+    description: 'A Robot that can solve a maze using ROS and its navigation stack.',
+    imageUrl: '/images/path-planning.png',
+    tags: ['ROS', 'Navigation Stack', 'Path Planning'],
+    icon: FaPalette
   },
   {
     id: 3,
-    category: 'Web Development',
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce platform with payment integration.',
-    imageUrl: '/images/ecommerce.png',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-    icon: FaLaptopCode
+    category: 'Programming',
+    title: 'Maze solving Robot',
+    description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
+    imageUrl: '/images/maze-solver.png',
+    tags: ['ROS', 'Python', 'Machine Learning'],
+    icon: FaMicrochip
   },
   {
     id: 4,
-    category: 'Art & Design',
-    title: 'Digital Art Portfolio',
-    description: 'A portfolio showcasing my digital art and design work.',
-    imageUrl: '/images/artportfolio.png',
-    tags: ['Photoshop', 'Illustrator', 'Digital Art'],
-    icon: FaPalette
+    category: 'Programming',
+    title: 'Line follower Robot',
+    description: 'A Robot that can follow a line using a camera with OpenCV Library.',
+    imageUrl: '/images/line-follower.png',
+    tags: ['ROS', 'Python', 'OpenCV'],
+    icon: FaLaptopCode,
+    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner'
+
   },
+
   // Add more projects as needed
 ];
 
@@ -126,15 +130,12 @@ export default function Projects() {
         <Text fontSize="lg">A selection of projects I've worked on throughout my engineering journey</Text>
       </Box>
 
-
       <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
         {[
           { label: "All", icon: FaBolt, category: "All" },
           { label: "Programming", icon: FaLaptopCode, category: "Programming" },
           { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
-          { label: "Art & Design", icon: FaPalette, category: "Art & Design" },
-          { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
-          { label: "Other", icon: FaWrench, category: "Other" },
+          { label: "Engineering", icon: FaWrench, category: "Engineering" },
         ].map((item) => (
           <WrapItem key={item.category}>
             <Tag
@@ -165,13 +166,38 @@ export default function Projects() {
         maxWidth={800}
         justifyContent="center">
         {filteredProjects.map(project => (
-          <Box key={project.id} bg="gray.700" borderRadius="md" overflow="hidden"
+          <Box
+            key={project.id}
+            bg="gray.700"
+            borderRadius="lg"
+            overflow="hidden"
+            as="a"
+            href={project.githubUrl}
+            target="_blank"  // Opens the link in a new tab
+            rel="noopener noreferrer"  // Security measure for external links
             _hover={{
               transform: 'translateY(-5px)', // Move up on hover
               boxShadow: 'lg', // Add a shadow for better visual effect
             }}
             transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out">
-            <Image src={project.imageUrl} alt={project.title} objectFit="cover" width="100%" height="200px" />
+            <Box
+              position="relative"
+              _hover={{
+                '& img': {
+                  transform: 'scale(1.1)', // Scale image on hover
+                },
+              }}
+              transition="transform 0.3s ease-in-out"
+            >
+              <Image
+                src={project.imageUrl}
+                alt={project.title}
+                objectFit="fill"
+                width="100%"
+                height="200px"
+                transition="transform 0.3s ease-in-out"
+              />
+            </Box>
             <Box p={4}>
               <Text fontWeight="bold" fontSize="xl" mb={2}>{project.title}</Text>
               <Text fontSize="md" color="gray.400" mb={4}>{project.description}</Text>
@@ -188,6 +214,6 @@ export default function Projects() {
           </Box>
         ))}
       </SimpleGrid>
-    </Box >
+    </Box>
   );
 }
