@@ -133,8 +133,9 @@ const NavBar = () => {
                     zIndex="docked"
                     py={4}
                     mx={0}
+
                 >
-                    <VStack spacing={2} display="flex" alignItems="left">
+                    <VStack spacing={2} display="flex" alignItems="left" fontSize="2xl">
                         <Link href="/" passHref>
                             <Text
                                 py={1}

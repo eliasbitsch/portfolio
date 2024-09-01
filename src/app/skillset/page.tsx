@@ -2,31 +2,55 @@
 
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
-import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
+import { FaMicrochip, FaGears } from "react-icons/fa6";
+import { FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench, FaLock } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
+import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
+import { MdElectricBolt, MdFactory } from "react-icons/md";
+import { RiJavascriptFill } from "react-icons/ri";
+
 
 // Example skills data
 const skillsData = [
-    { id: 1, category: 'Programming', name: 'React', description: 'Web development', icon: FaLaptopCode },
-    { id: 2, category: 'Electronics', name: 'EasyEDA', description: 'Electronics', icon: FaMicrochip },
-    { id: 3, category: 'Electronics', name: 'KiCad', description: 'Electronics', icon: FaMicrochip },
-    { id: 4, category: 'Electronics', name: 'Soldering', description: 'Electronics', icon: FaMicrochip },
-    { id: 5, category: 'Electronics', name: 'Microcontrollers', description: 'Electronics', icon: FaMicrochip },
-    { id: 6, category: 'CAD Design', name: 'Fusion 360', description: 'CAD Design', icon: FaWrench },
-    { id: 7, category: 'Programming', name: 'Next.js', description: 'Web development', icon: FaLaptopCode },
-    { id: 8, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
-    { id: 9, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
-    { id: 10, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
-    { id: 11, category: 'Programming', name: 'React', description: 'Web development', icon: FaLaptopCode },
-    { id: 12, category: 'Electronics', name: 'EasyEDA', description: 'Electronics', icon: FaMicrochip },
-    { id: 13, category: 'Electronics', name: 'KiCad', description: 'Electronics', icon: FaMicrochip },
-    { id: 14, category: 'Electronics', name: 'Soldering', description: 'Electronics', icon: FaMicrochip },
-    { id: 15, category: 'Electronics', name: 'Microcontrollers', description: 'Electronics', icon: FaMicrochip },
-    { id: 16, category: 'CAD Design', name: 'Fusion 360', description: 'CAD Design', icon: FaWrench },
-    { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: FaLaptopCode },
-    { id: 18, category: 'Programming', name: 'Python', description: 'Web development', icon: FaLaptopCode },
-    { id: 19, category: 'Programming', name: 'Django', description: 'Web development', icon: FaLaptopCode },
-    { id: 20, category: 'Programming', name: '.NET', description: 'Web development', icon: FaLaptopCode },
+    { id: 1, category: 'Programming', name: 'C++', description: 'Robotics software', icon: SiCplusplus },
+    { id: 2, category: 'Programming', name: 'Python', description: 'Robotics software', icon: SiPython },
+    { id: 3, category: 'Programming', name: 'ROS/ROS2', description: 'Robotics framework', icon: SiRos },
+    { id: 4, category: 'Programming', name: 'Linux', description: 'Operating system for robotics', icon: SiLinux },
+    { id: 5, category: 'Programming', name: 'Bash', description: 'Scripting and automation', icon: SiGnubash },
+    { id: 6, category: 'Programming', name: 'Docker', description: 'Containerization & Deployment', icon: SiDocker },
+    { id: 7, category: 'Programming', name: 'OpenCV', description: 'Computer vision', icon: SiOpencv },
+    { id: 8, category: 'Programming', name: 'C', description: 'Embedded systems', icon: SiC },
+    { id: 9, category: 'Programming', name: 'PLC-programming', description: 'Industrial automation', icon: MdFactory },
+    { id: 10, category: 'Programming', name: 'Java', description: 'Enterprise development', icon: FaJava },
+    { id: 11, category: 'Programming', name: 'JavaScript', description: 'Web development', icon: RiJavascriptFill },
+    { id: 12, category: 'Programming', name: 'TypeScript', description: 'Web development', icon: SiTypescript },
+    { id: 13, category: 'Programming', name: 'HTML', description: 'Web development', icon: SiHtml5 },
+    { id: 14, category: 'Programming', name: 'CSS', description: 'Web development', icon: SiCss3 },
+    { id: 15, category: 'Programming', name: 'SCSS', description: 'Web development', icon: SiSass },
+    { id: 16, category: 'Programming', name: 'Tailwind', description: 'Web development', icon: SiTailwindcss },
+
+    { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: SiNextdotjs },
+    { id: 18, category: 'Programming', name: 'React Native', description: 'Mobile app development', icon: SiReact },
+    { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
+
+    { id: 20, category: 'Electronics', name: 'Raspberry Pi', description: 'Single-board computer', icon: FaRaspberryPi },
+    { id: 21, category: 'Electronics', name: 'Arduino', description: 'Microcontroller programming', icon: SiArduino },
+    { id: 22, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: SiEasyeda },
+    { id: 23, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
+    { id: 24, category: 'Electronics', name: 'Microcontrollers', description: 'Microcontroller-based systems', icon: FaMicrochip },
+
+    { id: 25, category: 'Design', name: 'SolidWorks', description: '3D CAD design', icon: FaWrench },
+    { id: 26, category: 'Design', name: 'Fusion360', description: '3D CAD design', icon: SiAutodesk },
+    { id: 27, category: 'Design', name: '3D Printing', description: 'Prototyping', icon: FaWrench },
+
+    { id: 28, category: 'Libraries & Services', name: 'AWS', description: 'Cloud computing', icon: FaAws },
+    { id: 29, category: 'Libraries & Services', name: 'Git', description: 'Version control', icon: SiGit },
+
+    { id: 30, category: 'Other', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
+    { id: 31, category: 'Other', name: 'Kali Linux', description: 'Penetration testing', icon: SiKalilinux },
+    { id: 32, category: 'Other', name: 'Nmap', description: 'Network scanning', icon: FaEye },
+    { id: 33, category: 'Other', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi }
+
 ];
 
 export default function Skillset() {
@@ -119,9 +143,9 @@ export default function Skillset() {
                     { label: "All", icon: FaBolt, category: "All" },
                     { label: "Programming", icon: FaLaptopCode, category: "Programming" },
                     { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
-                    { label: "Art & Design", icon: FaPalette, category: "Art & Design" },
+                    { label: "Design", icon: FaWrench, category: "Design" },
                     { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
-                    { label: "Other", icon: FaWrench, category: "Other" },
+                    { label: "Other", icon: FaGears, category: "Other" },
                 ].map((item) => (
                     <WrapItem key={item.category}>
                         <Tag
@@ -171,11 +195,21 @@ export default function Skillset() {
                             }}
                             transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
                         >
-                            <HStack>
-                                <Box as={skill.icon} boxSize="20px" />
-                                <Box>
-                                    <Box fontWeight="bold">{skill.name}</Box>
-                                    <Box fontSize="sm" color="gray.400">{skill.description}</Box>
+                            <HStack spacing={4} align="start">
+                                <Box as={skill.icon} boxSize="40px" />
+                                <Box flex="1" overflow="hidden">
+                                    <Box fontWeight="bold" mb={1}>
+                                        {skill.name}
+                                    </Box>
+                                    <Box
+                                        fontSize="sm"
+                                        color="gray.400"
+                                        whiteSpace="nowrap" // Prevent wrapping
+                                        overflow="hidden" // Hide overflowed text
+                                        textOverflow="ellipsis" // Add ellipsis for overflowed text
+                                    >
+                                        {skill.description}
+                                    </Box>
                                 </Box>
                             </HStack>
                         </Box>

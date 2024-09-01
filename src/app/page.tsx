@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Heading, Text, Link, HStack, VStack, Tooltip } from '@chakra-ui/react';
+import { Box, Heading, Text, Link, HStack, VStack, Tooltip, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import EmailIcon from './Icon';
@@ -26,12 +26,12 @@ export default function Page() {
     >
       {/* SVG Patterns with Fixed Margins */}
       <svg
-        width="300"
+        width="350"
         height="400"
         style={{
           position: 'absolute',
           top: "30rem",
-          left: '30%',
+          left: '35%',
           transform: 'translate(-180%, -50%)',
           zIndex: 0,
         }}
@@ -46,12 +46,12 @@ export default function Page() {
       </svg>
 
       <svg
-        width="300"
+        width="350"
         height="750"
         style={{
           position: 'absolute',
           top: '0%',
-          right: '30%',
+          right: '35%',
           transform: 'translate(180%, -50%)',
           zIndex: 0,
         }}
@@ -104,41 +104,127 @@ export default function Page() {
 
 
       {/* Social Media & Resume Links with Hover Text */}
-      <HStack spacing={10} mt={6} zIndex={1}>
+      <HStack spacing={10} mt={6}>
         <VStack spacing={2}>
-          <Link href="https://github.com/eliasbitsch" isExternal>
+          <Link
+            href="https://github.com/eliasbitsch"
+            isExternal
+            _hover={{
+              textDecoration: 'none',
+            }}
+          >
             <Tooltip label="GitHub" placement="bottom" bg="gray.800" color="white">
-              <span><FaGithub size="2rem" color="white" /></span>
+              <Box
+                p={2}
+                bg="transparent"
+                borderRadius="lg"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: 'gray.700',
+                  color: 'white',
+                  borderRadius: 'lg',
+                  transform: 'scale(1.1)',
+                }}
+              >
+                <FaGithub size="2rem" color="white" />
+              </Box>
             </Tooltip>
           </Link>
-          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>GitHub</Text>
+          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>
+            GitHub
+          </Text>
         </VStack>
+
         <VStack spacing={2}>
-          <Link href="mailto:eliasbitsch@protonmail.com" isExternal>
+          <Link
+            href="mailto:eliasbitsch@protonmail.com"
+            isExternal
+            _hover={{
+              textDecoration: 'none',
+            }}
+          >
             <Tooltip label="Email" placement="bottom" bg="gray.800" color="white">
-              <span><EmailIcon size="2rem" color="white" /></span>
+              <Box
+                p={2}
+                bg="transparent"
+                borderRadius="lg"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: 'gray.700',
+                  color: 'white',
+                  borderRadius: 'lg',
+                  transform: 'scale(1.1)',
+                }}
+              >
+                <EmailIcon size="2rem" color="white" />
+              </Box>
             </Tooltip>
           </Link>
-          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>Email</Text>
+          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>
+            Email
+          </Text>
         </VStack>
+
         <VStack spacing={2}>
-          <Link href="https://www.linkedin.com/in/elias-bitsch-a1b617239/" isExternal>
+          <Link
+            href="https://www.linkedin.com/in/elias-bitsch-a1b617239/"
+            isExternal
+            _hover={{
+              textDecoration: 'none',
+            }}
+          >
             <Tooltip label="LinkedIn" placement="bottom" bg="gray.800" color="white">
-              <span><FaLinkedin size="2rem" color="#0A66C2" /></span>
+              <Box
+                p={2}
+                bg="transparent"
+                borderRadius="lg"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: 'gray.700',
+                  color: 'white',
+                  borderRadius: 'lg',
+                  transform: 'scale(1.1)',
+                }}
+              >
+                <FaLinkedin size="2rem" color="#0A66C2" />
+              </Box>
             </Tooltip>
           </Link>
-          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>LinkedIn</Text>
+          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>
+            LinkedIn
+          </Text>
         </VStack>
+
         <VStack spacing={2}>
-          <Link href="/assets/resume.pdf" isExternal>
+          <Link
+            href="/assets/resume.pdf"
+            isExternal
+            _hover={{
+              textDecoration: 'none',
+            }}
+          >
             <Tooltip label="Resume" placement="bottom" bg="gray.800" color="white">
-              <span><FaFileAlt size="2rem" color="white" /></span>
+              <Box
+                p={2}
+                bg="transparent"
+                borderRadius="lg"
+                transition="all 0.3s ease"
+                _hover={{
+                  bg: 'gray.700',
+                  color: 'white',
+                  borderRadius: 'lg',
+                  transform: 'scale(1.1)',
+                }}
+              >
+                <FaFileAlt size="2rem" color="white" />
+              </Box>
             </Tooltip>
           </Link>
-          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>Resume</Text>
+          <Text color="gray.400" fontSize="sm" mt={1} opacity={0} transition="opacity 0.3s ease" _hover={{ opacity: 1 }}>
+            Resume
+          </Text>
         </VStack>
       </HStack>
-
 
       <Text fontSize="sm" color="gray.500" mt={8} zIndex={1}>
         © {currentYear} Elias Bitsch. All rights reserved.
