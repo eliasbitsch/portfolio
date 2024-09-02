@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
-import { FaMicrochip, FaGears } from "react-icons/fa6";
-import { FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench, FaLock } from 'react-icons/fa';
-import { useInView } from 'react-intersection-observer';
+import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench, FaLock } from 'react-icons/fa6';
 import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
 import { MdElectricBolt, MdFactory } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
-
+import { useInView } from 'react-intersection-observer';
 
 // Example skills data
 const skillsData = [
@@ -28,33 +26,28 @@ const skillsData = [
     { id: 14, category: 'Programming', name: 'CSS', description: 'Web development', icon: SiCss3 },
     { id: 15, category: 'Programming', name: 'SCSS', description: 'Web development', icon: SiSass },
     { id: 16, category: 'Programming', name: 'Tailwind', description: 'Web development', icon: SiTailwindcss },
-
     { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: SiNextdotjs },
     { id: 18, category: 'Programming', name: 'React Native', description: 'Mobile app development', icon: SiReact },
     { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
-
     { id: 20, category: 'Electronics', name: 'Raspberry Pi', description: 'Single-board computer', icon: FaRaspberryPi },
     { id: 21, category: 'Electronics', name: 'Arduino', description: 'Microcontroller programming', icon: SiArduino },
     { id: 22, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: SiEasyeda },
     { id: 23, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
     { id: 24, category: 'Electronics', name: 'Microcontrollers', description: 'Microcontroller-based systems', icon: FaMicrochip },
-
     { id: 25, category: 'Design', name: 'SolidWorks', description: '3D CAD design', icon: FaWrench },
     { id: 26, category: 'Design', name: 'Fusion360', description: '3D CAD design', icon: SiAutodesk },
     { id: 27, category: 'Design', name: '3D Printing', description: 'Prototyping', icon: FaWrench },
-
     { id: 28, category: 'Libraries & Services', name: 'AWS', description: 'Cloud computing', icon: FaAws },
     { id: 29, category: 'Libraries & Services', name: 'Git', description: 'Version control', icon: SiGit },
-
     { id: 30, category: 'Other', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
     { id: 31, category: 'Other', name: 'Kali Linux', description: 'Penetration testing', icon: SiKalilinux },
     { id: 32, category: 'Other', name: 'Nmap', description: 'Network scanning', icon: FaEye },
     { id: 33, category: 'Other', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi }
-
 ];
 
 export default function Skillset() {
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const currentYear = new Date().getFullYear();
 
     const handleFilterChange = (category: string) => {
         setSelectedCategory(category);
@@ -169,7 +162,7 @@ export default function Skillset() {
             </Wrap>
 
             <SimpleGrid
-                columns={[1, 2]}
+                columns={{ base: 1, md: 2 }} // One column on small screens and two columns on medium screens and larger
                 spacing={4}
                 mt={8}
                 mx="auto"
@@ -216,6 +209,9 @@ export default function Skillset() {
                     );
                 })}
             </SimpleGrid>
+            <Text fontSize="sm" color="gray.500" mt={10}>
+                © {currentYear} Elias Bitsch. All rights reserved.
+            </Text>
         </Box>
     );
 }

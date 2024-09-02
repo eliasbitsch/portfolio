@@ -69,6 +69,7 @@ export default function Page() {
         as="h1"
         size="3xl"
         mb={5}
+        mt={10}
         fontWeight="1000"
         color="#3C5AF0"
         initial={{ opacity: 0, x: '-20vw' }}
@@ -84,23 +85,24 @@ export default function Page() {
         mb={3}
         color="white"
         lineHeight="1.5"
-        maxWidth="600px" // Responsive width
+        maxWidth="700px" // Responsive width
         mx={[5, 10, 20]} // Responsive margins
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Programmer, Mechatronics Engineer &  Robotics Engineer</b>
+        I am a <b>Mechatronics & Robotics Engineering student</b>
         <br />
-        dedicated to advancing technology through innovative development.
+        dedicated to advancing technology through innovative&nbsp;development.
         <br />
         <br />
-        My work focuses on applying computational and artificial intelligence
+        My interest focuses on applying computational and artificial&nbsp;intelligence
         <br />
-        to robotics and automation, driving progress in engineering and intelligent
+        to robotics and automation, driving progress in engineering and&nbsp;intelligent
         systems.
       </MotionText>
+
 
 
       {/* Social Media & Resume Links with Hover Text */}
@@ -225,8 +227,7 @@ export default function Page() {
           </Text>
         </VStack>
       </HStack>
-
-      <Text fontSize="sm" color="gray.500" mt={8} zIndex={1}>
+      <Text fontSize="sm" color="gray.500">
         © {currentYear} Elias Bitsch. All rights reserved.
       </Text>
     </Box>

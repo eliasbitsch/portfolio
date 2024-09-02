@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HStack, Tag, Box, SimpleGrid, Wrap } from '@chakra-ui/react';
+import { HStack, Tag, Box, SimpleGrid, Wrap, Text } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 
 // Example skills data with custom information
@@ -51,6 +51,8 @@ const skillsData = [
 
 export default function About() {
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const currentYear = new Date().getFullYear();
+
 
     // Create refs for all skills
     const skillRefs = skillsData.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
@@ -181,6 +183,9 @@ export default function About() {
                     );
                 })}
             </SimpleGrid>
+            <Text fontSize="sm" color="gray.500" mt={10}>
+                © {currentYear} Elias Bitsch. All rights reserved.
+            </Text>
         </Box>
     );
 }

@@ -45,12 +45,25 @@ const projectsData = [
     githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner'
 
   },
+  {
+    id: 5,
+    category: 'Programming',
+    title: 'Portfolio Website',
+    description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
+    imageUrl: '/images/portfolio-website.png',
+    tags: ['Next.js', 'Typescript', 'Chakra UI'],
+    icon: FaLaptopCode,
+    githubUrl: 'https://github.com/eliasbitsch/ '
+
+  },
 
   // Add more projects as needed
 ];
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const currentYear = new Date().getFullYear();
+
 
   const handleFilterChange = (category: string) => {
     setSelectedCategory(category);
@@ -159,7 +172,7 @@ export default function Projects() {
       </Wrap>
 
       <SimpleGrid
-        columns={[1, 2]}
+        columns={{ base: 1, md: 2 }} // One column on small screens and two columns on medium screens and larger
         spacing={6}
         mt={8}
         mx="auto"
@@ -192,7 +205,7 @@ export default function Projects() {
               <Image
                 src={project.imageUrl}
                 alt={project.title}
-                objectFit="fill"
+                objectFit="cover"
                 width="100%"
                 height="200px"
                 transition="transform 0.3s ease-in-out"
@@ -214,6 +227,9 @@ export default function Projects() {
           </Box>
         ))}
       </SimpleGrid>
+      <Text fontSize="sm" color="gray.500" mt={10}>
+        © {currentYear} Elias Bitsch. All rights reserved.
+      </Text>
     </Box>
   );
 }
