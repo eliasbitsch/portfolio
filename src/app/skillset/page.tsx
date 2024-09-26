@@ -53,9 +53,6 @@ export default function Skillset() {
         setSelectedCategory(category);
     };
 
-    // Create refs for all skills
-    const skillRefs = skillsData.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
-
     // Filter skills based on the selected category
     const filteredSkills = selectedCategory === 'All'
         ? skillsData
@@ -73,7 +70,7 @@ export default function Skillset() {
             overflow="hidden"
             mt={20}
         >
-            {/* SVG Patterns with Fixed Margins */}
+            {/* SVG Patterns */}
             <svg
                 width="350"
                 height="400"
@@ -118,11 +115,11 @@ export default function Skillset() {
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
                     Skillset
                     <hr style={{
-                        width: '100%',     // Match the width of the text
-                        marginTop: '6px',   // Space between text and underline
-                        border: 'none',     // Remove default border
-                        height: '2px',      // Thickness of the underline
-                        backgroundColor: 'currentColor', // Match the color of the text
+                        width: '100%',
+                        marginTop: '6px',
+                        border: 'none',
+                        height: '2px',
+                        backgroundColor: 'currentColor',
                     }} />
                 </Box>
             </Box>
@@ -169,47 +166,59 @@ export default function Skillset() {
                 width={'100%'}
                 justifyContent="center"
             >
-                {filteredSkills.map((skill, index) => {
-                    const { ref, inView } = skillRefs[index]; // Use the index directly to get the correct ref
-
-                    return (
-                        <Box
-                            key={skill.id}
-                            ref={ref}
-                            className={`card ${inView ? 'animate' : 'exit'}`}
-                            bg="gray.700"
-                            p={4}
-                            borderRadius="lg"
-                            _hover={{
-                                transform: 'translateY(-5px)',
-                                boxShadow: 'lg',
-                            }}
-                            transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
-                        >
-                            <HStack spacing={4} align="start">
-                                <Box as={skill.icon} boxSize="40px" />
-                                <Box flex="1" overflow="hidden">
-                                    <Box fontWeight="bold" mb={1}>
-                                        {skill.name}
-                                    </Box>
-                                    <Box
-                                        fontSize="sm"
-                                        color="gray.400"
-                                        whiteSpace="nowrap"
-                                        overflow="hidden"
-                                        textOverflow="ellipsis"
-                                    >
-                                        {skill.description}
-                                    </Box>
-                                </Box>
-                            </HStack>
-                        </Box>
-                    );
-                })}
+                {filteredSkills.map((skill) => (
+                    <SkillCard key={skill.id} skill={skill} />
+                ))}
             </SimpleGrid>
             <Text fontSize="sm" color="gray.500" mt={10}>
                 © {currentYear} Elias Bitsch. All rights reserved.
             </Text>
+        </Box>
+    );
+}
+
+// SkillCard component
+type Skill = {
+    id: number;
+    category: string;
+    name: string;
+    description: string;
+    icon: React.ElementType;
+};
+
+function SkillCard({ skill }: { skill: Skill }) {
+    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+
+    return (
+        <Box
+            ref={ref}
+            className={`card ${inView ? 'animate' : 'exit'}`}
+            bg="gray.700"
+            p={4}
+            borderRadius="lg"
+            _hover={{
+                transform: 'translateY(-5px)',
+                boxShadow: 'lg',
+            }}
+            transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
+        >
+            <HStack spacing={4} align="start">
+                <Box as={skill.icon} boxSize="40px" />
+                <Box flex="1" overflow="hidden">
+                    <Box fontWeight="bold" mb={1}>
+                        {skill.name}
+                    </Box>
+                    <Box
+                        fontSize="sm"
+                        color="gray.400"
+                        whiteSpace="nowrap"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                    >
+                        {skill.description}
+                    </Box>
+                </Box>
+            </HStack>
         </Box>
     );
 }
