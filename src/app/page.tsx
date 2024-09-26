@@ -199,7 +199,7 @@ export default function Page() {
 
         <VStack spacing={2}>
           <Link
-            href="/assets/resume.pdf"
+            href="/assets/CV_Elias_Bitsch.pdf"
             isExternal
             _hover={{
               textDecoration: 'none',
