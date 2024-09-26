@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer';
 import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate } from 'react-icons/fa'; // Importing the React icon
 import { PiCertificateLight } from "react-icons/pi";
 import { url } from 'inspector';
-import { useRef } from 'react';
 
 
 // Example skills data with custom information
@@ -89,15 +88,7 @@ export default function About() {
     const currentYear = new Date().getFullYear();
 
     // Create refs for all skills
-    const skillRefs = skillsData.map(() => {
-        const inViewRef = useRef(null);  // Create a ref for each skill
-        const { ref, inView } = useInView({
-            triggerOnce: false,
-            threshold: 0.1,
-        });
-
-        return { inViewRef, ref, inView };  // Store ref and inView status for each skill
-    });
+    const skillRefs = skillsData.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
 
     // Filter skills based on the selected category
     const filteredSkills = selectedCategory === 'All'
@@ -247,5 +238,3 @@ export default function About() {
         </Box>
     );
 }
-
-
