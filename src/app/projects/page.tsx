@@ -9,12 +9,23 @@ import { FaGears } from "react-icons/fa6";
 const projectsData = [
   {
     id: 1,
-    category: 'Electronics',
+    category: ['Programming', 'Electronics', 'Engineering'], // Array of categories
+    title: 'Taurob-Tracker',
+    description: 'Objecet detection using YOLO8 for a robot arm manipulation-pipeline.',
+    imageUrl: '/images/taurob.png',
+    tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
+    icon: FaLaptopCode,
+    githubUrl: 'https://enrich.european-robotics.eu/'
+  },
+  {
+    id: 1,
+    category: ['Programming', 'Electronics', 'Engineering'], // Array of categories
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
     imageUrl: '/images/circuit-crusher.jpg',
     tags: ['Arduino', 'Robotics', 'Sumo-Bot'],
-    icon: FaLaptopCode
+    icon: FaLaptopCode,
+    githubUrl: 'https://roboringout.at/2023/12/17/circuit-crusher/'
   },
   {
     id: 2,
@@ -23,7 +34,8 @@ const projectsData = [
     description: 'A Robot that can solve a maze using ROS and its navigation stack.',
     imageUrl: '/images/path-planning.png',
     tags: ['ROS', 'Navigation Stack', 'Path Planning'],
-    icon: FaPalette
+    icon: FaPalette,
+    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner'
   },
   {
     id: 3,
@@ -32,7 +44,9 @@ const projectsData = [
     description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
     imageUrl: '/images/maze-solver.png',
     tags: ['ROS', 'Python', 'Machine Learning'],
-    icon: FaMicrochip
+    icon: FaMicrochip,
+    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver'
+
   },
   {
     id: 4,
@@ -48,12 +62,24 @@ const projectsData = [
   {
     id: 5,
     category: 'Programming',
+    title: 'ROS online course',
+    description: 'An onlnie course about ROS.',
+    imageUrl: '/images/rosCourse.png',
+    tags: ['Next.js', 'Nextra', 'mdx', 'Typescript'],
+    icon: FaLaptopCode,
+    githubUrl: 'https://rosready.eliasbitsch.tech/'
+
+  },
+
+  {
+    id: 6,
+    category: 'Programming',
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
     imageUrl: '/images/portfolio-website.png',
     tags: ['Next.js', 'Typescript', 'Chakra UI'],
     icon: FaLaptopCode,
-    githubUrl: 'https://github.com/eliasbitsch/ '
+    githubUrl: 'https://github.com/eliasbitsch/portfolio'
 
   },
 
@@ -71,7 +97,11 @@ export default function Projects() {
 
   const filteredProjects = selectedCategory === 'All'
     ? projectsData
-    : projectsData.filter(project => project.category === selectedCategory);
+    : projectsData.filter(project =>
+      Array.isArray(project.category)
+        ? project.category.includes(selectedCategory) // If the project has multiple categories
+        : project.category === selectedCategory // If the project has only one category
+    );
 
   return (
     <Box p={5}
@@ -176,7 +206,7 @@ export default function Projects() {
         spacing={6}
         mt={8}
         mx="auto"
-        maxWidth={800}
+        maxWidth={900}
         justifyContent="center">
         {filteredProjects.map(project => (
           <Box
@@ -206,8 +236,9 @@ export default function Projects() {
                 src={project.imageUrl}
                 alt={project.title}
                 objectFit="cover"
+                scale={1}
                 width="100%"
-                height="200px"
+                height="300px"
                 transition="transform 0.3s ease-in-out"
               />
             </Box>
