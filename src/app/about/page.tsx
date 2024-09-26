@@ -83,17 +83,122 @@ const skillsData = [
     }
 ];
 
+interface SkillProps {
+    skill: {
+        id: number;
+        category: string;
+        name: string;
+        description: string;
+        text: string;
+        date: string;
+        tags: string[];
+        url: string;
+    };
+}
+
+const Skill: React.FC<SkillProps> = ({ skill }) => {
+    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+
+    return (
+        <a
+            key={skill.id}
+            href={skill.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            ref={ref}
+        >
+            {/* SVG Patterns with Fixed Margins */}
+            <svg
+                width="350"
+                height="400"
+                style={{
+                    position: 'absolute',
+                    top: "30rem",
+                    left: '35%',
+                    transform: 'translate(-180%, -50%)',
+                    zIndex: 0,
+                }}
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
+                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#squarePattern1)" />
+            </svg>
+
+            <svg
+                width="350"
+                height="750"
+                style={{
+                    position: 'absolute',
+                    top: '0%',
+                    right: '35%',
+                    transform: 'translate(180%, -50%)',
+                    zIndex: 0,
+                }}
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
+                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#squarePattern2)" />
+            </svg>
+            <Box
+                className={`card ${inView ? 'animate' : 'exit'}`}
+                bg="gray.800"
+                p={5}
+                borderRadius="lg"
+                boxShadow="lg"
+                _hover={{
+                    transform: 'translateY(-5px)',
+                    boxShadow: 'lg',
+                }}
+                width="100%"
+                transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
+            >
+                <VStack align="stretch" mb={3}>
+                    <HStack spacing={4} justify="space-between" align="center">
+                        <Box fontSize="2xl" fontWeight="bold" color="white">
+                            {skill.name}
+                        </Box>
+                        <Spacer />
+                        <Box color="gray.500" fontSize="md">
+                            {skill.date}
+                        </Box>
+                    </HStack>
+                    <Box fontSize="sm" fontWeight="semibold" color="gray.400" mt={1}>
+                        {skill.description}
+                    </Box>
+                    <Box fontSize="sm" mt={1}>
+                        {skill.text}
+                    </Box>
+                </VStack>
+                <Wrap spacing={2} mt={3}>
+                    {skill.tags.map(tag => (
+                        <Tag
+                            key={tag}
+                            colorScheme="gray"
+                            variant="outline"
+                            borderRadius="full"
+                            fontSize="sm"
+                        >
+                            {tag}
+                        </Tag>
+                    ))}
+                </Wrap>
+            </Box>
+        </a>
+    );
+};
+
+// Main About component
 export default function About() {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const currentYear = new Date().getFullYear();
-
-    // Create refs for all skills
-    const skillRefs = skillsData.map(() => useInView({ triggerOnce: false, threshold: 0.1 }));
-
-    // Filter skills based on the selected category
-    const filteredSkills = selectedCategory === 'All'
-        ? skillsData
-        : skillsData.filter(skill => skill.category === selectedCategory);
 
     // Get unique categories from the skills data
     const uniqueCategories = Array.from(new Set(skillsData.map(skill => skill.category)));
@@ -111,7 +216,14 @@ export default function About() {
             mt={20}
         >
             {/* SVG Patterns with Fixed Margins */}
-            {/* ...SVG Code... */}
+            <Box position="absolute" top="0" left="0" width="100%" height="100%" zIndex="-1">
+                {/* Your SVG code goes here */}
+                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    {/* Example SVG shapes */}
+                    <circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)" />
+                    <rect x="10" y="10" width="30" height="30" fill="rgba(255,255,255,0.1)" />
+                </svg>
+            </Box>
 
             <Box textAlign="left" maxWidth="800px" width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
@@ -168,65 +280,9 @@ export default function About() {
                                     {icon}
                                 </Box>
                             </HStack>
-                            {categorySkills.map((skill) => {
-                                const index = skillsData.findIndex(s => s.id === skill.id);
-                                const { ref, inView } = skillRefs[index];
-
-                                return (
-                                    <a
-                                        key={skill.id}
-                                        href={skill.url} // Use the URL from the skill data
-                                        target="_blank" // Open in a new tab
-                                        rel="noopener noreferrer" // Security best practice
-                                        ref={ref}
-                                    >
-                                        <Box
-                                            className={`card ${inView ? 'animate' : 'exit'}`}
-                                            bg="gray.800"
-                                            p={5}
-                                            borderRadius="lg"
-                                            boxShadow="lg"
-                                            _hover={{
-                                                transform: 'translateY(-5px)',
-                                                boxShadow: 'lg',
-                                            }}
-                                            width="100%"
-                                            transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
-                                        >
-                                            <VStack align="stretch" mb={3}>
-                                                <HStack spacing={4} justify="space-between" align="center">
-                                                    <Box fontSize="2xl" fontWeight="bold" color="white">
-                                                        {skill.name}
-                                                    </Box>
-                                                    <Spacer />
-                                                    <Box color="gray.500" fontSize="md">
-                                                        {skill.date}
-                                                    </Box>
-                                                </HStack>
-                                                <Box fontSize="sm" fontWeight="semibold" color="gray.400" mt={1}>
-                                                    {skill.description}
-                                                </Box>
-                                                <Box fontSize="sm" mt={1}>
-                                                    {skill.text}
-                                                </Box>
-                                            </VStack>
-                                            <Wrap spacing={2} mt={3}>
-                                                {skill.tags.map(tag => (
-                                                    <Tag
-                                                        key={tag}
-                                                        colorScheme="gray"
-                                                        variant="outline"
-                                                        borderRadius="full"
-                                                        fontSize="sm"
-                                                    >
-                                                        {tag}
-                                                    </Tag>
-                                                ))}
-                                            </Wrap>
-                                        </Box>
-                                    </a>
-                                );
-                            })}
+                            {categorySkills.map(skill => (
+                                <Skill key={skill.id} skill={skill} />
+                            ))}
                         </React.Fragment>
                     );
                 })}
