@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
-import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench, FaLock } from 'react-icons/fa6';
+import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench } from 'react-icons/fa6';
 import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
 import { MdElectricBolt, MdFactory } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
@@ -138,7 +138,7 @@ export default function Skillset() {
                     { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
                     { label: "Design", icon: FaWrench, category: "Design" },
                     { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
-                    { label: "Other", icon: FaGears, category: "Other" },
+                    { label: "Other", icon: FaEye, category: "Other" },
                 ].map((item) => (
                     <WrapItem key={item.category}>
                         <Tag
@@ -148,9 +148,8 @@ export default function Skillset() {
                             borderRadius="full"
                             cursor="pointer"
                             onClick={() => handleFilterChange(item.category)}
-                            padding="0.5rem 1rem" // Adjust this padding to make space for the border
-                            transition="border 0.1s ease-in-out, box-shadow 0.1s ease-in-out"
-                            boxShadow={selectedCategory === item.category ? ' 0 0 0 3px rgba(66, 153, 225, 0.6)' : 'none'}
+                            padding="0.5rem 1rem"
+                            boxShadow={selectedCategory === item.category ? '0 0 0 3px rgba(66, 153, 225, 0.6)' : 'none'}
                             display="flex"
                             alignItems="center"
                         >
@@ -162,7 +161,7 @@ export default function Skillset() {
             </Wrap>
 
             <SimpleGrid
-                columns={{ base: 1, md: 2 }} // One column on small screens and two columns on medium screens and larger
+                columns={{ base: 1, md: 2 }}
                 spacing={4}
                 mt={8}
                 mx="auto"
@@ -170,9 +169,8 @@ export default function Skillset() {
                 width={'100%'}
                 justifyContent="center"
             >
-                {filteredSkills.map((skill) => {
-                    const index = skillsData.findIndex(s => s.id === skill.id); // Find the original index
-                    const { ref, inView } = skillRefs[index]; // Use the original index to get the correct ref
+                {filteredSkills.map((skill, index) => {
+                    const { ref, inView } = skillRefs[index]; // Use the index directly to get the correct ref
 
                     return (
                         <Box
@@ -183,8 +181,8 @@ export default function Skillset() {
                             p={4}
                             borderRadius="lg"
                             _hover={{
-                                transform: 'translateY(-5px)', // Move up on hover
-                                boxShadow: 'lg', // Add a shadow for better visual effect
+                                transform: 'translateY(-5px)',
+                                boxShadow: 'lg',
                             }}
                             transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
                         >
@@ -197,9 +195,9 @@ export default function Skillset() {
                                     <Box
                                         fontSize="sm"
                                         color="gray.400"
-                                        whiteSpace="nowrap" // Prevent wrapping
-                                        overflow="hidden" // Hide overflowed text
-                                        textOverflow="ellipsis" // Add ellipsis for overflowed text
+                                        whiteSpace="nowrap"
+                                        overflow="hidden"
+                                        textOverflow="ellipsis"
                                     >
                                         {skill.description}
                                     </Box>
