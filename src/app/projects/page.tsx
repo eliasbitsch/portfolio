@@ -170,7 +170,7 @@ export default function Projects() {
       </Box>
 
       <Box mt={4} maxWidth="800px" width="100%" mx="auto">
-        <Text fontSize="lg">A selection of projects I've worked on throughout my engineering journey</Text>
+        <Text fontSize="lg">A selection of projects I have worked on throughout my engineering journey</Text>
       </Box>
 
       <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
