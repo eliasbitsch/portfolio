@@ -11,11 +11,11 @@ const projectsData = [
     id: 1,
     category: ['Programming', 'Electronics', 'Engineering'], // Array of categories
     title: 'Taurob-Tracker',
-    description: 'Objecet detection using YOLO8 for a robot arm manipulation-pipeline.',
+    description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
     imageUrl: '/images/taurob.png',
     tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
     icon: FaLaptopCode,
-    githubUrl: 'https://enrich.european-robotics.eu/'
+    //githubUrl: 'https://enrich.european-robotics.eu/'
   },
   {
     id: 1,
