@@ -6,43 +6,49 @@ import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBo
 import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
 import { MdElectricBolt, MdFactory } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
+import { PiDotsThreeBold } from "react-icons/pi";
 import { useInView } from 'react-intersection-observer';
+
+import Icon from '@mdi/react';
+import { mdiPrinter3d } from '@mdi/js';
 
 // Example skills data
 const skillsData = [
-    { id: 1, category: 'Programming', name: 'C++', description: 'Robotics software', icon: SiCplusplus },
-    { id: 2, category: 'Programming', name: 'Python', description: 'Robotics software', icon: SiPython },
-    { id: 3, category: 'Programming', name: 'ROS/ROS2', description: 'Robotics framework', icon: SiRos },
-    { id: 4, category: 'Programming', name: 'Linux', description: 'Operating system for robotics', icon: SiLinux },
-    { id: 5, category: 'Programming', name: 'Bash', description: 'Scripting and automation', icon: SiGnubash },
-    { id: 6, category: 'Programming', name: 'Docker', description: 'Containerization & Deployment', icon: SiDocker },
-    { id: 7, category: 'Programming', name: 'OpenCV', description: 'Computer vision', icon: SiOpencv },
-    { id: 8, category: 'Programming', name: 'C', description: 'Embedded systems', icon: SiC },
-    { id: 9, category: 'Programming', name: 'PLC-programming', description: 'Industrial automation', icon: MdFactory },
-    { id: 10, category: 'Programming', name: 'Java', description: 'Enterprise development', icon: FaJava },
-    { id: 11, category: 'Programming', name: 'JavaScript', description: 'Web development', icon: RiJavascriptFill },
-    { id: 12, category: 'Programming', name: 'TypeScript', description: 'Web development', icon: SiTypescript },
-    { id: 13, category: 'Programming', name: 'HTML', description: 'Web development', icon: SiHtml5 },
-    { id: 14, category: 'Programming', name: 'CSS', description: 'Web development', icon: SiCss3 },
-    { id: 15, category: 'Programming', name: 'SCSS', description: 'Web development', icon: SiSass },
-    { id: 16, category: 'Programming', name: 'Tailwind', description: 'Web development', icon: SiTailwindcss },
-    { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: SiNextdotjs },
-    { id: 18, category: 'Programming', name: 'React Native', description: 'Mobile app development', icon: SiReact },
-    { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
-    { id: 20, category: 'Electronics', name: 'Raspberry Pi', description: 'Single-board computer', icon: FaRaspberryPi },
-    { id: 21, category: 'Electronics', name: 'Arduino', description: 'Microcontroller programming', icon: SiArduino },
-    { id: 22, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: SiEasyeda },
-    { id: 23, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
-    { id: 24, category: 'Electronics', name: 'Microcontrollers', description: 'Microcontroller-based systems', icon: FaMicrochip },
-    { id: 25, category: 'Design', name: 'SolidWorks', description: '3D CAD design', icon: FaWrench },
-    { id: 26, category: 'Design', name: 'Fusion360', description: '3D CAD design', icon: SiAutodesk },
-    { id: 27, category: 'Design', name: '3D Printing', description: 'Prototyping', icon: FaWrench },
-    { id: 28, category: 'Libraries & Services', name: 'AWS', description: 'Cloud computing', icon: FaAws },
-    { id: 29, category: 'Libraries & Services', name: 'Git', description: 'Version control', icon: SiGit },
-    { id: 30, category: 'Other', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
-    { id: 31, category: 'Other', name: 'Kali Linux', description: 'Penetration testing', icon: SiKalilinux },
-    { id: 32, category: 'Other', name: 'Nmap', description: 'Network scanning', icon: FaEye },
-    { id: 33, category: 'Other', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi }
+    
+        { id: 8, category: 'Programming', name: 'C', description: 'Embedded systems', icon: SiC },
+        { id: 1, category: 'Programming', name: 'C++', description: 'Robotics software', icon: SiCplusplus },
+        { id: 2, category: 'Programming', name: 'Python', description: 'Robotics software', icon: SiPython },
+        { id: 3, category: 'Programming', name: 'ROS/ROS2', description: 'Robotics framework', icon: SiRos },
+        { id: 7, category: 'Programming', name: 'OpenCV', description: 'Computer vision', icon: SiOpencv },
+        { id: 4, category: 'Programming', name: 'Linux', description: 'Operating system for robotics', icon: SiLinux },
+        { id: 6, category: 'Programming', name: 'Docker', description: 'Containerization & Deployment', icon: SiDocker },
+        { id: 29, category: 'Libraries & Services', name: 'Git', description: 'Version control', icon: SiGit },
+        { id: 24, category: 'Electronics', name: 'Microcontrollers', description: 'Microcontroller-based systems', icon: FaMicrochip },
+        { id: 20, category: 'Electronics', name: 'Raspberry Pi', description: 'Single-board computer', icon: FaRaspberryPi },
+        { id: 21, category: 'Electronics', name: 'Arduino', description: 'Microcontroller programming', icon: SiArduino },
+        { id: 25, category: 'Design', name: 'SolidWorks', description: '3D CAD design', icon: FaWrench },
+        { id: 26, category: 'Design', name: 'Fusion360', description: '3D CAD design', icon: SiAutodesk },
+        { id: 27, category: 'Design', name: '3D Printing', description: 'Prototyping', icon: () => <Icon path={mdiPrinter3d} size={1.5} /> },
+        { id: 9, category: 'Programming', name: 'PLC-programming', description: 'Industrial automation', icon: MdFactory },
+        { id: 28, category: 'Libraries & Services', name: 'AWS', description: 'Cloud computing', icon: FaAws },
+        { id: 30, category: 'Other', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
+        { id: 32, category: 'Other', name: 'Nmap', description: 'Network scanning', icon: FaEye },
+        { id: 31, category: 'Other', name: 'Kali Linux', description: 'Penetration testing', icon: SiKalilinux },
+        { id: 33, category: 'Other', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi },
+        { id: 10, category: 'Programming', name: 'Java', description: 'Enterprise development', icon: FaJava },
+        { id: 11, category: 'Programming', name: 'JavaScript', description: 'Web development', icon: RiJavascriptFill },
+        { id: 12, category: 'Programming', name: 'TypeScript', description: 'Web development', icon: SiTypescript },
+        { id: 13, category: 'Programming', name: 'HTML', description: 'Web development', icon: SiHtml5 },
+        { id: 14, category: 'Programming', name: 'CSS', description: 'Web development', icon: SiCss3 },
+        { id: 17, category: 'Programming', name: 'Next.js', description: 'Web development', icon: SiNextdotjs },
+        { id: 18, category: 'Programming', name: 'React Native', description: 'Mobile app development', icon: SiReact },
+        { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
+        { id: 34, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
+        { id: 35, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: FaMicrochip },
+        { id: 36, category: 'Electronics', name: 'RaspberryPi', description: 'Raspberry Pi related', icon: FaRaspberryPi },
+        { id: 37, category: 'Electronics', name: 'Arduino', description: 'Arduino related', icon: SiArduino }
+    
+    
 ];
 
 export default function Skillset() {
@@ -135,7 +141,7 @@ export default function Skillset() {
                     { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
                     { label: "Design", icon: FaWrench, category: "Design" },
                     { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
-                    { label: "Other", icon: FaEye, category: "Other" },
+                    { label: "Other", icon: PiDotsThreeBold, category: "Other" } // Specify the size here
                 ].map((item) => (
                     <WrapItem key={item.category}>
                         <Tag
