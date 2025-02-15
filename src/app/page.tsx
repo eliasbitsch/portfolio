@@ -3,7 +3,8 @@
 import { Box, Heading, Text, Link, HStack, VStack, Tooltip, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
-import EmailIcon from './Icon';
+import { MdOutlineMailOutline } from "react-icons/md";
+
 
 const MotionText = motion(Text);
 const MotionHeading = motion(Heading);
@@ -158,7 +159,7 @@ export default function Page() {
                   transform: 'scale(1.1)',
                 }}
               >
-                <EmailIcon size="2rem" color="white" />
+                <MdOutlineMailOutline size="2rem" color="white" />
               </Box>
             </Tooltip>
           </Link>
