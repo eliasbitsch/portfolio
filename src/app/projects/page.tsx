@@ -63,7 +63,7 @@ const projectsData = [
     id: 5,
     category: 'Programming',
     title: 'ROS online course',
-    description: 'An onlnie course about ROS.',
+    description: 'An online course about ROS.',
     imageUrl: '/images/rosCourse.png',
     tags: ['Next.js', 'Nextra', 'mdx', 'Typescript'],
     icon: FaLaptopCode,

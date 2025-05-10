@@ -1,17 +1,21 @@
-import { extendTheme } from '@chakra-ui/react';
+// theme.ts
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
-// Define your custom theme
+const config: ThemeConfig = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
+
 export const theme = extendTheme({
+  config,
   styles: {
     global: {
-      // Apply styles to the body
       body: {
-        bg: 'gray.900', // Set the background color here
-        color: 'white', // Optional: Set the text color if needed
+        bg: 'gray.900',
+        color: 'white',
       },
     },
   },
-  // Add other theme customizations if needed
   fonts: {
     heading: 'var(--font-rubik)',
     body: 'var(--font-rubik)',
