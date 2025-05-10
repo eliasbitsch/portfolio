@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
 import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench } from 'react-icons/fa6';
+import { FaTools } from "react-icons/fa";
 import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
 import { MdElectricBolt, MdFactory } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
@@ -31,10 +32,8 @@ const skillsData = [
         { id: 27, category: 'Design', name: '3D Printing', description: 'Prototyping', icon: () => <Icon path={mdiPrinter3d} size={1.5} /> },
         { id: 9, category: 'Programming', name: 'PLC-programming', description: 'Industrial automation', icon: MdFactory },
         { id: 28, category: 'Libraries & Services', name: 'AWS', description: 'Cloud computing', icon: FaAws },
-        { id: 30, category: 'Other', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
-        { id: 32, category: 'Other', name: 'Nmap', description: 'Network scanning', icon: FaEye },
-        { id: 31, category: 'Other', name: 'Kali Linux', description: 'Penetration testing', icon: SiKalilinux },
-        { id: 33, category: 'Other', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi },
+        { id: 30, category: 'Tools', name: 'Wireshark', description: 'Network analysis', icon: SiWireshark },
+        { id: 33, category: 'Tools', name: 'aircrack-ng', description: 'Wireless security', icon: FaWifi },
         { id: 10, category: 'Programming', name: 'Java', description: 'Enterprise development', icon: FaJava },
         { id: 11, category: 'Programming', name: 'JavaScript', description: 'Web development', icon: RiJavascriptFill },
         { id: 12, category: 'Programming', name: 'TypeScript', description: 'Web development', icon: SiTypescript },
@@ -45,8 +44,7 @@ const skillsData = [
         { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
         { id: 34, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
         { id: 35, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: FaMicrochip },
-        { id: 36, category: 'Electronics', name: 'RaspberryPi', description: 'Raspberry Pi related', icon: FaRaspberryPi },
-        { id: 37, category: 'Electronics', name: 'Arduino', description: 'Arduino related', icon: SiArduino }
+        { id: 36, category: 'Electronics', name: 'Arduino', description: 'Arduino related', icon: SiArduino }
     
     
 ];
@@ -141,7 +139,7 @@ export default function Skillset() {
                     { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
                     { label: "Design", icon: FaWrench, category: "Design" },
                     { label: "Libraries & Services", icon: FaBook, category: "Libraries & Services" },
-                    { label: "Other", icon: PiDotsThreeBold, category: "Other" } // Specify the size here
+                    { label: "Tools", icon: FaTools, category: "Tools" } // Specify the size here
                 ].map((item) => (
                     <WrapItem key={item.category}>
                         <Tag
