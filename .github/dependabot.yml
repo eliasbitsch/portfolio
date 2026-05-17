@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      next-ecosystem:
+        patterns:
+          - next
+          - eslint-config-next
+          - "@next/*"
+      chakra:
+        patterns:
+          - "@chakra-ui/*"
+          - "@emotion/*"
+      react:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+      dev-deps:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+      prod-minor-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
