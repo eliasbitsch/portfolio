@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate } from 'react-icons/fa'; // Importing the React icon
+import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom } from 'react-icons/fa'; // Importing the React icon
+import { SiDassaultsystemes } from 'react-icons/si';
 import { PiCertificateLight } from "react-icons/pi";
 import { url } from 'inspector';
 
@@ -58,6 +59,7 @@ const skillsData = [
         id: 4,
         category: 'Career',
         name: 'Civil Service',
+        logo: '/logos/diakonie.svg',
         description: 'Diakonie',
         text: 'Worked as a social worker, helping people in need and supporting them in their daily lives. Developed strong communication and interpersonal skills, as well as the ability to work under pressure and in a team.',
         date: '2021 - 2022',
@@ -79,6 +81,7 @@ const skillsData = [
         id: 2,
         category: 'Education',
         name: 'HTL Eisenstadt ',
+        logo: '/logos/htl-eisenstadt.svg',
         description: 'Mechatronics',
         text: 'Developed a strong foundation in mechatronics and robotics, learning to design and build robots, program microcontrollers, and use machine learning algorithms. Led a team to victory in the RoboCup Junior Austria competition, demonstrating my technical skills and ability to work in a team.',
         date: '2016 - 2021',
@@ -89,6 +92,7 @@ const skillsData = [
         id: 3,
         category: 'Education',
         name: 'Gymnasium Neusiedl am See',
+        logo: '/logos/gymnasium-neusiedl.png',
         description: 'High School',
         text: 'Developed a strong foundation in mathematics and physics, which laid the groundwork for my future studies in mechatronics and robotics. Learned how to design and build robots, program them using LEGO Mindstorms, to get a solid foundation in robotics.',
         date: '2012 - 2016',
@@ -99,6 +103,7 @@ const skillsData = [
         id: 6,
         category: 'Certificates',
         name: 'SolidWorks',
+        logoIcon: SiDassaultsystemes,
         description: 'Certified for mechanical design',
         text: 'Certified for mechanical design, including 3D modeling. Developed expertise in SolidWorks, a leading CAD software used in the industry.',
         date: '2023',
@@ -109,6 +114,7 @@ const skillsData = [
         id: 7,
         category: 'Certificates',
         name: 'Quantum Computing',
+        logoIcon: FaAtom,
         description: 'Certificaty for Quantum Computing',
         text: 'Certificate for Quantum Computing, including Quantum Algorithms and Quantum Machine Learning. Developed basics in Quantum Computing, a promising technology used in the industry.',
         date: '2023',
@@ -129,6 +135,7 @@ interface SkillProps {
         tags: string[];
         url: string;
         logo?: string;
+        logoIcon?: React.ElementType;
     };
 }
 
@@ -162,7 +169,7 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                 <VStack align="stretch" mb={3}>
                     <HStack spacing={4} justify="space-between" align="center">
                         <HStack spacing={3} align="center">
-                            {skill.logo && (
+                            {(skill.logo || skill.logoIcon) && (
                                 <Box
                                     bg="white"
                                     borderRadius="md"
@@ -171,14 +178,23 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                                     flexShrink={0}
                                     display="flex"
                                     alignItems="center"
+                                    justifyContent="center"
+                                    minWidth="38px"
+                                    height="32px"
                                 >
-                                    <Image
-                                        src={skill.logo}
-                                        alt={`${skill.name} logo`}
-                                        height="22px"
-                                        width="auto"
-                                        display="block"
-                                    />
+                                    {skill.logo ? (
+                                        <Image
+                                            src={skill.logo}
+                                            alt={`${skill.name} logo`}
+                                            height="22px"
+                                            width="auto"
+                                            display="block"
+                                        />
+                                    ) : (
+                                        skill.logoIcon && (
+                                            <Box as={skill.logoIcon} size="22px" color="gray.800" />
+                                        )
+                                    )}
                                 </Box>
                             )}
                             <Box fontSize="2xl" fontWeight="bold" color="white">
