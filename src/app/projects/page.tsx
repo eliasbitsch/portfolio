@@ -67,7 +67,7 @@ const projectsData = [
     imageUrl: '/images/rosCourse.png',
     tags: ['Next.js', 'Nextra', 'mdx', 'Typescript'],
     icon: FaLaptopCode,
-    githubUrl: 'https://rosready.eliasbitsch.tech/'
+    githubUrl: 'https://rosready.robolink.app/'
 
   },
 
@@ -156,7 +156,7 @@ export default function Projects() {
         <rect width="100%" height="100%" fill="url(#squarePattern2)" />
       </svg>
 
-      <Box textAlign="left" maxWidth="800px" width="100%" mx="auto">
+      <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
           Projects
           <hr style={{
@@ -169,11 +169,11 @@ export default function Projects() {
         </Box>
       </Box>
 
-      <Box mt={4} maxWidth="800px" width="100%" mx="auto">
+      <Box mt={4} maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         <Text fontSize="lg">A selection of projects I have worked on throughout my engineering journey</Text>
       </Box>
 
-      <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
+      <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "600px", xl: "1200px" }} width="100%" mx="auto">
         {[
           { label: "All", icon: FaBolt, category: "All" },
           { label: "Programming", icon: FaLaptopCode, category: "Programming" },
@@ -202,11 +202,11 @@ export default function Projects() {
       </Wrap>
 
       <SimpleGrid
-        columns={{ base: 1, md: 2 }} // One column on small screens and two columns on medium screens and larger
+        columns={{ base: 1, md: 2, xl: 3 }}
         spacing={6}
         mt={8}
         mx="auto"
-        maxWidth={900}
+        maxWidth={{ base: 900, xl: 1200 }}
         justifyContent="center">
         {filteredProjects.map(project => (
           <Box

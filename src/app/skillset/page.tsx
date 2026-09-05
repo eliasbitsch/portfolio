@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { HStack, Tag, TagLabel, TagLeftIcon, Box, SimpleGrid, Wrap, WrapItem, Text } from '@chakra-ui/react';
 import { FaMicrochip, FaGears, FaRaspberryPi, FaWifi, FaEye, FaAws, FaJava, FaBolt, FaLaptopCode, FaBook, FaWrench } from 'react-icons/fa6';
-import { FaTools } from "react-icons/fa";
-import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux } from 'react-icons/si';
+import { FaTools, FaVrCardboard, FaRobot } from "react-icons/fa";
+import { SiTailwindcss, SiCplusplus, SiPython, SiRos, SiLinux, SiGnubash, SiDocker, SiOpencv, SiC, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiSass, SiNextdotjs, SiReact, SiMysql, SiArduino, SiEasyeda, SiAutodesk, SiGit, SiJenkins, SiWireshark, SiKalilinux, SiUnity, SiThreedotjs, SiCsharp } from 'react-icons/si';
 import { MdElectricBolt, MdFactory } from "react-icons/md";
 import { RiJavascriptFill } from "react-icons/ri";
 import { PiDotsThreeBold } from "react-icons/pi";
@@ -44,9 +44,14 @@ const skillsData = [
         { id: 19, category: 'Programming', name: 'SQL', description: 'Database management', icon: SiMysql },
         { id: 34, category: 'Electronics', name: 'Soldering', description: 'Electronics assembly', icon: MdElectricBolt },
         { id: 35, category: 'Electronics', name: 'EasyEDA', description: 'PCB design', icon: FaMicrochip },
-        { id: 36, category: 'Electronics', name: 'Arduino', description: 'Arduino related', icon: SiArduino }
-    
-    
+        { id: 36, category: 'Electronics', name: 'Arduino', description: 'Arduino related', icon: SiArduino },
+        { id: 37, category: 'Programming', name: 'C#', description: 'Game & application development', icon: SiCsharp },
+        { id: 38, category: 'Programming', name: 'Unity', description: 'Game engine & VR development', icon: SiUnity },
+        { id: 39, category: 'Programming', name: 'VR Development', description: 'Virtual reality applications', icon: FaVrCardboard },
+        { id: 40, category: 'Tools', name: 'ABB Robot Studio', description: 'Robot simulation & programming', icon: FaRobot },
+        { id: 41, category: 'Libraries & Services', name: 'MoveIt', description: 'Motion planning for ROS', icon: SiRos },
+        { id: 42, category: 'Programming', name: 'Three.js', description: '3D web graphics', icon: SiThreedotjs },
+        { id: 43, category: 'Programming', name: 'Tailwind CSS', description: 'Utility-first CSS framework', icon: SiTailwindcss }
 ];
 
 export default function Skillset() {
@@ -115,7 +120,7 @@ export default function Skillset() {
                 <rect width="100%" height="100%" fill="url(#squarePattern2)" />
             </svg>
 
-            <Box textAlign="left" maxWidth="600px" width="100%" mx="auto">
+            <Box textAlign="left" maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
                     Skillset
                     <hr style={{
@@ -128,11 +133,11 @@ export default function Skillset() {
                 </Box>
             </Box>
 
-            <Box mt={4} maxWidth="600px" width="100%" mx="auto">
+            <Box mt={4} maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
                 <Text fontSize="lg">A list of my technical skills.</Text>
             </Box>
 
-            <Wrap spacing={4} mt={4} justify="center" maxWidth="600px" width="100%" mx="auto">
+            <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
                 {[
                     { label: "All", icon: FaBolt, category: "All" },
                     { label: "Programming", icon: FaLaptopCode, category: "Programming" },
@@ -162,11 +167,11 @@ export default function Skillset() {
             </Wrap>
 
             <SimpleGrid
-                columns={{ base: 1, md: 2 }}
+                columns={{ base: 1, md: 2, xl: 3 }}
                 spacing={4}
                 mt={8}
                 mx="auto"
-                maxWidth={600}
+                maxWidth={{ base: 600, xl: 1000 }}
                 width={'100%'}
                 justifyContent="center"
             >

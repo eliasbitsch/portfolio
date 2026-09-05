@@ -16,61 +16,39 @@ export default function Page() {
     <Box
       p={5}
       bg="gray.900"
-      minH="90vh"
+      minH="100vh"
       display="flex"
       flexDirection="column"
       alignItems="center"
+      justifyContent="center"
       textAlign="center"
       position="relative"
       overflow="hidden"
-      mt={20}
     >
-      {/* SVG Patterns with Fixed Margins */}
+      {/* Full-page SVG dot pattern background */}
       <svg
-        width="350"
-        height="400"
+        width="100%"
+        height="100%"
         style={{
           position: 'absolute',
-          top: "30rem",
-          left: '35%',
-          transform: 'translate(-180%, -50%)',
+          top: 0,
+          left: 0,
           zIndex: 0,
         }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
+          <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="20" height="20">
             <rect x="5" y="5" width="4" height="4" fill="#374151" />
           </pattern>
         </defs>
-        <rect width="100%" height="100%" fill="url(#squarePattern1)" />
-      </svg>
-
-      <svg
-        width="350"
-        height="750"
-        style={{
-          position: 'absolute',
-          top: '0%',
-          right: '35%',
-          transform: 'translate(180%, -50%)',
-          zIndex: 0,
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#squarePattern2)" />
+        <rect width="100%" height="100%" fill="url(#dotPattern)" />
       </svg>
 
       <MotionHeading
         as="h1"
         size="3xl"
         mb={5}
-        mt={10}
         fontWeight="1000"
         color="#3C5AF0"
         initial={{ opacity: 0, x: '-20vw' }}
@@ -86,7 +64,7 @@ export default function Page() {
         mb={3}
         color="white"
         lineHeight="1.5"
-        maxWidth="700px" // Responsive width
+        maxWidth={{ base: "90%", md: "700px", xl: "900px" }}
         mx={[5, 10, 20]} // Responsive margins
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
@@ -107,7 +85,7 @@ export default function Page() {
 
 
       {/* Social Media & Resume Links with Hover Text */}
-      <HStack spacing={10} mt={6}>
+      <HStack spacing={10} mt={6} zIndex={1}>
         <VStack spacing={2}>
           <Link
             href="https://github.com/eliasbitsch"
@@ -228,7 +206,7 @@ export default function Page() {
           </Text>
         </VStack>
       </HStack>
-      <Text fontSize="sm" color="gray.500">
+      <Text fontSize="sm" color="gray.500" zIndex={1}>
         © {currentYear} Elias Bitsch. All rights reserved.
       </Text>
     </Box>
