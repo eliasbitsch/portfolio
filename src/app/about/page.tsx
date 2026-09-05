@@ -107,52 +107,15 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
             rel="noopener noreferrer"
             ref={ref}
         >
-            {/* SVG Patterns with Fixed Margins */}
-            <svg
-                width="350"
-                height="400"
-                style={{
-                    position: 'absolute',
-                    top: "30rem",
-                    left: '35%',
-                    transform: 'translate(-180%, -50%)',
-                    zIndex: 0,
-                }}
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <defs>
-                    <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
-                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#squarePattern1)" />
-            </svg>
 
-            <svg
-                width="350"
-                height="750"
-                style={{
-                    position: 'absolute',
-                    top: '0%',
-                    right: '35%',
-                    transform: 'translate(180%, -50%)',
-                    zIndex: 0,
-                }}
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <defs>
-                    <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
-                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#squarePattern2)" />
-            </svg>
             <Box
                 className={`card ${inView ? 'animate' : 'exit'}`}
                 bg="gray.800"
                 p={5}
                 borderRadius="lg"
                 boxShadow="lg"
+                position="relative"
+                zIndex={1}
                 _hover={{
                     transform: 'translateY(-5px)',
                     boxShadow: 'lg',
@@ -215,17 +178,46 @@ export default function About() {
             overflow="hidden"
             mt={20}
         >
-            {/* SVG Patterns with Fixed Margins */}
-            <Box position="absolute" top="0" left="0" width="100%" height="100%" zIndex="-1">
-                {/* Your SVG code goes here */}
-                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                    {/* Example SVG shapes */}
-                    <circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)" />
-                    <rect x="10" y="10" width="30" height="30" fill="rgba(255,255,255,0.1)" />
-                </svg>
-            </Box>
+            {/* SVG Patterns Background */}
+            <svg
+                width="350"
+                height="400"
+                style={{
+                    position: 'absolute',
+                    top: '30rem',
+                    left: '0',
+                    zIndex: 0,
+                }}
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
+                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#squarePattern1)" />
+            </svg>
 
-            <Box textAlign="left" maxWidth="800px" width="100%" mx="auto">
+            <svg
+                width="350"
+                height="750"
+                style={{
+                    position: 'absolute',
+                    top: '0',
+                    right: '0',
+                    zIndex: 0,
+                }}
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
+                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#squarePattern2)" />
+            </svg>
+
+            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1100px" }} width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
                     About
                     <hr style={{
@@ -243,7 +235,7 @@ export default function About() {
                 spacing={4}
                 mt={8}
                 mx="auto"
-                maxWidth="800px"
+                maxWidth={{ base: "800px", xl: "1100px" }}
                 width={'100%'}
                 justifyContent="center"
             >

@@ -65,7 +65,7 @@ const NavBar = () => {
                 )}
 
                 {isDesktop && (
-                    <Flex ml={200} justifyContent="flex-start" fontSize="lg" alignItems="center">
+                    <Flex justifyContent="center" fontSize="lg" alignItems="center" width="100%">
                         <Link href="/" passHref>
                             <Text
                                 px={4}
