@@ -93,15 +93,16 @@ export default function Page() {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Mechatronics & Robotics Engineering student</b>
+        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum&nbsp;Wien
         <br />
-        dedicated to advancing technology through innovative&nbsp;development.
+        and a technical assistant at the AIT Center for Technology&nbsp;Experience.
         <br />
         <br />
-        My interest focuses on applying computational and artificial&nbsp;intelligence
+        I build mixed-reality systems for human-robot collaboration and test&nbsp;them
         <br />
-        to robotics and automation, driving progress in engineering and&nbsp;intelligent
-        systems.
+        with real operators: bare-hand teleoperation across Unity and ROS&nbsp;2,
+        <br />
+        purpose-built feedback hardware, and touch interfaces for supervising&nbsp;robots.
       </MotionText>
 
 

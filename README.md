@@ -13,11 +13,12 @@ Welcome to my portfolio! This repository showcases my projects, skills, and expe
 
 ## About
 
-Hello! I'm Elias, a Mechatronics & Robotics Engineering student
-dedicated to advancing technology through innovative development.
+Hello! I'm Elias, a Robotics Engineering master's student at UAS Technikum Wien
+and a technical assistant at the AIT Center for Technology Experience.
 
-My interest focuses on applying computational and artificial intelligence
-to robotics and automation, driving progress in engineering and intelligent systems.
+I build mixed-reality systems for human-robot collaboration and test them with real
+operators: bare-hand teleoperation across Unity and ROS 2, purpose-built feedback
+hardware, and touch interfaces for supervising mobile robots.
 
 ## Skillset
 
