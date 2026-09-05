@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text } from '@chakra-ui/react';
+import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate } from 'react-icons/fa'; // Importing the React icon
 import { PiCertificateLight } from "react-icons/pi";
@@ -11,14 +11,48 @@ import { url } from 'inspector';
 // Example skills data with custom information
 const skillsData = [
     {
+        id: 8,
+        category: 'Education',
+        name: 'FH Technikum Wien',
+        description: 'Master: Robotics Engineering',
+        logo: '/logos/technikum-wien.svg',
+        text: 'Specialising in robot learning and mixed reality for human-robot collaboration. Master thesis in preparation on mixed-reality training and skill acquisition, building on MetaMove, a bare-hand teleoperation system for an ABB GoFa cobot presented at the XR-SPro workshop at IEEE ISMAR 2026.',
+        date: '2025 - Present',
+        tags: ['Robot Learning', 'Mixed Reality', 'Human-Robot Interaction', 'ROS 2', 'Unity'],
+        url: 'https://www.technikum-wien.at/'
+    },
+    {
         id: 1,
         category: 'Education',
         name: 'FH Technikum Wien',
         description: 'Bachelor: Mechatronics and Robotics',
+        logo: '/logos/technikum-wien.svg',
         text: 'Developed expertise in robotics and software engineering, using languages like C++ and Python, and tools such as ROS and OpenCV. Gained skills in hardware design and cybersecurity. Led a Sumo Bot Competition team and served as a technical guide during university open days, demonstrating both my technical prowess and leadership abilities.',
-        date: '2023 - Present',
+        date: '2023 - 2025',
         tags: ['Robotics', 'Software Development', 'C++', 'Machine Learning', 'Python'],
         url: 'https://www.technikum-wien.at/'
+    },
+    {
+        id: 9,
+        category: 'Career',
+        name: 'AIT Austrian Institute of Technology',
+        description: 'Technical Assistant, Center for Technology Experience',
+        logo: '/logos/ait.svg',
+        text: 'Building mixed-reality and tangible interfaces for human-robot collaboration and evaluating them in controlled user studies with industry participants. Projects include a mixed-reality task authoring system with a four-channel failure feedback layer, a tangible defect-annotation stylus that drives a myCobot arm, and a distributed sensing platform for quantifying operator load outside the lab.',
+        date: 'August 2025 - Present',
+        tags: ['Mixed Reality', 'Human-Robot Interaction', 'User Studies', 'ROS 2', 'Unity'],
+        url: 'https://www.ait.ac.at/'
+    },
+    {
+        id: 10,
+        category: 'Career',
+        name: 'Internship at Elektrobit Austria',
+        logo: '/logos/elektrobit.png',
+        description: 'Software Developer',
+        text: 'Designed and implemented an extension of the SOME/IP protocol that carries and honours quality-of-service parameters in distributed AUTOSAR Classic systems, so that services are discovered and prioritised across ECUs. Deployed on automotive test hardware and tested successfully.',
+        date: 'February - June 2025',
+        tags: ['AUTOSAR', 'SOME/IP', 'C++', 'Automotive'],
+        url: 'https://www.elektrobit.com/'
     },
     {
         id: 4,
@@ -34,6 +68,7 @@ const skillsData = [
         id: 5,
         category: 'Career',
         name: 'Internship at Mars Inc.',
+        logo: '/logos/mars.svg',
         description: 'Servicing and Maintenance Technician',
         text: 'Worked as a technician, maintaining SCARA robots, including servicing SCARA robots and welding robotic parts like a robotic gripper from an articulated arm robot.',
         date: 'August 2018 & August 2019',
@@ -93,6 +128,7 @@ interface SkillProps {
         date: string;
         tags: string[];
         url: string;
+        logo?: string;
     };
 }
 
@@ -125,9 +161,30 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
             >
                 <VStack align="stretch" mb={3}>
                     <HStack spacing={4} justify="space-between" align="center">
-                        <Box fontSize="2xl" fontWeight="bold" color="white">
-                            {skill.name}
-                        </Box>
+                        <HStack spacing={3} align="center">
+                            {skill.logo && (
+                                <Box
+                                    bg="white"
+                                    borderRadius="md"
+                                    px={2}
+                                    py={1}
+                                    flexShrink={0}
+                                    display="flex"
+                                    alignItems="center"
+                                >
+                                    <Image
+                                        src={skill.logo}
+                                        alt={`${skill.name} logo`}
+                                        height="22px"
+                                        width="auto"
+                                        display="block"
+                                    />
+                                </Box>
+                            )}
+                            <Box fontSize="2xl" fontWeight="bold" color="white">
+                                {skill.name}
+                            </Box>
+                        </HStack>
                         <Spacer />
                         <Box color="gray.500" fontSize="md">
                             {skill.date}
