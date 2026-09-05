@@ -80,46 +80,60 @@ const NavBar = () => {
                                 Home
                             </Text>
                         </Link>
-                        <Link href="/about" passHref>
+                        <Link href="/#publications" passHref>
                             <Text
                                 px={4}
                                 py={2}
                                 borderRadius="md"
                                 mx={2}
-                                bg={isActive('/about') ? 'gray.700' : 'transparent'}
-                                color={isActive('/about') ? 'white' : 'gray.300'}
+                                bg={isActive('/#publications') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#publications') ? 'white' : 'gray.300'}
                                 _hover={{ bg: 'gray.700', color: 'white' }}
                                 transition="background-color 0.2s ease, color 0.2s ease"
                             >
-                                About
+                                Publications
                             </Text>
                         </Link>
-                        <Link href="/skillset" passHref>
+                        <Link href="/#projects" passHref>
                             <Text
                                 px={4}
                                 py={2}
                                 borderRadius="md"
                                 mx={2}
-                                bg={isActive('/skillset') ? 'gray.700' : 'transparent'}
-                                color={isActive('/skillset') ? 'white' : 'gray.300'}
+                                bg={isActive('/#projects') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#projects') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Projects
+                            </Text>
+                        </Link>
+                        <Link href="/#skillset" passHref>
+                            <Text
+                                px={4}
+                                py={2}
+                                borderRadius="md"
+                                mx={2}
+                                bg={isActive('/#skillset') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#skillset') ? 'white' : 'gray.300'}
                                 _hover={{ bg: 'gray.700', color: 'white' }}
                                 transition="background-color 0.2s ease, color 0.2s ease"
                             >
                                 Skillset
                             </Text>
                         </Link>
-                        <Link href="/projects" passHref>
+                        <Link href="/#about" passHref>
                             <Text
                                 px={4}
                                 py={2}
                                 borderRadius="md"
                                 mx={2}
-                                bg={isActive('/projects') ? 'gray.700' : 'transparent'}
-                                color={isActive('/projects') ? 'white' : 'gray.300'}
+                                bg={isActive('/#about') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#about') ? 'white' : 'gray.300'}
                                 _hover={{ bg: 'gray.700', color: 'white' }}
                                 transition="background-color 0.2s ease, color 0.2s ease"
                             >
-                                Projects
+                                About
                             </Text>
                         </Link>
                     </Flex>
@@ -150,7 +164,49 @@ const NavBar = () => {
                                 Home
                             </Text>
                         </Link>
-                        <Link href="/about" passHref>
+                        <Link href="/#publications" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/home') ? 'gray.700' : 'transparent'}
+                                color={isActive('/home') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Publications
+                            </Text>
+                        </Link>
+                        <Link href="/#projects" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/#projects') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#projects') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Projects
+                            </Text>
+                        </Link>
+                        <Link href="/#skillset" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/#skillset') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#skillset') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Skillset
+                            </Text>
+                        </Link>
+                        <Link href="/#about" passHref>
                             <Text
                                 py={1}
                                 px={4}
@@ -162,34 +218,6 @@ const NavBar = () => {
                                 transition="background-color 0.2s ease, color 0.2s ease"
                             >
                                 About
-                            </Text>
-                        </Link>
-                        <Link href="/skillset" passHref>
-                            <Text
-                                py={1}
-                                px={4}
-                                borderRadius="md"
-                                width="100%"
-                                bg={isActive('/skillset') ? 'gray.700' : 'transparent'}
-                                color={isActive('/skillset') ? 'white' : 'gray.300'}
-                                _hover={{ bg: 'gray.700', color: 'white' }}
-                                transition="background-color 0.2s ease, color 0.2s ease"
-                            >
-                                Skillset
-                            </Text>
-                        </Link>
-                        <Link href="/projects" passHref>
-                            <Text
-                                py={1}
-                                px={4}
-                                borderRadius="md"
-                                width="100%"
-                                bg={isActive('/projects') ? 'gray.700' : 'transparent'}
-                                color={isActive('/projects') ? 'white' : 'gray.300'}
-                                _hover={{ bg: 'gray.700', color: 'white' }}
-                                transition="background-color 0.2s ease, color 0.2s ease"
-                            >
-                                Projects
                             </Text>
                         </Link>
                     </VStack>

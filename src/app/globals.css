@@ -95,3 +95,18 @@ body {
   opacity: 0;
   transform: translateY(20px);
 } */
+/* One-pager: soft snapping at each section heading.
+   "proximity" pulls towards a section without forcing it, so scrolling
+   still feels continuous. scroll-padding keeps the fixed navbar clear. */
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+}
