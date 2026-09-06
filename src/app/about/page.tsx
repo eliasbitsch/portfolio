@@ -140,7 +140,7 @@ interface SkillProps {
 }
 
 const Skill: React.FC<SkillProps> = ({ skill }) => {
-    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
     return (
         <a
@@ -152,7 +152,7 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
         >
 
             <Box
-                className={`card ${inView ? 'animate' : 'exit'}`}
+                className={`card ${inView ? 'animate' : ''}`}
                 bg="gray.800"
                 p={5}
                 borderRadius="lg"
@@ -234,7 +234,6 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
 // Main About component
 export default function About() {
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const currentYear = new Date().getFullYear();
 
     // Get unique categories from the skills data
     const uniqueCategories = Array.from(new Set(skillsData.map(skill => skill.category)));
@@ -242,7 +241,7 @@ export default function About() {
     return (
         <Box
             p={5}
-            bg="gray.900"
+           
             minH="90vh"
             display="flex"
             flexDirection="column"
@@ -251,44 +250,7 @@ export default function About() {
             overflow="hidden"
             mt={20}
         >
-            {/* SVG Patterns Background */}
-            <svg
-                width="350"
-                height="400"
-                style={{
-                    position: 'absolute',
-                    top: '30rem',
-                    left: '0',
-                    zIndex: 0,
-                }}
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <defs>
-                    <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
-                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#squarePattern1)" />
-            </svg>
 
-            <svg
-                width="350"
-                height="750"
-                style={{
-                    position: 'absolute',
-                    top: '0',
-                    right: '0',
-                    zIndex: 0,
-                }}
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <defs>
-                    <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
-                        <rect x="5" y="5" width="4" height="4" fill="#374151" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#squarePattern2)" />
-            </svg>
 
             <Box textAlign="left" maxWidth={{ base: "800px", xl: "1100px" }} width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
@@ -353,9 +315,6 @@ export default function About() {
                 })}
             </SimpleGrid>
 
-            <Text fontSize="sm" color="gray.500" mt={10}>
-                © {currentYear} Elias Bitsch. All rights reserved.
-            </Text>
         </Box>
     );
 }

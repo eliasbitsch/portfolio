@@ -41,12 +41,12 @@ const publications: Publication[] = [
 ];
 
 const PublicationCard: React.FC<{ publication: Publication }> = ({ publication }) => {
-    const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
     const card = (
         <Box
             ref={ref}
-            className={`card ${inView ? 'animate' : 'exit'}`}
+            className={`card ${inView ? 'animate' : ''}`}
             bg="gray.800"
             p={5}
             borderRadius="lg"
@@ -98,7 +98,7 @@ const PublicationCard: React.FC<{ publication: Publication }> = ({ publication }
 
 export default function Publications() {
     return (
-        <Box p={5} pt={{ base: 24, md: 28 }} bg="gray.900" minH="100vh">
+        <Box p={5} pt={{ base: 24, md: 28 }} minH="100vh">
             <Box textAlign="left" maxWidth={{ base: '800px', xl: '1200px' }} width="100%" mx="auto">
                 <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative" color="white">
                     Publications

@@ -136,6 +136,20 @@ const NavBar = () => {
                                 About
                             </Text>
                         </Link>
+                        <Link href="/#contact" passHref>
+                            <Text
+                                px={4}
+                                py={2}
+                                borderRadius="md"
+                                mx={2}
+                                bg={isActive('/#contact') ? 'gray.700' : 'transparent'}
+                                color={isActive('/#contact') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Contact
+                            </Text>
+                        </Link>
                     </Flex>
                 )}
             </Flex>
@@ -218,6 +232,20 @@ const NavBar = () => {
                                 transition="background-color 0.2s ease, color 0.2s ease"
                             >
                                 About
+                            </Text>
+                        </Link>
+                        <Link href="/#contact" passHref>
+                            <Text
+                                py={1}
+                                px={4}
+                                borderRadius="md"
+                                width="100%"
+                                bg={isActive('/home') ? 'gray.700' : 'transparent'}
+                                color={isActive('/home') ? 'white' : 'gray.300'}
+                                _hover={{ bg: 'gray.700', color: 'white' }}
+                                transition="background-color 0.2s ease, color 0.2s ease"
+                            >
+                                Contact
                             </Text>
                         </Link>
                     </VStack>

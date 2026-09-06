@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <Box
       p={5}
-      bg="gray.900"
+     
       minH="100vh"
       display="flex"
       flexDirection="column"
@@ -23,25 +23,6 @@ export default function Hero() {
       position="relative"
       overflow="hidden"
     >
-      {/* Full-page SVG dot pattern background */}
-      <svg
-        width="100%"
-        height="100%"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: 0,
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dotPattern)" />
-      </svg>
 
       <MotionHeading
         as="h1"

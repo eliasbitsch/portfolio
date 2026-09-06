@@ -88,7 +88,6 @@ const projectsData = [
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const currentYear = new Date().getFullYear();
 
 
   const handleFilterChange = (category: string) => {
@@ -105,7 +104,7 @@ export default function Projects() {
 
   return (
     <Box p={5}
-      bg="gray.900"
+     
       minH="90vh"
       display="flex"
       flexDirection="column"
@@ -115,46 +114,7 @@ export default function Projects() {
       mt={20}
     >
 
-      {/* SVG Patterns with Fixed Margins */}
-      <svg
-        width="350"
-        height="400"
-        style={{
-          position: 'absolute',
-          top: "30rem",
-          left: '35%',
-          transform: 'translate(-180%, -50%)',
-          zIndex: 0,
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern id="squarePattern1" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#squarePattern1)" />
-      </svg>
 
-      <svg
-        width="350"
-        height="750"
-        style={{
-          position: 'absolute',
-          top: '0%',
-          right: '35%',
-          transform: 'translate(180%, -50%)',
-          zIndex: 0,
-        }}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern id="squarePattern2" patternUnits="userSpaceOnUse" width="20" height="20">
-            <rect x="5" y="5" width="4" height="4" fill="#374151" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#squarePattern2)" />
-      </svg>
 
       <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
@@ -258,9 +218,6 @@ export default function Projects() {
           </Box>
         ))}
       </SimpleGrid>
-      <Text fontSize="sm" color="gray.500" mt={10}>
-        © {currentYear} Elias Bitsch. All rights reserved.
-      </Text>
     </Box>
   );
 }

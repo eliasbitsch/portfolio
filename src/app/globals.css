@@ -2,26 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Grundlage
+   Der Hintergrund steht hier hart drin (Chakra gray.900). Vorher stand an
+   dieser Stelle "gray.900" als Token, was in reinem CSS ungueltig ist: der
+   Browser hat bis zum ersten Chakra-Paint Weiss gezeigt, also einen Blitz.
+--------------------------------------------------------------------------- */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #171923;
+  --dot: rgba(55, 65, 81, 0.55);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  background-color: var(--bg);
+  color-scheme: dark;
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-} */
+body {
+  background-color: var(--bg);
+  min-height: 100%;
+}
+
+/* Punktmuster einmal fuer die ganze Seite statt frueher zweimal pro Karte
+   als inline-SVG mit jeweils identischen IDs. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1.6px, transparent 1.7px);
+  background-size: 20px 20px;
+  background-position: 5px 5px;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
 
 @layer utilities {
   .text-balance {
@@ -29,84 +48,49 @@
   }
 }
 
-/* global.css */
-html,
-body {
-  background-color: gray.900;
-  /* Chakra's gray.900 */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-}
-
+/* ---------------------------------------------------------------------------
+   Karten
+   Uebergang statt Keyframes, und der Beobachter feuert nur einmal. Vorher
+   wurde jede Karte beim Verlassen des Sichtfelds wieder auf opacity 0
+   gesetzt und die Animation bei jedem Vorbeiscrollen neu gestartet.
+   will-change haelt die Kompositor-Ebene bereit, danach wird sie freigegeben.
+--------------------------------------------------------------------------- */
 .card {
   opacity: 0;
-  /* transition: opacity 0.5s ease-out, transform 0.5s ease-out; */
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  will-change: opacity, transform;
 }
 
 .card.animate {
-  animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out;
   opacity: 1;
+  transform: none;
+  will-change: auto;
 }
 
-/* .card.exit {
-  animation: fadeOut 0.5s ease-out, slideDown 0.5s ease-out;
-  opacity: 0;
-  transform: translateY(20px);
-} */
-/* One-pager: soft snapping at each section heading.
-   "proximity" pulls towards a section without forcing it, so scrolling
-   still feels continuous. scroll-padding keeps the fixed navbar clear. */
+/* ---------------------------------------------------------------------------
+   One-Pager
+   "proximity" zieht sanft zur naechsten Ueberschrift, ohne das Scrollen zu
+   uebernehmen. scroll-padding haelt die fixe Navbar frei.
+--------------------------------------------------------------------------- */
 html {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
-  scroll-padding-top: 72px;
+  scroll-padding-top: 88px;
 }
 
+/* Wer Bewegung reduziert haben will, bekommt sie nicht: kein Snapping,
+   kein Sanftscrollen, keine Einblendung. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-snap-type: none;
     scroll-behavior: auto;
+    scroll-padding-top: 88px;
+  }
+
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
