@@ -12,7 +12,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const NavBar = () => {
     const { isOpen, onToggle, onClose } = useDisclosure();
@@ -20,7 +20,54 @@ const NavBar = () => {
     const pathname = usePathname();
     const menuRef = useRef(null);
 
-    const isActive = (href: string) => pathname === href;
+    const [activeSection, setActiveSection] = useState('/');
+
+    // Die Leiste folgt dem Scroll: der Abschnitt, der dem oberen Rand am
+    // naechsten ist und noch sichtbar ist, gilt als aktiv. Ein reiner
+    // IntersectionObserver-Vergleich reicht nicht, weil bei unterschiedlich
+    // hohen Abschnitten mehrere gleichzeitig sichtbar sind.
+    useEffect(() => {
+        if (pathname !== '/') return;
+
+        const ids = ['home', 'publications', 'projects', 'skillset', 'about', 'contact'];
+        let frame = 0;
+
+        const update = () => {
+            frame = 0;
+            // Der letzte Abschnitt, dessen Oberkante schon im oberen Drittel
+            // angekommen ist. Toleranter als eine feste Linie, weil zwischen
+            // den Abschnitten Abstaende liegen.
+            const line = window.innerHeight * 0.35;
+            let current = ids[0];
+            for (const id of ids) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                if (el.getBoundingClientRect().top - line <= 1) current = id;
+                else break;
+            }
+            const atBottom =
+                window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
+            if (atBottom) current = ids[ids.length - 1];
+            setActiveSection(current === 'home' ? '/' : '/#' + current);
+        };
+
+        const onScroll = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(update);
+        };
+
+        update();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+            if (frame) window.cancelAnimationFrame(frame);
+        };
+    }, [pathname]);
+
+    const isActive = (href: string) =>
+        pathname === '/' ? activeSection === href : pathname === href;
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent): void => {

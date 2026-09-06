@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text } from '@chakra-ui/react';
 import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
 import { FaGears } from "react-icons/fa6";
+import SectionHeading from '../components/SectionHeading';
 
 // Example projects data
 const projectsData = [
@@ -117,23 +118,14 @@ export default function Projects() {
 
 
       <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
-        <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
-          Projects
-          <hr style={{
-            width: '100%',     // Match the width of the text
-            marginTop: '6px',   // Space between text and underline
-            border: 'none',     // Remove default border
-            height: '2px',      // Thickness of the underline
-            backgroundColor: 'currentColor', // Match the color of the text
-          }} />
-        </Box>
+        <SectionHeading>Projects</SectionHeading>
       </Box>
 
       <Box mt={4} maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         <Text fontSize="lg">A selection of projects I have worked on throughout my engineering journey</Text>
       </Box>
 
-      <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "600px", xl: "1200px" }} width="100%" mx="auto">
+      <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         {[
           { label: "All", icon: FaBolt, category: "All" },
           { label: "Programming", icon: FaLaptopCode, category: "Programming" },

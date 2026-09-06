@@ -10,7 +10,7 @@ import About from './about/page';
 import Contact from './components/Contact';
 
 const Section = ({ id, children }: { id: string; children: React.ReactNode }) => (
-  <Box as="section" id={id} scrollSnapAlign="start" scrollMarginTop="72px">
+  <Box as="section" id={id}>
     {children}
   </Box>
 );

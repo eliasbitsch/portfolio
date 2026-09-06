@@ -3,6 +3,7 @@
 import React from 'react';
 import { Box, VStack, HStack, Tag, Wrap, Spacer, Link } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
+import SectionHeading from './SectionHeading';
 
 interface Publication {
     id: number;
@@ -99,11 +100,8 @@ const PublicationCard: React.FC<{ publication: Publication }> = ({ publication }
 export default function Publications() {
     return (
         <Box p={5} pt={{ base: 24, md: 28 }} minH="100vh">
-            <Box textAlign="left" maxWidth={{ base: '800px', xl: '1200px' }} width="100%" mx="auto">
-                <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative" color="white">
-                    Publications
-                    <Box height="3px" bg="white" width="100%" mt={1} />
-                </Box>
+            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
+                <SectionHeading>Publications</SectionHeading>
                 <Box fontSize="md" color="gray.400" mt={3} mb={6}>
                     ORCID{' '}
                     <Link href="https://orcid.org/0009-0007-4777-554X" isExternal color="#3C5AF0">
