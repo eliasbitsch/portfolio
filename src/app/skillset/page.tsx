@@ -12,6 +12,7 @@ import { useInView } from 'react-intersection-observer';
 
 import Icon from '@mdi/react';
 import { mdiPrinter3d } from '@mdi/js';
+import SectionHeading from '../components/SectionHeading';
 
 // Example skills data
 const skillsData = [
@@ -80,24 +81,15 @@ export default function Skillset() {
         >
 
 
-            <Box textAlign="left" maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
-                <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
-                    Skillset
-                    <hr style={{
-                        width: '100%',
-                        marginTop: '6px',
-                        border: 'none',
-                        height: '2px',
-                        backgroundColor: 'currentColor',
-                    }} />
-                </Box>
+            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
+                <SectionHeading>Skillset</SectionHeading>
             </Box>
 
-            <Box mt={4} maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
+            <Box mt={4} maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
                 <Text fontSize="lg">A list of my technical skills.</Text>
             </Box>
 
-            <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "600px", xl: "1000px" }} width="100%" mx="auto">
+            <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
                 {[
                     { label: "All", icon: FaBolt, category: "All" },
                     { label: "Programming", icon: FaLaptopCode, category: "Programming" },

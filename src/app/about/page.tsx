@@ -7,6 +7,7 @@ import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom } from 're
 import { SiDassaultsystemes } from 'react-icons/si';
 import { PiCertificateLight } from "react-icons/pi";
 import { url } from 'inspector';
+import SectionHeading from '../components/SectionHeading';
 
 
 // Example skills data with custom information
@@ -252,17 +253,8 @@ export default function About() {
         >
 
 
-            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1100px" }} width="100%" mx="auto">
-                <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative">
-                    About
-                    <hr style={{
-                        width: '100%',
-                        marginTop: '6px',
-                        border: 'none',
-                        height: '2px',
-                        backgroundColor: 'currentColor',
-                    }} />
-                </Box>
+            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
+                <SectionHeading>About</SectionHeading>
             </Box>
 
             <SimpleGrid
@@ -270,7 +262,7 @@ export default function About() {
                 spacing={4}
                 mt={8}
                 mx="auto"
-                maxWidth={{ base: "800px", xl: "1100px" }}
+                maxWidth={{ base: "800px", xl: "1200px" }}
                 width={'100%'}
                 justifyContent="center"
             >

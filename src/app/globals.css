@@ -70,11 +70,12 @@ body > * {
 
 /* ---------------------------------------------------------------------------
    One-Pager
-   "proximity" zieht sanft zur naechsten Ueberschrift, ohne das Scrollen zu
-   uebernehmen. scroll-padding haelt die fixe Navbar frei.
+   Kein scroll-snap: bei Abschnitten, die hoeher sind als das Fenster, zieht
+   das Snapping gegen den Nutzer und fuehlt sich nach Haengenbleiben an. Das
+   Sanftscrollen fuer Ankerklicks bleibt, scroll-padding haelt die fixe
+   Navbar frei.
 --------------------------------------------------------------------------- */
 html {
-  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
 }
@@ -83,7 +84,6 @@ html {
    kein Sanftscrollen, keine Einblendung. */
 @media (prefers-reduced-motion: reduce) {
   html {
-    scroll-snap-type: none;
     scroll-behavior: auto;
     scroll-padding-top: 88px;
   }

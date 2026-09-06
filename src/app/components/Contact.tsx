@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { SiOrcid } from 'react-icons/si';
+import SectionHeading from './SectionHeading';
 
 interface Channel {
     id: string;
@@ -22,6 +23,14 @@ const channels: Channel[] = [
         label: 'Email',
         value: 'eliasbitsch@protonmail.com',
         href: 'mailto:eliasbitsch@protonmail.com',
+        icon: MdOutlineMailOutline,
+        external: false,
+    },
+    {
+        id: 'mail2',
+        label: 'Email (alternative)',
+        value: 'eliasbitsch@hotmail.com',
+        href: 'mailto:eliasbitsch@hotmail.com',
         icon: MdOutlineMailOutline,
         external: false,
     },
@@ -98,11 +107,8 @@ const ChannelCard: React.FC<{ channel: Channel }> = ({ channel }) => {
 export default function Contact() {
     return (
         <Box p={5} pt={{ base: 24, md: 28 }} pb={{ base: 16, md: 20 }} minH="100vh">
-            <Box textAlign="left" maxWidth={{ base: '800px', xl: '1200px' }} width="100%" mx="auto">
-                <Box fontSize="4xl" fontWeight="bold" display="inline-block" position="relative" color="white">
-                    Contact
-                    <Box height="3px" bg="white" width="100%" mt={1} />
-                </Box>
+            <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
+                <SectionHeading>Contact</SectionHeading>
                 <Box fontSize="md" color="gray.400" mt={3} mb={6} maxWidth="640px">
                     Happy to talk about mixed reality for human-robot collaboration, user studies,
                     or a possible collaboration. Email is the fastest way to reach me.
