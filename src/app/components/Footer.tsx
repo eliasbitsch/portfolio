@@ -7,14 +7,11 @@ const Footer = () => {
     return (
         <Box
             as="footer"
-            // bg="gray.800"
             p={4}
             textAlign="center"
             position="relative"
             mt={10}
             width="100%"
-
-            display={"sticky"}
         >
             <Text fontSize="sm" color="gray.500">
                 © {currentYear} Elias Bitsch. All rights reserved.

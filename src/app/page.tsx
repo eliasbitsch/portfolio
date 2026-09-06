@@ -7,6 +7,7 @@ import Publications from './components/Publications';
 import Projects from './projects/page';
 import Skillset from './skillset/page';
 import About from './about/page';
+import Contact from './components/Contact';
 
 const Section = ({ id, children }: { id: string; children: React.ReactNode }) => (
   <Box as="section" id={id} scrollSnapAlign="start" scrollMarginTop="72px">
@@ -16,7 +17,7 @@ const Section = ({ id, children }: { id: string; children: React.ReactNode }) =>
 
 export default function Page() {
   return (
-    <Box bg="gray.900">
+    <Box>
       <Section id="home">
         <Hero />
       </Section>
@@ -32,9 +33,9 @@ export default function Page() {
       <Section id="about">
         <About />
       </Section>
-      <Box as="footer" textAlign="center" py={6} fontSize="sm" color="gray.500">
-        © {new Date().getFullYear()} Elias Bitsch. All rights reserved.
-      </Box>
+      <Section id="contact">
+        <Contact />
+      </Section>
     </Box>
   );
 }

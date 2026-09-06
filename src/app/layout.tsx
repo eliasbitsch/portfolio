@@ -17,7 +17,7 @@ export default function RootLayout({
           <Box display="flex" flexDirection="column" minHeight="100vh">
             <NavBar /> {/* Add the NavBar here */}
             <Box flex="1">{children}</Box>
-            {/* <Footer /> Add the Footer here */}
+            <Footer />
           </Box>
         </Providers>
       </body>
