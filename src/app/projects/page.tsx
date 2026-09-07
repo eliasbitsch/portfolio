@@ -100,10 +100,7 @@ const projectsData: Project[] = [
     imageUrl: '/images/taurob.png',
     tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
     icon: FaLaptopCode,
-    links: [
-      { label: 'Repository', href: 'https://github.com/eliasbitsch/taurob_tracker' },
-      { label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' },
-    ]
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/taurob_tracker' }]
   },
   {
     id: 4,
