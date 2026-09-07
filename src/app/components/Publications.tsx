@@ -29,12 +29,15 @@ const publications: Publication[] = [
         tags: ['Mixed Reality', 'Teleoperation', 'ROS 2', 'Hand Tracking', 'ISO/TS 15066'],
         url: 'https://sites.google.com/view/xr-spro2026/',
     },
+];
+
+const appearances: Publication[] = [
     {
-        id: 2,
+        id: 101,
         title: 'Human-Robot Interaction for Casting Parts and Defect Annotation',
         authors: 'Elias Bitsch',
-        venue: 'Live demonstration, Applied AI Conference (AAIC), joint AIT and Fraunhofer session',
-        status: 'Demonstration',
+        venue: 'Applied AI Conference (AAIC), joint AIT and Fraunhofer session',
+        status: 'Live demonstration',
         statusColor: 'blue',
         date: '2026',
         tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Defect Annotation'],
@@ -120,6 +123,17 @@ export default function Publications() {
                 <VStack spacing={5} align="stretch">
                     {publications.map(publication => (
                         <PublicationCard key={publication.id} publication={publication} />
+                    ))}
+                </VStack>
+
+                {/* Eine Live-Demo auf einer Konferenz ist kein Paper und soll
+                    die Publikationsliste nicht verwaessern. */}
+                <Box fontSize="xl" fontWeight="bold" color="white" mt={10} mb={4}>
+                    Talks &amp; demonstrations
+                </Box>
+                <VStack spacing={5} align="stretch">
+                    {appearances.map(item => (
+                        <PublicationCard key={item.id} publication={item} />
                     ))}
                 </VStack>
             </Box>
