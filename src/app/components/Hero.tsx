@@ -12,22 +12,22 @@ const MotionHeading = motion(Heading);
 export default function Hero() {
   return (
     <Box
-      p={5}
-     
-      minH="100vh"
+      px={{ base: 5, md: 8 }}
+      py={{ base: 12, md: 10 }}
+      minH={{ base: 'calc(100vh - 64px)', md: 'calc(100vh - 76px)' }}
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       textAlign="center"
       position="relative"
-      overflow="hidden"
+      className="hero-motion"
     >
 
       <MotionHeading
         as="h1"
-        size="3xl"
-        mb={5}
+        fontSize={{ base: '4xl', sm: '5xl', md: '6xl' }}
+        mb={{ base: 4, md: 5 }}
         fontWeight="1000"
         color="#3C5AF0"
         initial={{ opacity: 0, x: '-20vw' }}
@@ -39,27 +39,36 @@ export default function Hero() {
       </MotionHeading>
 
       <MotionText
-        fontSize="2xl"
+        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
         mb={3}
         color="white"
-        lineHeight="1.5"
-        maxWidth={{ base: "90%", md: "700px", xl: "900px" }}
-        mx={[5, 10, 20]} // Responsive margins
+        lineHeight="1.6"
+        maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
+        mx="auto"
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum&nbsp;Wien
-        <br />
-        and a technical assistant at the AIT Center for Technology&nbsp;Experience.
-        <br />
-        <br />
-        I build mixed-reality systems for human-robot collaboration and test&nbsp;them
-        <br />
-        with real operators: bare-hand teleoperation across Unity and ROS&nbsp;2,
-        <br />
-        purpose-built feedback hardware, and touch interfaces for supervising&nbsp;robots.
+        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum Wien
+        and a technical assistant at the AIT Center for Technology Experience.
+      </MotionText>
+
+      <MotionText
+        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
+        mb={3}
+        color="white"
+        lineHeight="1.6"
+        maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
+        mx="auto"
+        initial={{ opacity: 0, x: '-20vw' }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.05 }}
+        zIndex={1}
+      >
+        I build mixed-reality systems for human-robot collaboration and test them with real
+        operators: bare-hand teleoperation across Unity and ROS 2, purpose-built feedback
+        hardware, and touch interfaces for supervising robots.
       </MotionText>
 
 

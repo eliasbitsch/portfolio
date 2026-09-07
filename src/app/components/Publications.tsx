@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box, VStack, HStack, Tag, Wrap, Spacer, Link } from '@chakra-ui/react';
+import { Box, VStack, HStack, Stack, Tag, Wrap, Link } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import SectionHeading from './SectionHeading';
 
@@ -57,26 +57,35 @@ const PublicationCard: React.FC<{ publication: Publication }> = ({ publication }
             transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
         >
             <VStack align="stretch" mb={3}>
-                <HStack spacing={4} justify="space-between" align="flex-start">
-                    <Box fontSize="xl" fontWeight="bold" color="white">
+                <HStack spacing={3} justify="space-between" align="flex-start">
+                    <Box fontSize={{ base: 'md', md: 'xl' }} fontWeight="bold" color="white">
                         {publication.title}
                     </Box>
-                    <Spacer />
-                    <Box color="gray.500" fontSize="md" flexShrink={0}>
+                    <Box color="gray.500" fontSize={{ base: 'sm', md: 'md' }} flexShrink={0}>
                         {publication.date}
                     </Box>
                 </HStack>
                 <Box fontSize="sm" color="gray.400" mt={1}>
                     {publication.authors}
                 </Box>
-                <HStack spacing={3} mt={1} align="center">
-                    <Tag colorScheme={publication.statusColor} borderRadius="full" fontSize="xs">
+                <Stack
+                    direction={{ base: 'column', md: 'row' }}
+                    spacing={{ base: 2, md: 3 }}
+                    mt={2}
+                    align={{ base: 'flex-start', md: 'center' }}
+                >
+                    <Tag
+                        colorScheme={publication.statusColor}
+                        borderRadius="full"
+                        fontSize="xs"
+                        flexShrink={0}
+                    >
                         {publication.status}
                     </Tag>
                     <Box fontSize="sm" color="gray.300">
                         {publication.venue}
                     </Box>
-                </HStack>
+                </Stack>
             </VStack>
             <Wrap spacing={2} mt={3}>
                 {publication.tags.map(tag => (
