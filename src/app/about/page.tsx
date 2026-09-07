@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom } from 'react-icons/fa'; // Importing the React icon
+import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom, FaHandsHelping } from 'react-icons/fa'; // Importing the React icon
 import { SiDassaultsystemes } from 'react-icons/si';
 import { PiCertificateLight } from "react-icons/pi";
 import { url } from 'inspector';
@@ -99,6 +99,16 @@ const skillsData = [
         date: '2012 - 2016',
         tags: ['Physics', 'Mathematics', 'LEGO Mindstorms'],
         url: 'https://www.gymnasium-neusiedl.at/'
+    },
+    {
+        id: 11,
+        category: 'Service',
+        name: 'IEEE ICRA 2026',
+        description: 'Student volunteer',
+        text: 'Student volunteer at the IEEE International Conference on Robotics and Automation in Vienna, the largest annual conference in robotics.',
+        date: '2026',
+        tags: ['Robotics', 'Conference', 'Volunteering'],
+        url: 'https://www.linkedin.com/posts/uas-technikum-wien_changeourtomorrow-fhtechnikumwien-uastechnikumwien-activity-7477768452665937921-4nVw',
     },
     {
         id: 6,
@@ -273,7 +283,8 @@ export default function About() {
                         category === 'Career' ? <FaBriefcase style={{ color: 'white', fontSize: '1.5em' }} /> :
                             category === 'Education' ? <FaGraduationCap style={{ color: 'white', fontSize: '2em' }} /> :
                                 category === 'Certificates' ? <PiCertificateLight style={{ color: 'white', fontSize: '2em' }} /> :
-                                    null;
+                                    category === 'Service' ? <FaHandsHelping style={{ color: 'white', fontSize: '1.5em' }} /> :
+                                        null;
 
                     return (
                         <React.Fragment key={category}>
