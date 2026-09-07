@@ -23,6 +23,7 @@ type Project = {
   imageUrl: string;
   imageCredit?: string;
   imageFit?: 'cover' | 'contain';
+  videoUrl?: string;
   tags: string[];
   icon: IconType;
   links?: ProjectLink[];
@@ -95,6 +96,17 @@ const projectsData: Project[] = [
   },
   {
     id: 3,
+    category: ['Robotics', 'Computer Vision', 'Web & Software'],
+    title: 'MONUMENTAL',
+    description:
+      'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders and gamepad control, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. Master project in Robotics Engineering.',
+    imageUrl: '/images/monumental.jpg',
+    tags: ['HMI', 'Behaviour Trees', 'Computer Vision', 'Gamepad', 'Robotics'],
+    icon: FaLaptopCode,
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MONUMENTAL' }]
+  },
+  {
+    id: 4,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
@@ -104,28 +116,39 @@ const projectsData: Project[] = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/taurob_tracker' }]
   },
   {
-    id: 4,
+    id: 5,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
       'A semester project: a tilting platform that holds a steel ball in place. Servos drive the plate over two axes and a PID closed-loop controller on an Arduino keeps correcting the position.',
-    imageUrl: '/images/ball-balancing.png',
+    imageUrl: '/images/ball-poster.jpg',
+    videoUrl: '/videos/ball-loop.mp4',
     tags: ['Arduino', 'PID Control', 'Servos', 'Mechatronics'],
     icon: FaMicrochip,
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 5,
+    id: 6,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
-    description: 'A Sumo-Bot for a competition at University.',
-    imageUrl: '/images/circuit-crusher.jpg',
-    tags: ['Arduino', 'Robotics', 'Sumo-Bot'],
+    description:
+      'A Sumo-Bot built with a team of eight for the RoboRingOut competition at UAS Technikum Wien.',
+    imageUrl: '/images/sumo-poster.jpg',
+    videoUrl: '/videos/sumo-loop.mp4',
+    tags: ['Arduino', 'Robotics', 'Sumo-Bot', 'Team of 8'],
     icon: FaLaptopCode,
-    links: [{ label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' }]
+    links: [
+      { label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' },
+      { label: 'Robot', href: 'https://youtu.be/zhJGluGIH-M' },
+      { label: 'Fight 1', href: 'https://youtu.be/1UgvpUVvd5g' },
+      { label: 'Fight 2', href: 'https://youtu.be/A-VXeM4SAiU' },
+      { label: 'Fight 3', href: 'https://youtu.be/iBfT-xtsofQ' },
+      { label: 'Fight 4', href: 'https://youtu.be/sZUUmsF36ec' },
+      { label: 'Fight 5', href: 'https://youtu.be/QKWNmb7PCEQ' },
+    ]
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -146,7 +169,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -158,7 +181,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 8,
+    id: 9,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
@@ -300,16 +323,36 @@ export default function Projects() {
                   {project.imageCredit}
                 </Box>
               )}
-              <Image
-                src={project.imageUrl}
-                alt={project.title}
-                objectFit={project.imageFit ?? 'cover'}
-                bg={project.imageFit === 'contain' ? 'gray.800' : undefined}
-                p={project.imageFit === 'contain' ? 3 : 0}
-                width="100%"
-                height="300px"
-                transition="transform 0.3s ease-in-out"
-              />
+              {project.videoUrl ? (
+                /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm, in
+                   der Schleife, ohne Bedienelemente. Das Standbild steht
+                   sofort da, damit beim Laden nichts springt. */
+                <Box
+                  as="video"
+                  src={project.videoUrl}
+                  poster={project.imageUrl}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  objectFit="cover"
+                  width="100%"
+                  height="300px"
+                  transition="transform 0.3s ease-in-out"
+                />
+              ) : (
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  objectFit={project.imageFit ?? 'cover'}
+                  bg={project.imageFit === 'contain' ? 'gray.800' : undefined}
+                  p={project.imageFit === 'contain' ? 3 : 0}
+                  width="100%"
+                  height="300px"
+                  transition="transform 0.3s ease-in-out"
+                />
+              )}
             </Box>
             <Box p={4}>
               <Text fontWeight="bold" fontSize="xl" mb={2}>{project.title}</Text>
