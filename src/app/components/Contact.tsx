@@ -21,14 +21,6 @@ const channels: Channel[] = [
     {
         id: 'mail',
         label: 'Email',
-        value: 'eliasbitsch@protonmail.com',
-        href: 'mailto:eliasbitsch@protonmail.com',
-        icon: MdOutlineMailOutline,
-        external: false,
-    },
-    {
-        id: 'mail2',
-        label: 'Email (alternative)',
         value: 'eliasbitsch@hotmail.com',
         href: 'mailto:eliasbitsch@hotmail.com',
         icon: MdOutlineMailOutline,
