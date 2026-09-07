@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { IconType } from 'react-icons';
 import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text, Link } from '@chakra-ui/react';
 import {
   FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench, FaEye,
@@ -13,6 +14,19 @@ import SectionHeading from '../components/SectionHeading';
 // Example projects data
 
 type ProjectLink = { label: string; href: string };
+
+type Project = {
+  id: number;
+  category: string | string[];
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageCredit?: string;
+  imageFit?: 'cover' | 'contain';
+  tags: string[];
+  icon: IconType;
+  links?: ProjectLink[];
+};
 
 /** Passendes Symbol zum Linkziel, damit die Zeile ohne Lesen erkennbar ist. */
 function iconForLink(href: string) {
@@ -28,14 +42,15 @@ function iconForLink(href: string) {
 
 const MotionBox = motion(Box);
 
-const projectsData = [
+const projectsData: Project[] = [
   {
     id: 1,
     category: ['XR & HRI', 'Robotics'],
     title: 'MetaMove',
     description:
       'Bare-hand mixed-reality teleoperation of an ABB GoFa cobot: Meta Quest 3 to ROS 2 with MoveIt Servo and an EGM bridge at 250 Hz, plus a distance-based speed-scaling safety layer and a live bidirectional digital twin. Accepted at the XR-SPro workshop, IEEE ISMAR 2026.',
-    imageUrl: '/images/metamove.png',
+    imageUrl: '/images/metamove-paper.png',
+    imageFit: 'contain',
     tags: ['Mixed Reality', 'Unity', 'C#', 'ROS 2', 'MoveIt Servo', 'Meta Quest 3', 'ABB GoFa'],
     icon: FaLaptopCode,
     links: [
@@ -85,7 +100,10 @@ const projectsData = [
     imageUrl: '/images/taurob.png',
     tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
     icon: FaLaptopCode,
-    links: [{ label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' }]
+    links: [
+      { label: 'Repository', href: 'https://github.com/eliasbitsch/taurob_tracker' },
+      { label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' },
+    ]
   },
   {
     id: 4,
@@ -95,7 +113,7 @@ const projectsData = [
     imageUrl: '/images/circuit-crusher.jpg',
     tags: ['Arduino', 'Robotics', 'Sumo-Bot'],
     icon: FaLaptopCode,
-    links: [{ label: 'Website', href: 'https://roboringout.at/2023/12/17/circuit-crusher/' }]
+    links: [{ label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' }]
   },
   {
     id: 5,
