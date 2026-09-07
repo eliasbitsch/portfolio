@@ -1,12 +1,30 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text } from '@chakra-ui/react';
-import { FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench } from 'react-icons/fa';
+import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text, Link } from '@chakra-ui/react';
+import {
+  FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench,
+  FaGithub, FaFacebook, FaFlickr, FaLinkedin, FaYoutube, FaFilePdf, FaExternalLinkAlt,
+} from 'react-icons/fa';
 import { FaGears } from "react-icons/fa6";
 import SectionHeading from '../components/SectionHeading';
 
 // Example projects data
+
+type ProjectLink = { label: string; href: string };
+
+/** Passendes Symbol zum Linkziel, damit die Zeile ohne Lesen erkennbar ist. */
+function iconForLink(href: string) {
+  const u = href.toLowerCase();
+  if (u.includes('github.com')) return FaGithub;
+  if (u.includes('facebook.com')) return FaFacebook;
+  if (u.includes('flickr.com')) return FaFlickr;
+  if (u.includes('linkedin.com')) return FaLinkedin;
+  if (u.includes('youtube.com') || u.includes('youtu.be')) return FaYoutube;
+  if (u.endsWith('.pdf')) return FaFilePdf;
+  return FaExternalLinkAlt;
+}
+
 const projectsData = [
   {
     id: 0,
@@ -17,7 +35,7 @@ const projectsData = [
     imageUrl: '/images/metamove.png',
     tags: ['Mixed Reality', 'Unity', 'C#', 'ROS 2', 'MoveIt Servo', 'Meta Quest 3', 'ABB GoFa'],
     icon: FaLaptopCode,
-    githubUrl: 'https://github.com/eliasbitsch/MetaMove'
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MetaMove' }]
   },
   {
     id: 1,
@@ -27,7 +45,7 @@ const projectsData = [
     imageUrl: '/images/taurob.png',
     tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
     icon: FaLaptopCode,
-    //githubUrl: 'https://enrich.european-robotics.eu/'
+    links: [{ label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' }]
   },
   {
     id: 1,
@@ -37,7 +55,7 @@ const projectsData = [
     imageUrl: '/images/circuit-crusher.jpg',
     tags: ['Arduino', 'Robotics', 'Sumo-Bot'],
     icon: FaLaptopCode,
-    githubUrl: 'https://roboringout.at/2023/12/17/circuit-crusher/'
+    links: [{ label: 'Website', href: 'https://roboringout.at/2023/12/17/circuit-crusher/' }]
   },
   {
     id: 2,
@@ -47,7 +65,7 @@ const projectsData = [
     imageUrl: '/images/path-planning.png',
     tags: ['ROS', 'Navigation Stack', 'Path Planning'],
     icon: FaPalette,
-    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner'
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
   },
   {
     id: 3,
@@ -57,7 +75,7 @@ const projectsData = [
     imageUrl: '/images/maze-solver.png',
     tags: ['ROS', 'Python', 'Machine Learning'],
     icon: FaMicrochip,
-    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver'
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver' }]
 
   },
   {
@@ -68,7 +86,7 @@ const projectsData = [
     imageUrl: '/images/line-follower.png',
     tags: ['ROS', 'Python', 'OpenCV'],
     icon: FaLaptopCode,
-    githubUrl: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner'
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
 
   },
   {
@@ -79,7 +97,7 @@ const projectsData = [
     imageUrl: '/images/rosCourse.png',
     tags: ['Next.js', 'Nextra', 'mdx', 'Typescript'],
     icon: FaLaptopCode,
-    githubUrl: 'https://rosready.robolink.app/'
+    links: [{ label: 'Website', href: 'https://rosready.robolink.app/' }]
 
   },
 
@@ -91,7 +109,7 @@ const projectsData = [
     imageUrl: '/images/portfolio-website.png',
     tags: ['Next.js', 'Typescript', 'Chakra UI'],
     icon: FaLaptopCode,
-    githubUrl: 'https://github.com/eliasbitsch/portfolio'
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/portfolio' }]
 
   },
 
@@ -177,24 +195,15 @@ export default function Projects() {
             bg="gray.700"
             borderRadius="lg"
             overflow="hidden"
-            as="a"
-            href={project.githubUrl}
-            target="_blank"  // Opens the link in a new tab
-            rel="noopener noreferrer"  // Security measure for external links
+            display="flex"
+            flexDirection="column"
             _hover={{
-              transform: 'translateY(-5px)', // Move up on hover
-              boxShadow: 'lg', // Add a shadow for better visual effect
+              transform: 'translateY(-5px)',
+              boxShadow: 'lg',
+              '& img': { transform: 'scale(1.06)' },
             }}
             transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out">
-            <Box
-              position="relative"
-              _hover={{
-                '& img': {
-                  transform: 'scale(1.1)', // Scale image on hover
-                },
-              }}
-              transition="transform 0.3s ease-in-out"
-            >
+            <Box position="relative" overflow="hidden">
               <Image
                 src={project.imageUrl}
                 alt={project.title}
@@ -217,6 +226,35 @@ export default function Projects() {
                   </WrapItem>
                 ))}
               </Wrap>
+
+              {project.links && project.links.length > 0 && (
+                <Wrap mt={4} spacing={2}>
+                  {project.links.map(link => (
+                    <WrapItem key={link.href}>
+                      <Link
+                        href={link.href}
+                        isExternal
+                        display="inline-flex"
+                        alignItems="center"
+                        gap={2}
+                        px={3}
+                        py={1.5}
+                        fontSize="sm"
+                        fontWeight="medium"
+                        borderRadius="full"
+                        borderWidth="1px"
+                        borderColor="gray.500"
+                        color="gray.200"
+                        _hover={{ bg: 'gray.600', color: 'white', textDecoration: 'none' }}
+                        transition="background-color 0.2s ease, color 0.2s ease"
+                      >
+                        <Box as={iconForLink(link.href)} boxSize="0.9em" />
+                        {link.label}
+                      </Link>
+                    </WrapItem>
+                  ))}
+                </Wrap>
+              )}
             </Box>
           </Box>
         ))}
