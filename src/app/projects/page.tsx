@@ -165,7 +165,8 @@ const projectsData: Project[] = [
     title: 'Maze solving Robot & Line follower',
     description:
       'Two ROS behaviours on the same robot: following a line from the camera image with OpenCV, and finding its way through a maze with the ROS navigation stack, an A-Star planner and a k-nearest neighbour classifier. Packaged in Docker.',
-    imageUrl: '/images/path-planning.png',
+    imageUrl: '/images/maze-poster.jpg',
+    videoUrl: '/videos/maze-loop.mp4',
     tags: ['ROS', 'Python', 'OpenCV', 'Path Planning', 'Docker'],
     icon: FaPalette,
     links: [
