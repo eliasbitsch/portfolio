@@ -126,38 +126,27 @@ const projectsData: Project[] = [
   },
   {
     id: 6,
-    category: ['Robotics'],
-    title: 'Path Planning Robot',
-    description: 'A Robot that can solve a maze using ROS and its navigation stack.',
+    category: ['Robotics', 'Computer Vision'],
+    title: 'Maze solving Robot & Line follower',
+    description:
+      'Two ROS behaviours on the same robot: following a line from the camera image with OpenCV, and finding its way through a maze with the ROS navigation stack, an A-Star planner and a k-nearest neighbour classifier. Packaged in Docker.',
     imageUrl: '/images/path-planning.png',
-    tags: ['ROS', 'Navigation Stack', 'Path Planning'],
+    tags: ['ROS', 'Python', 'OpenCV', 'Path Planning', 'Docker'],
     icon: FaPalette,
-    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
+    links: [
+      { label: 'Video', href: 'https://youtu.be/5yGivDq1IQU' },
+      {
+        label: 'Line follower repo',
+        href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner',
+      },
+      {
+        label: 'Maze solver repo',
+        href: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver',
+      },
+    ]
   },
   {
     id: 7,
-    category: ['Robotics'],
-    title: 'Maze solving Robot',
-    description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
-    imageUrl: '/images/maze-solver.png',
-    tags: ['ROS', 'Python', 'Machine Learning'],
-    icon: FaMicrochip,
-    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver' }]
-
-  },
-  {
-    id: 8,
-    category: ['Robotics', 'Computer Vision'],
-    title: 'Line follower Robot',
-    description: 'A Robot that can follow a line using a camera with OpenCV Library.',
-    imageUrl: '/images/line-follower.png',
-    tags: ['ROS', 'Python', 'OpenCV'],
-    icon: FaLaptopCode,
-    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
-
-  },
-  {
-    id: 9,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -169,7 +158,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 10,
+    id: 8,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
