@@ -1,5 +1,6 @@
 import NavBar from './components/NavBar';
-import ScrollMotion from './components/ScrollMotion'; // Import the NavBar component
+import ScrollMotion from './components/ScrollMotion';
+import OverscrollBounce from './components/OverscrollBounce';
 import Footer from './components/Footer'; // Import the Footer component
 import { Providers } from './providers';
 import { fonts } from './fonts';
@@ -17,11 +18,13 @@ export default function RootLayout({
         <Providers>
           <Box display="flex" flexDirection="column" minHeight="100vh">
             <ScrollMotion />
-            <NavBar /> {/* Add the NavBar here */}
-            <Box flex="1" pt={{ base: "64px", md: "76px" }}>
+            <OverscrollBounce />
+            <NavBar />
+            {/* Das Gummiband bewegt nur den Inhalt, die fixe Leiste bleibt stehen. */}
+            <Box id="bounce-root" flex="1" pt={{ base: "64px", md: "76px" }} willChange="transform">
               {children}
+              <Footer />
             </Box>
-            <Footer />
           </Box>
         </Providers>
       </body>
