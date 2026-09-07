@@ -1,4 +1,5 @@
-import NavBar from './components/NavBar'; // Import the NavBar component
+import NavBar from './components/NavBar';
+import ScrollMotion from './components/ScrollMotion'; // Import the NavBar component
 import Footer from './components/Footer'; // Import the Footer component
 import { Providers } from './providers';
 import { fonts } from './fonts';
@@ -15,8 +16,11 @@ export default function RootLayout({
       <body>
         <Providers>
           <Box display="flex" flexDirection="column" minHeight="100vh">
+            <ScrollMotion />
             <NavBar /> {/* Add the NavBar here */}
-            <Box flex="1">{children}</Box>
+            <Box flex="1" pt={{ base: "64px", md: "76px" }}>
+              {children}
+            </Box>
             <Footer />
           </Box>
         </Providers>
