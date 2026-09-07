@@ -105,6 +105,17 @@ const projectsData: Project[] = [
   {
     id: 4,
     category: ['Robotics', 'Electronics'],
+    title: 'Ball Balancing Robot',
+    description:
+      'A semester project: a tilting platform that holds a steel ball in place. Servos drive the plate over two axes and a PID closed-loop controller on an Arduino keeps correcting the position.',
+    imageUrl: '/images/ball-balancing.png',
+    tags: ['Arduino', 'PID Control', 'Servos', 'Mechatronics'],
+    icon: FaMicrochip,
+    links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
+  },
+  {
+    id: 5,
+    category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
     imageUrl: '/images/circuit-crusher.jpg',
@@ -113,7 +124,7 @@ const projectsData: Project[] = [
     links: [{ label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' }]
   },
   {
-    id: 5,
+    id: 6,
     category: ['Robotics'],
     title: 'Path Planning Robot',
     description: 'A Robot that can solve a maze using ROS and its navigation stack.',
@@ -123,7 +134,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics'],
     title: 'Maze solving Robot',
     description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
@@ -134,7 +145,7 @@ const projectsData: Project[] = [
 
   },
   {
-    id: 7,
+    id: 8,
     category: ['Robotics', 'Computer Vision'],
     title: 'Line follower Robot',
     description: 'A Robot that can follow a line using a camera with OpenCV Library.',
@@ -145,7 +156,7 @@ const projectsData: Project[] = [
 
   },
   {
-    id: 8,
+    id: 9,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -157,7 +168,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 9,
+    id: 10,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
