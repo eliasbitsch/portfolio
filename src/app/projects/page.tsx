@@ -43,6 +43,10 @@ const projectsData = [
       { label: 'IEEE ISMAR 2026', href: 'https://www.ieeeismar.net/2026/' },
       { label: 'XR-SPro workshop', href: 'https://sites.google.com/view/xr-spro2026/' },
       {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/posts/uas-technikum-wien_changeourtomorrow-fhtechnikumwien-uastechnikumwien-activity-7487533458509070336-n1g_',
+      },
+      {
         label: 'FH Technikum Wien news',
         href: 'https://www.technikum-wien.at/news/digitale-zwillinge-in-der-robotik-projektergebnisse-aus-dem-master-robotics-engineering/',
       },
