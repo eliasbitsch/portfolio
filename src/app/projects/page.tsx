@@ -117,6 +117,18 @@ const projectsData: Project[] = [
   },
   {
     id: 5,
+    category: ['Robotics'],
+    title: 'TurtleBot 4 linear controller',
+    description:
+      'A closed-loop controller that drives a TurtleBot 4 to a goal pose: it reads the odometry, computes the velocity command and stops once the goal is reached. Written in C++ against ROS 2 and run from a container.',
+    imageUrl: '/images/turtlebot-poster.jpg',
+    videoUrl: '/videos/turtlebot-loop.mp4',
+    tags: ['ROS 2', 'C++', 'Odometry', 'Control', 'Docker'],
+    icon: FaGears,
+    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/turtlebot4' }]
+  },
+  {
+    id: 6,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
@@ -128,7 +140,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
@@ -148,7 +160,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -169,7 +181,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -181,7 +193,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 9,
+    id: 10,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
