@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Box, SimpleGrid, Tag, TagLabel, TagLeftIcon, Wrap, WrapItem, Image, Text, Link } from '@chakra-ui/react';
 import {
-  FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench,
+  FaBolt, FaLaptopCode, FaMicrochip, FaPalette, FaBook, FaWrench, FaEye,
   FaGithub, FaFacebook, FaFlickr, FaLinkedin, FaYoutube, FaFilePdf, FaExternalLinkAlt,
 } from 'react-icons/fa';
-import { FaGears } from "react-icons/fa6";
+import { FaGears, FaRobot, FaVrCardboard } from "react-icons/fa6";
 import SectionHeading from '../components/SectionHeading';
 
 // Example projects data
@@ -25,10 +26,12 @@ function iconForLink(href: string) {
   return FaExternalLinkAlt;
 }
 
+const MotionBox = motion(Box);
+
 const projectsData = [
   {
     id: 0,
-    category: ['Programming', 'Electronics', 'Engineering'],
+    category: ['XR & HRI', 'Robotics'],
     title: 'MetaMove',
     description:
       'Bare-hand mixed-reality teleoperation of an ABB GoFa cobot: Meta Quest 3 to ROS 2 with MoveIt Servo and an EGM bridge at 250 Hz, plus a distance-based speed-scaling safety layer and a live bidirectional digital twin. Accepted at the XR-SPro workshop, IEEE ISMAR 2026.',
@@ -39,7 +42,7 @@ const projectsData = [
   },
   {
     id: 1,
-    category: ['Programming', 'Electronics', 'Engineering'], // Array of categories
+    category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
     imageUrl: '/images/taurob.png',
@@ -49,7 +52,7 @@ const projectsData = [
   },
   {
     id: 1,
-    category: ['Programming', 'Electronics', 'Engineering'], // Array of categories
+    category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
     imageUrl: '/images/circuit-crusher.jpg',
@@ -59,7 +62,7 @@ const projectsData = [
   },
   {
     id: 2,
-    category: 'Programming',
+    category: ['Robotics'],
     title: 'Path Planning Robot',
     description: 'A Robot that can solve a maze using ROS and its navigation stack.',
     imageUrl: '/images/path-planning.png',
@@ -69,7 +72,7 @@ const projectsData = [
   },
   {
     id: 3,
-    category: 'Programming',
+    category: ['Robotics'],
     title: 'Maze solving Robot',
     description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
     imageUrl: '/images/maze-solver.png',
@@ -80,7 +83,7 @@ const projectsData = [
   },
   {
     id: 4,
-    category: 'Programming',
+    category: ['Robotics', 'Computer Vision'],
     title: 'Line follower Robot',
     description: 'A Robot that can follow a line using a camera with OpenCV Library.',
     imageUrl: '/images/line-follower.png',
@@ -91,7 +94,7 @@ const projectsData = [
   },
   {
     id: 5,
-    category: 'Programming',
+    category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
     imageUrl: '/images/rosCourse.png',
@@ -103,7 +106,7 @@ const projectsData = [
 
   {
     id: 6,
-    category: 'Programming',
+    category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
     imageUrl: '/images/portfolio-website.png',
@@ -157,9 +160,11 @@ export default function Projects() {
       <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         {[
           { label: "All", icon: FaBolt, category: "All" },
-          { label: "Programming", icon: FaLaptopCode, category: "Programming" },
+          { label: "XR & HRI", icon: FaVrCardboard, category: "XR & HRI" },
+          { label: "Robotics", icon: FaRobot, category: "Robotics" },
+          { label: "Computer Vision", icon: FaEye, category: "Computer Vision" },
           { label: "Electronics", icon: FaMicrochip, category: "Electronics" },
-          { label: "Engineering", icon: FaWrench, category: "Engineering" },
+          { label: "Web & Software", icon: FaLaptopCode, category: "Web & Software" },
         ].map((item) => (
           <WrapItem key={item.category}>
             <Tag
@@ -182,6 +187,19 @@ export default function Projects() {
         ))}
       </Wrap>
 
+      <Box
+        mt={6}
+        mx="auto"
+        maxWidth={{ base: 900, xl: 1200 }}
+        width="100%"
+        fontSize="sm"
+        color="gray.400"
+      >
+        {selectedCategory === 'All'
+          ? `${filteredProjects.length} projects`
+          : `${filteredProjects.length} of ${projectsData.length} projects in ${selectedCategory}`}
+      </Box>
+
       <SimpleGrid
         columns={{ base: 1, md: 2, xl: 3 }}
         spacing={6}
@@ -189,20 +207,29 @@ export default function Projects() {
         mx="auto"
         maxWidth={{ base: 900, xl: 1200 }}
         justifyContent="center">
-        {filteredProjects.map(project => (
-          <Box
-            key={project.id}
+        <AnimatePresence mode="popLayout">
+        {filteredProjects.map((project, index) => (
+          <MotionBox
+            key={project.title}
+            layout
+            initial={{ opacity: 0, scale: 0.96, y: 14 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            transition={{
+              duration: 0.42,
+              ease: [0.16, 1, 0.3, 1],
+              delay: index * 0.045,
+              layout: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
+            }}
             bg="gray.700"
             borderRadius="lg"
             overflow="hidden"
             display="flex"
             flexDirection="column"
             _hover={{
-              transform: 'translateY(-5px)',
               boxShadow: 'lg',
               '& img': { transform: 'scale(1.06)' },
-            }}
-            transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out">
+            }}>
             <Box position="relative" overflow="hidden">
               <Image
                 src={project.imageUrl}
@@ -256,8 +283,9 @@ export default function Projects() {
                 </Wrap>
               )}
             </Box>
-          </Box>
+          </MotionBox>
         ))}
+        </AnimatePresence>
       </SimpleGrid>
     </Box>
   );
