@@ -54,6 +54,31 @@ const projectsData = [
   },
   {
     id: 2,
+    category: ['XR & HRI', 'Electronics'],
+    title: 'FlexiStylus',
+    description:
+      'A handheld instrument for marking defects directly on a physical casting: the operator points at the flaw on the part itself instead of on a screen, and a collaborative robot picks up the marked positions. Shown publicly at SALZ 2026, the innovation festival of the University of Salzburg.',
+    imageUrl: '/images/flexistylus.jpg',
+    imageCredit: 'Photo: Kay Müller / Universität Salzburg, CC BY-NC 4.0',
+    tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Mixed Reality', 'Embedded'],
+    icon: FaLaptopCode,
+    links: [
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/posts/universitaet-salzburg_unisalzburg-universit%C3%A4tsalzburg-universityofsalzburg-activity-7437846030836039680-N2V9/',
+      },
+      {
+        label: 'Facebook',
+        href: 'https://www.facebook.com/universitaetsalzburg/posts/1370668765101851/',
+      },
+      {
+        label: 'Flickr',
+        href: 'https://www.flickr.com/photos/uni-salzburg/albums/72177720332484057/',
+      },
+    ]
+  },
+  {
+    id: 3,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
@@ -63,7 +88,7 @@ const projectsData = [
     links: [{ label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' }]
   },
   {
-    id: 3,
+    id: 4,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
@@ -73,7 +98,7 @@ const projectsData = [
     links: [{ label: 'Website', href: 'https://roboringout.at/2023/12/17/circuit-crusher/' }]
   },
   {
-    id: 4,
+    id: 5,
     category: ['Robotics'],
     title: 'Path Planning Robot',
     description: 'A Robot that can solve a maze using ROS and its navigation stack.',
@@ -83,7 +108,7 @@ const projectsData = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
   },
   {
-    id: 5,
+    id: 6,
     category: ['Robotics'],
     title: 'Maze solving Robot',
     description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
@@ -94,7 +119,7 @@ const projectsData = [
 
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics', 'Computer Vision'],
     title: 'Line follower Robot',
     description: 'A Robot that can follow a line using a camera with OpenCV Library.',
@@ -105,7 +130,7 @@ const projectsData = [
 
   },
   {
-    id: 7,
+    id: 8,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -117,7 +142,7 @@ const projectsData = [
   },
 
   {
-    id: 8,
+    id: 9,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
@@ -243,11 +268,28 @@ export default function Projects() {
               '& img': { transform: 'scale(1.06)' },
             }}>
             <Box position="relative" overflow="hidden">
+              {project.imageCredit && (
+                <Box
+                  position="absolute"
+                  bottom={0}
+                  left={0}
+                  right={0}
+                  px={2}
+                  py={1}
+                  fontSize="10px"
+                  color="whiteAlpha.800"
+                  bg="blackAlpha.600"
+                  zIndex={1}
+                >
+                  {project.imageCredit}
+                </Box>
+              )}
               <Image
                 src={project.imageUrl}
                 alt={project.title}
-                objectFit="cover"
-                scale={1}
+                objectFit={project.imageFit ?? 'cover'}
+                bg={project.imageFit === 'contain' ? 'gray.800' : undefined}
+                p={project.imageFit === 'contain' ? 3 : 0}
                 width="100%"
                 height="300px"
                 transition="transform 0.3s ease-in-out"
