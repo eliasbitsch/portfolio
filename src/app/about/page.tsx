@@ -40,7 +40,7 @@ const skillsData = [
         name: 'AIT Austrian Institute of Technology',
         description: 'Technical Assistant, Center for Technology Experience',
         logo: '/logos/ait.svg',
-        text: 'Building interactive systems for human-robot collaboration and evaluating them with users in industrial settings. The work spans mixed reality, tangible interfaces and touch-based supervision, from concept and hardware through study design to analysis. Project details on request.',
+        text: 'Research and prototyping in human-robot interaction. Building interactive systems and evaluating them with users in industrial settings. The work spans mixed reality, tangible interfaces and touch-based supervision, from concept and hardware through study design to analysis. Project details on request.',
         date: 'August 2025 - Present',
         tags: ['Mixed Reality', 'Human-Robot Interaction', 'User Studies', 'ROS 2', 'Unity'],
         url: 'https://www.ait.ac.at/'
