@@ -107,7 +107,7 @@ export default function Hero() {
 
         <VStack spacing={2}>
           <Link
-            href="mailto:eliasbitsch@protonmail.com"
+            href="mailto:eliasbitsch@hotmail.com"
             isExternal
             _hover={{
               textDecoration: 'none',
