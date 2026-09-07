@@ -30,7 +30,7 @@ const MotionBox = motion(Box);
 
 const projectsData = [
   {
-    id: 0,
+    id: 1,
     category: ['XR & HRI', 'Robotics'],
     title: 'MetaMove',
     description:
@@ -38,10 +38,18 @@ const projectsData = [
     imageUrl: '/images/metamove.png',
     tags: ['Mixed Reality', 'Unity', 'C#', 'ROS 2', 'MoveIt Servo', 'Meta Quest 3', 'ABB GoFa'],
     icon: FaLaptopCode,
-    links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MetaMove' }]
+    links: [
+      { label: 'Repository', href: 'https://github.com/eliasbitsch/MetaMove' },
+      { label: 'IEEE ISMAR 2026', href: 'https://www.ieeeismar.net/2026/' },
+      { label: 'XR-SPro workshop', href: 'https://sites.google.com/view/xr-spro2026/' },
+      {
+        label: 'FH Technikum Wien news',
+        href: 'https://www.technikum-wien.at/news/digitale-zwillinge-in-der-robotik-projektergebnisse-aus-dem-master-robotics-engineering/',
+      },
+    ]
   },
   {
-    id: 1,
+    id: 2,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
@@ -51,7 +59,7 @@ const projectsData = [
     links: [{ label: 'ENRICH project', href: 'https://enrich.european-robotics.eu/' }]
   },
   {
-    id: 1,
+    id: 3,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description: 'A Sumo-Bot for a competition at University.',
@@ -61,7 +69,7 @@ const projectsData = [
     links: [{ label: 'Website', href: 'https://roboringout.at/2023/12/17/circuit-crusher/' }]
   },
   {
-    id: 2,
+    id: 4,
     category: ['Robotics'],
     title: 'Path Planning Robot',
     description: 'A Robot that can solve a maze using ROS and its navigation stack.',
@@ -71,7 +79,7 @@ const projectsData = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/Docker-ROS-line-follower-path-planner' }]
   },
   {
-    id: 3,
+    id: 5,
     category: ['Robotics'],
     title: 'Maze solving Robot',
     description: 'A Robot that can solve a maze using k-nearest neighbor classifier and A-Star algorithm.',
@@ -82,7 +90,7 @@ const projectsData = [
 
   },
   {
-    id: 4,
+    id: 6,
     category: ['Robotics', 'Computer Vision'],
     title: 'Line follower Robot',
     description: 'A Robot that can follow a line using a camera with OpenCV Library.',
@@ -93,7 +101,7 @@ const projectsData = [
 
   },
   {
-    id: 5,
+    id: 7,
     category: ['Web & Software'],
     title: 'ROS online course',
     description: 'An online course about ROS.',
@@ -105,7 +113,7 @@ const projectsData = [
   },
 
   {
-    id: 6,
+    id: 8,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
