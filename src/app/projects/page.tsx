@@ -10,6 +10,8 @@ import {
 } from 'react-icons/fa';
 import { FaGears, FaRobot, FaVrCardboard } from "react-icons/fa6";
 import SectionHeading from '../components/SectionHeading';
+import Gallery from '../components/Gallery';
+import { galleries } from './galleries';
 
 // Example projects data
 
@@ -224,6 +226,16 @@ const projectsData: Project[] = [
 
   {
     id: 12,
+    category: ['Electronics', 'Robotics'],
+    title: 'Hardware from scratch',
+    description:
+      'The making side: printed circuit boards from schematic to soldered board, etched and milled in house, parts milled and turned from aluminium, and pneumatic handling stations with valve terminals and sensors. Built at HTL Eisenstadt between 2016 and 2021, and still in use: the feedback hardware I build at AIT today comes off the same bench.',
+    imageUrl: '/gallery/hardware-from-scratch/platine-fertig-bestueckt-2021.jpg',
+    tags: ['PCB Design', 'Milling', 'Turning', 'Soldering', 'Pneumatics', 'CAD'],
+    icon: FaGears,
+  },
+  {
+    id: 13,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
@@ -438,6 +450,11 @@ export default function Projects() {
                   ))}
                 </Wrap>
               )}
+
+              {/* Die Bildleiste steht unter den Links, weil sie stoebern
+                  ist und nicht lesen. Wer die Beschreibung noch liest,
+                  soll nicht von Vorschaubildern abgelenkt werden. */}
+              <Gallery items={galleries[project.title] ?? []} title={project.title} />
             </Box>
           </MotionBox>
         ))}
