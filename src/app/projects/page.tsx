@@ -166,12 +166,12 @@ const projectsData: Project[] = [
     icon: FaLaptopCode,
     links: [
       { label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' },
-      { label: 'Robot', href: 'https://youtu.be/zhJGluGIH-M' },
-      { label: 'Fight 1', href: 'https://youtu.be/1UgvpUVvd5g' },
-      { label: 'Fight 2', href: 'https://youtu.be/A-VXeM4SAiU' },
-      { label: 'Fight 3', href: 'https://youtu.be/iBfT-xtsofQ' },
-      { label: 'Fight 4', href: 'https://youtu.be/sZUUmsF36ec' },
-      { label: 'Fight 5', href: 'https://youtu.be/QKWNmb7PCEQ' },
+      { label: 'Light show', href: 'https://youtu.be/zhJGluGIH-M' },
+      { label: 'Group round 1', href: 'https://youtu.be/A-VXeM4SAiU' },
+      { label: 'Group round 2', href: 'https://youtu.be/1UgvpUVvd5g' },
+      { label: 'Round 1', href: 'https://youtu.be/QKWNmb7PCEQ' },
+      { label: 'Round 2', href: 'https://youtu.be/sZUUmsF36ec' },
+      { label: 'Round 3', href: 'https://youtu.be/iBfT-xtsofQ' },
     ]
   },
   {
