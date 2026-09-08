@@ -33,6 +33,16 @@ const publications: Publication[] = [
 
 const appearances: Publication[] = [
     {
+        id: 100,
+        title: 'FlexiStylus: marking defects directly on a physical casting',
+        authors: 'Elias Bitsch',
+        venue: 'SALZ 2026, innovation festival of the University of Salzburg',
+        status: 'Live demonstration',
+        statusColor: 'blue',
+        date: '2026',
+        tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Public engagement'],
+    },
+    {
         id: 101,
         title: 'Human-Robot Interaction for Casting Parts and Defect Annotation',
         authors: 'Elias Bitsch',
@@ -113,7 +123,7 @@ export default function Publications() {
     return (
         <Box p={5} pt={{ base: 24, md: 28 }} minH="100vh">
             <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
-                <SectionHeading>Publications &amp; talks</SectionHeading>
+                <SectionHeading>Publications &amp; demonstrations</SectionHeading>
                 <Box fontSize="md" color="gray.400" mt={3} mb={8}>
                     ORCID{' '}
                     <Link href="https://orcid.org/0009-0007-4777-554X" isExternal color="#3C5AF0">
@@ -133,8 +143,10 @@ export default function Publications() {
                     ))}
                 </VStack>
 
+                {/* Kein "Talks": gehalten wurde nie ein Vortrag, gezeigt wurde
+                    jeweils ein laufendes System vor Publikum. */}
                 <Box fontSize="xl" fontWeight="bold" color="white" mt={12} mb={4}>
-                    Talks &amp; demonstrations
+                    Public demonstrations
                 </Box>
                 <VStack spacing={5} align="stretch">
                     {appearances.map(item => (

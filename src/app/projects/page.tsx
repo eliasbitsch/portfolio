@@ -85,7 +85,7 @@ const projectsData: Project[] = [
     category: ['XR & HRI', 'Electronics'],
     title: 'FlexiStylus',
     description:
-      'A handheld instrument for marking defects directly on a physical casting: the operator points at the flaw on the part itself instead of on a screen, and a collaborative robot picks up the marked positions. Shown publicly at SALZ 2026, the innovation festival of the University of Salzburg.',
+      'A handheld instrument for marking defects directly on a physical casting: the operator points at the flaw on the part itself instead of on a screen, and a collaborative robot picks up the marked positions. Shown publicly at SALZ 2026.',
     imageUrl: '/images/flexistylus.jpg',
     imageCredit: 'Photo: Kay Müller / Universität Salzburg, CC BY-NC 4.0',
     tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Mixed Reality', 'Embedded'],
@@ -121,8 +121,10 @@ const projectsData: Project[] = [
     id: 5,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
-    description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
-    imageUrl: '/images/taurob.png',
+    description:
+      'A tracked field robot that has to find and turn a valve on its own. My part was the perception: a YOLOv8 detector on a RealSense camera that finds the valve wheel and hands its position to the arm, so the operator no longer has to line up the gripper by hand. Team project at UAS Technikum Wien.',
+    imageUrl: '/images/taurob-poster.jpg',
+    videoUrl: '/videos/taurob-loop.mp4',
     tags: ['Robotics', 'YOLO8', 'Python', 'OpenCV', 'ROS', 'Docker'],
     icon: FaLaptopCode,
     links: [
