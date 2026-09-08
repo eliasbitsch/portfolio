@@ -71,6 +71,26 @@ export default function Hero() {
         hardware, and touch interfaces for supervising robots.
       </MotionText>
 
+      {/* Der Kern fuer alles, was mit Lernen zu tun hat. Steht bewusst als
+          eigener kurzer Absatz und nicht am Ende des vorigen, sonst liest ihn
+          niemand. */}
+      <MotionText
+        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
+        mb={3}
+        color="white"
+        lineHeight="1.6"
+        maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
+        mx="auto"
+        initial={{ opacity: 0, x: '-20vw' }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.1 }}
+        zIndex={1}
+      >
+        What I care about is the <b>learning</b>: whether someone can still do the task once
+        the headset comes off. That is what my master&apos;s thesis is about, and it is why I
+        also teach the stack I work with.
+      </MotionText>
+
 
 
       {/* Social Media & Resume Links with Hover Text */}
