@@ -94,9 +94,4 @@ export const galleries: Record<string, MediaItem[]> = {
   "TurtleBot 4 linear controller": [
     { src: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt.mp4", thumb: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt_t.jpg", type: "video" },
   ],
-  "Crayler: operating an autonomous forklift": [
-    { src: "/gallery/crayler/crayler-bedienung-am-tablet.mp4", thumb: "/gallery/crayler/crayler-bedienung-am-tablet_t.jpg", type: "video" },
-    { src: "/gallery/crayler/crayler-bedienung-vor-ort.jpg", thumb: "/gallery/crayler/crayler-bedienung-vor-ort_t.jpg", type: "image" },
-    { src: "/gallery/crayler/crayler-stand-mit-kran.jpg", thumb: "/gallery/crayler/crayler-stand-mit-kran_t.jpg", type: "image" },
-  ],
 };

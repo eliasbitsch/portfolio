@@ -88,15 +88,11 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
     return (
         <Box
             ref={wurzel}
-            /* svh und nicht dvh. dvh misst das Fenster so, wie es gerade
-               ist, und beim Scrollen faehrt am Handy die Adressleiste ein
-               und aus. Die Seitenhoehe aendert sich dann mitten in der
-               Bewegung, und mit ihr wandern die Rasterpunkte. Genau das
-               fuehlt sich an, als wuerde es nicht sauber einrasten. svh
-               misst das kleinste Fenster und bleibt konstant. */
-            height="calc(100svh - 88px)"
-            scrollSnapAlign="start"
-            scrollSnapStop="always"
+            /* Mindesthoehe statt fester Hoehe: ein Projekt fuellt den
+               Bildschirm, darf aber wachsen, wenn der Text laenger ist.
+               Bei fester Hoehe muesste der Text beschnitten werden, und
+               dafuer gibt es ohne Rasten keinen Grund mehr. */
+            minHeight="calc(100svh - 88px)"
             position="relative"
             bg="gray.900"
         >
@@ -166,7 +162,6 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
                         // Platz fuer die Seitenanzeige, sonst liegt der
                         // letzte Verweis darunter.
                         pb="56px"
-                        overflowY="auto"
                         flex="1"
                         display="flex"
                         flexDirection="column"
@@ -178,16 +173,11 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
                                 {projekt.title}
                             </Box>
                         </HStack>
-                        {/* Auf vier Zeilen begrenzt. Eine Seite ist eine
-                            Seite: sobald der Text laenger wird, muesste man
-                            innerhalb der Seite scrollen, und dann ist das
-                            Blaettern kaputt. Der ganze Text steht auf dem
-                            Desktop. */}
-                        <Box fontSize="sm" color="gray.300" lineHeight="1.6" noOfLines={4}>
+                        <Box fontSize="sm" color="gray.300" lineHeight="1.6">
                             {projekt.description}
                         </Box>
                         <Wrap spacing={2} mt={3}>
-                            {projekt.tags.slice(0, 4).map(tag => (
+                            {projekt.tags.map(tag => (
                                 <WrapItem key={tag}>
                                     <Tag size="sm" bg="gray.700" color="gray.100" borderRadius="full">
                                         {tag}
@@ -197,7 +187,7 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
                         </Wrap>
                         {projekt.links && projekt.links.length > 0 && (
                             <Wrap spacing={2} mt={3}>
-                                {projekt.links.slice(0, 4).map(l => (
+                                {projekt.links.map(l => (
                                     <WrapItem key={l.href}>
                                         <Link
                                             href={l.href}
