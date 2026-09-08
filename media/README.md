@@ -15,6 +15,7 @@ Quellen nicht verloren gehen.
 | `maze-line-follower-full.mp4` | Quelle des Maze-Loops | eigener YouTube-Kanal |
 | `turtlebot4-linear-controller.mp4` | Quelle des TurtleBot-Loops | eigene Aufnahme |
 | `taurob-tracker-full.mp4` | Quelle des Taurob-Loops | Projektvideo des Teams |
+| `robotstudio-full.mp4` | Quelle des RobotStudio-Loops | eigener YouTube-Kanal |
 | `portrait/` | Profilbild, Original und Fassungen | eigene Aufnahme |
 
 Die zugeschnittenen und verkleinerten Fassungen, die tatsaechlich
@@ -32,3 +33,8 @@ Loop sonst nur ein fertiges mp4 waere, das niemand mehr neu bauen kann.
 Gazebo-Fenster. Dort gibt es keine Costmap, dafuer ist der Roboter das
 einzige nahezu schwarze Objekt vor hellem Boden. Beide Teile werden mit
 einer kurzen Blende aneinandergehaengt.
+
+`tools/monumental_kenburns.py` baut den MONUMENTAL-Loop. Zwei Standbilder,
+jedes mit langsamer Fahrt, dazwischen ein kurzer Schub statt einer Blende.
+Der Schluss steht wieder auf dem ersten Bild in Ausgangsgroesse, damit die
+Schleife ohne Sprung zurueckspringt.
