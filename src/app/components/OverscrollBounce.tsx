@@ -19,7 +19,22 @@ export default function OverscrollBounce() {
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const ua = navigator.userAgent;
         const isApple = /Mac|iPhone|iPad|iPod/.test(ua) && !/Windows/.test(ua);
-        if (reduced || isApple) return;
+
+        /* Auf Beruehrungsgeraeten gar nicht erst anfassen.
+
+           Um `preventDefault` auf `touchmove` aufrufen zu duerfen, muss der
+           Zuhoerer nicht-passiv angemeldet sein. Ein nicht-passiver
+           touchmove-Zuhoerer zwingt den Browser, vor jedem Bildlauf auf
+           JavaScript zu warten, und genau daran zerbricht das native
+           Einrasten: das Blaettern von Seite zu Seite wird weich und
+           unentschlossen. In der Konsole steht dann die Meldung, dass der
+           Abbruch ignoriert wurde, weil der Bildlauf schon laeuft.
+
+           Gebraucht wird das hier ohnehin nicht: Android und iOS bringen
+           ihr eigenes Ueberziehen mit. Der Nachbau ist nur fuer Mausraeder
+           auf dem Desktop da. */
+        const beruehrung = window.matchMedia('(pointer: coarse)').matches;
+        if (reduced || isApple || beruehrung) return;
 
         const root = document.getElementById('bounce-root');
         if (!root) return;
