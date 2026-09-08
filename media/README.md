@@ -20,8 +20,13 @@ ausgeliefert werden, liegen in `public/images` und `public/videos`.
 
 ## tools
 
-`tools/maze_follow.py` erzeugt den Maze-Loop. Das Skript verfolgt die lokale
+`tools/maze_follow.py` erzeugt den ersten Teil des Maze-Loops. Das Skript verfolgt die lokale
 Costmap in RViz, die als einzige Flaeche im Fenster deutlich blau ist, glaettet
 den Pfad und zieht den Bildausschnitt mit. So bleibt der Roboter im Bild,
 statt in einer Gesamtansicht zu verschwinden. Nachvollziehbar, weil der
 Loop sonst nur ein fertiges mp4 waere, das niemand mehr neu bauen kann.
+
+`tools/line_follow.py` erzeugt den zweiten Teil, die Linienverfolgung im
+Gazebo-Fenster. Dort gibt es keine Costmap, dafuer ist der Roboter das
+einzige nahezu schwarze Objekt vor hellem Boden. Beide Teile werden mit
+einer kurzen Blende aneinandergehaengt.
