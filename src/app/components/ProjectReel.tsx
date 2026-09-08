@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Box, HStack, Tag, Wrap, WrapItem, Link } from '@chakra-ui/react';
 import type { IconType } from 'react-icons';
 import type { MediaItem } from './Gallery';
+import SwipeHint from './SwipeHint';
 
 /*
   Handy-Ansicht der Projekte: eine Bildschirmseite pro Projekt.
@@ -37,6 +38,9 @@ function Seite({ children, ...rest }: React.ComponentProps<typeof Box>) {
             height="100%"
             flexShrink={0}
             scrollSnapAlign="start"
+            // Ohne das rutscht ein schneller Wisch ueber mehrere Seiten.
+            // Reels laesst pro Wisch genau eine weiterspringen.
+            scrollSnapStop="always"
             position="relative"
             {...rest}
         >
@@ -45,7 +49,7 @@ function Seite({ children, ...rest }: React.ComponentProps<typeof Box>) {
     );
 }
 
-function Projekt({ projekt, medien }: { projekt: ReelProject; medien: MediaItem[] }) {
+function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: MediaItem[]; erstes: boolean }) {
     const spur = useRef<HTMLDivElement>(null);
     const [seite, setSeite] = useState(0);
     const [sichtbar, setSichtbar] = useState(false);
@@ -168,11 +172,16 @@ function Projekt({ projekt, medien }: { projekt: ReelProject; medien: MediaItem[
                                 {projekt.title}
                             </Box>
                         </HStack>
-                        <Box fontSize="sm" color="gray.300" lineHeight="1.6">
+                        {/* Auf vier Zeilen begrenzt. Eine Seite ist eine
+                            Seite: sobald der Text laenger wird, muesste man
+                            innerhalb der Seite scrollen, und dann ist das
+                            Blaettern kaputt. Der ganze Text steht auf dem
+                            Desktop. */}
+                        <Box fontSize="sm" color="gray.300" lineHeight="1.6" noOfLines={4}>
                             {projekt.description}
                         </Box>
                         <Wrap spacing={2} mt={3}>
-                            {projekt.tags.map(tag => (
+                            {projekt.tags.slice(0, 4).map(tag => (
                                 <WrapItem key={tag}>
                                     <Tag size="sm" bg="gray.700" color="gray.100" borderRadius="full">
                                         {tag}
@@ -182,7 +191,7 @@ function Projekt({ projekt, medien }: { projekt: ReelProject; medien: MediaItem[
                         </Wrap>
                         {projekt.links && projekt.links.length > 0 && (
                             <Wrap spacing={2} mt={3}>
-                                {projekt.links.map(l => (
+                                {projekt.links.slice(0, 4).map(l => (
                                     <WrapItem key={l.href}>
                                         <Link
                                             href={l.href}
@@ -255,6 +264,8 @@ function Projekt({ projekt, medien }: { projekt: ReelProject; medien: MediaItem[
                 ))}
             </Box>
 
+            <SwipeHint aktiv={erstes && sichtbar && seite === 0 && medien.length > 0} />
+
             {/* Seitenanzeige. Sagt zugleich, dass es waagrecht weitergeht. */}
             {medien.length > 0 && (
                 <HStack
@@ -308,8 +319,13 @@ export default function ProjectReel({
         // Bildlauf richtet sich nie am Fenster aus: man sieht dann immer
         // ein halbes Projekt und darueber den Rest der Filterleiste.
         <Box display={{ base: 'block', md: 'none' }} mt={6} mx={-5}>
-            {projects.map(p => (
-                <Projekt key={p.title} projekt={p} medien={galleries[p.title] ?? []} />
+            {projects.map((p, i) => (
+                <Projekt
+                    key={p.title}
+                    projekt={p}
+                    medien={galleries[p.title] ?? []}
+                    erstes={i === 0}
+                />
             ))}
         </Box>
     );
