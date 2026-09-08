@@ -159,9 +159,9 @@ export default function Publications() {
                     Anonymitaet aushebelt. Die Pipeline ist trotzdem sichtbar. */}
                 <Box mt={6} fontSize="md" color="gray.400" lineHeight="1.7">
                     Two further papers are in preparation with the AIT Center for Technology
-                    Experience, in human-robot interaction and in extended reality. Both are
-                    under anonymous review, so titles and co-authors follow once they are
-                    through.
+                    Experience, in human-robot interaction and in extended reality, both as a
+                    co-author. They are under anonymous review, so titles and co-authors follow
+                    once they are through.
                 </Box>
 
                 {/* Kein "Talks": gehalten wurde nie ein Vortrag, gezeigt wurde
