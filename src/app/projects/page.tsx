@@ -159,10 +159,10 @@ const projectsData: Project[] = [
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
-      'A Sumo-Bot built with a team of eight for the RoboRingOut competition at UAS Technikum Wien.',
+      'A Sumo-Bot for the RoboRingOut competition at UAS Technikum Wien. I led a team of eight through design, build and programming, and coached the members who had never written firmware or read a schematic before.',
     imageUrl: '/images/sumo-poster.jpg',
     videoUrl: '/videos/sumo-loop.mp4',
-    tags: ['Arduino', 'Robotics', 'Sumo-Bot', 'Team of 8'],
+    tags: ['Team lead', 'Arduino', 'Robotics', 'Sumo-Bot', 'Mentoring'],
     icon: FaLaptopCode,
     links: [
       { label: 'RoboRingOut', href: 'https://www.technikum-wien.at/events/roboringout/' },
