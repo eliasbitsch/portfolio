@@ -290,7 +290,14 @@ export default function About() {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Get unique categories from the skills data
-    const uniqueCategories = Array.from(new Set(skillsData.map(skill => skill.category)));
+    // Reihenfolge fest vorgeben statt aus den Daten ableiten: Career
+    // zuerst, weil das die Frage ist, die zuerst gestellt wird.
+    const reihenfolge = ['Career', 'Education', 'Service', 'Certificates'];
+    const vorhanden = Array.from(new Set(skillsData.map(skill => skill.category)));
+    const uniqueCategories = [
+        ...reihenfolge.filter(c => vorhanden.includes(c)),
+        ...vorhanden.filter(c => !reihenfolge.includes(c)),
+    ];
 
     return (
         <Box
