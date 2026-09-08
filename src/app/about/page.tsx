@@ -18,7 +18,7 @@ const skillsData = [
         name: 'FH Technikum Wien',
         description: 'Master: Robotics Engineering',
         logo: '/logos/technikum-wien.svg',
-        text: 'Specialising in robot learning and mixed reality for human-robot collaboration. Master thesis in preparation on mixed-reality training and skill acquisition, building on MetaMove, a bare-hand teleoperation system for an ABB GoFa cobot presented at the XR-SPro workshop at IEEE ISMAR 2026.',
+        text: 'Specialising in robot learning and mixed reality for human-robot collaboration, building on MetaMove, a bare-hand teleoperation system for an ABB GoFa cobot accepted at the XR-SPro workshop at IEEE ISMAR 2026.',
         date: '2025 - Present',
         tags: ['Robot Learning', 'Mixed Reality', 'Human-Robot Interaction', 'ROS 2', 'Unity'],
         url: 'https://www.technikum-wien.at/'
