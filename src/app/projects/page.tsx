@@ -158,6 +158,17 @@ const projectsData: Project[] = [
   },
   {
     id: 8,
+    category: ['Robotics', 'Web & Software'],
+    title: 'Conveyor belt with a digital twin',
+    description:
+      'A conveyor controlled from a Siemens PLC: the program and the HMI screen are built in TIA Portal, and the panel talks over the S7 connection to a Visual Components model of the same belt. Pressing Start on the panel starts the belt in the simulation, the direction arrow follows, and the box travels. The point is that the control logic can be commissioned against the model before the hardware exists.',
+    imageUrl: '/images/conveyor-poster.jpg',
+    videoUrl: '/videos/conveyor-loop.mp4',
+    tags: ['TIA Portal', 'SIMATIC HMI', 'PLC', 'Visual Components', 'Digital Twin'],
+    icon: FaGears,
+  },
+  {
+    id: 9,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
@@ -169,7 +180,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 9,
+    id: 10,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
@@ -189,7 +200,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 10,
+    id: 11,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -212,7 +223,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 11,
+    id: 12,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
