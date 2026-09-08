@@ -16,6 +16,7 @@ Quellen nicht verloren gehen.
 | `turtlebot4-linear-controller.mp4` | Quelle des TurtleBot-Loops | eigene Aufnahme |
 | `taurob-tracker-full.mp4` | Quelle des Taurob-Loops | Projektvideo des Teams |
 | `robotstudio-full.mp4` | Quelle des RobotStudio-Loops | eigener YouTube-Kanal |
+| `conveyor-hmi-twin-full.mp4` | Quelle des Foerderband-Loops | eigene Aufnahme, auf 1280 verkleinert |
 | `portrait/` | Profilbild, Original und Fassungen | eigene Aufnahme |
 
 Die zugeschnittenen und verkleinerten Fassungen, die tatsaechlich
