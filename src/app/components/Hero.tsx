@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <Box
       px={{ base: 5, md: 8 }}
-      py={{ base: 12, md: 10 }}
+      py={{ base: 6, md: 10 }}
       minH={{ base: 'calc(100vh - 64px)', md: 'calc(100vh - 76px)' }}
       display="flex"
       flexDirection="column"
@@ -26,8 +26,12 @@ export default function Hero() {
 
       <MotionHeading
         as="h1"
-        fontSize={{ base: '4xl', sm: '5xl', md: '6xl' }}
-        mb={{ base: 4, md: 5 }}
+        /* Auf einem iPhone SE stehen 667 Pixel zur Verfuegung. Mit den
+           alten Groessen war der Hero 860 hoch, die Symbolzeile lag unter
+           dem Rand und damit unsichtbar. Genau die ist aber das, was
+           jemand anklicken soll. */
+        fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}
+        mb={{ base: 3, md: 5 }}
         fontWeight="1000"
         color="#3C5AF0"
         initial={{ opacity: 0, x: '-20vw' }}
@@ -39,8 +43,8 @@ export default function Hero() {
       </MotionHeading>
 
       <MotionText
-        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
-        mb={3}
+        fontSize={{ base: 'sm', sm: 'lg', md: '2xl' }}
+        mb={{ base: 2, md: 3 }}
         color="white"
         lineHeight="1.6"
         maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
@@ -55,8 +59,8 @@ export default function Hero() {
       </MotionText>
 
       <MotionText
-        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
-        mb={3}
+        fontSize={{ base: 'sm', sm: 'lg', md: '2xl' }}
+        mb={{ base: 2, md: 3 }}
         color="white"
         lineHeight="1.6"
         maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
@@ -75,8 +79,8 @@ export default function Hero() {
           eigener kurzer Absatz und nicht am Ende des vorigen, sonst liest ihn
           niemand. */}
       <MotionText
-        fontSize={{ base: 'md', sm: 'lg', md: '2xl' }}
-        mb={3}
+        fontSize={{ base: 'sm', sm: 'lg', md: '2xl' }}
+        mb={{ base: 2, md: 3 }}
         color="white"
         lineHeight="1.6"
         maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
@@ -94,7 +98,7 @@ export default function Hero() {
 
 
       {/* Social Media & Resume Links with Hover Text */}
-      <HStack spacing={10} mt={6} zIndex={1}>
+      <HStack spacing={{ base: 6, md: 10 }} mt={{ base: 3, md: 6 }} zIndex={1}>
         <VStack spacing={2}>
           <Link
             href="https://github.com/eliasbitsch"
