@@ -146,6 +146,18 @@ const projectsData: Project[] = [
   },
   {
     id: 7,
+    category: ['Robotics'],
+    title: 'ABB robot cell in RobotStudio',
+    description:
+      'A simulated production cell in ABB RobotStudio: an industrial arm on a pedestal moves parts between two conveyors, inside a fenced workspace with a light curtain. Built and run entirely in simulation, so the motion, the reach and the cycle can be checked before any real robot is touched.',
+    imageUrl: '/images/robotstudio-poster.jpg',
+    videoUrl: '/videos/robotstudio-loop.mp4',
+    tags: ['ABB RobotStudio', 'Industrial Robotics', 'Simulation', 'Pick and Place'],
+    icon: FaGears,
+    links: [{ label: 'Video', href: 'https://youtu.be/vYTb_kCp25o' }]
+  },
+  {
+    id: 8,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
@@ -157,7 +169,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 8,
+    id: 9,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
@@ -177,7 +189,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -200,7 +212,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 10,
+    id: 11,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',
