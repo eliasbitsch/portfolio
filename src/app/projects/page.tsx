@@ -304,7 +304,12 @@ export default function Projects() {
         width="100%"
         mx="auto"
         overflowX={{ base: 'auto', md: 'visible' }}
-        pb={{ base: 2, md: 0 }}
+        // Ein Bildlaufbereich schneidet an seiner Kante ab, und der aktive
+        // Filter hat einen Ring, der ueber seinen Kasten hinausragt. Ohne
+        // etwas Luft ringsum wird dieser Ring links und oben abgeschnitten.
+        px={{ base: 1, md: 0 }}
+        pt={{ base: 1, md: 0 }}
+        pb={{ base: 3, md: 0 }}
         sx={{
           scrollbarWidth: 'none',
           '&::-webkit-scrollbar': { display: 'none' },
