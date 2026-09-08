@@ -11,6 +11,7 @@ import {
 import { FaGears, FaRobot, FaVrCardboard } from "react-icons/fa6";
 import SectionHeading from '../components/SectionHeading';
 import Gallery from '../components/Gallery';
+import ProjectReel from '../components/ProjectReel';
 import { galleries } from './galleries';
 
 // Example projects data
@@ -344,7 +345,13 @@ export default function Projects() {
           : `${filteredProjects.length} of ${projectsData.length} projects in ${selectedCategory}`}
       </Box>
 
+      {/* Handy: eine Bildschirmseite pro Projekt, waagrecht durch die
+          Medien. Desktop bleibt das Raster. Zwei Darstellungen statt einer
+          Umschaltung, weil sich die Bedienung grundlegend unterscheidet. */}
+      <ProjectReel projects={filteredProjects} galleries={galleries} />
+
       <SimpleGrid
+        display={{ base: 'none', md: 'grid' }}
         columns={{ base: 1, md: 2, xl: 3 }}
         spacing={6}
         mt={8}

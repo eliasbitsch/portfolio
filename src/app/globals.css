@@ -137,3 +137,26 @@ html {
     transition: none;
   }
 }
+
+
+/* Handy: eine Bildschirmseite pro Projekt.
+
+   Das Raster sitzt am scrollenden Element, also an html, und gilt nur
+   auf schmalen Schirmen. Abschnitte, die hoeher sind als das Fenster,
+   bleiben trotzdem frei scrollbar: ein Rasterbereich, der groesser ist
+   als das Fenster, darf ueberall stehen. Deshalb rastet nur, was genau
+   eine Fensterhoehe hoch ist, naemlich die Projektseiten. */
+@media (max-width: 47.9375em) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+  section {
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
