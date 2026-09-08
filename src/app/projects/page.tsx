@@ -293,7 +293,27 @@ export default function Projects() {
         <Text fontSize="lg">A selection of projects I have worked on throughout my engineering journey</Text>
       </Box>
 
-      <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
+      {/* Auf schmalen Schirmen eine Zeile zum Wischen statt fuenf
+          umgebrochene Zeilen. Sieben Filter brauchen auf einem iPhone SE
+          sonst mehr Platz als das erste Projekt. */}
+      <Wrap
+        spacing={4}
+        mt={4}
+        justify={{ base: 'flex-start', md: 'center' }}
+        maxWidth={{ base: '800px', xl: '1200px' }}
+        width="100%"
+        mx="auto"
+        overflowX={{ base: 'auto', md: 'visible' }}
+        pb={{ base: 2, md: 0 }}
+        sx={{
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
+          '& > ul': { flexWrap: { base: 'nowrap', md: 'wrap' } },
+          // Ohne das schrumpfen die Chips, statt aus dem Bild zu laufen,
+          // und die Beschriftung wird zu "X..." gekuerzt.
+          '& > ul > li': { flexShrink: 0 },
+        }}
+      >
         {[
           { label: "All", icon: FaBolt, category: "All" },
           { label: "Learning", icon: FaBook, category: "Learning" },
