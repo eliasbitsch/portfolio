@@ -88,7 +88,7 @@ export default function Hero() {
       >
         What I care about is the <b>learning</b>: whether someone can still do the task once
         the headset comes off. That question is where my research interest sits, and it is why
-        I also teach the stack I work with.
+        I wrote an online course on the stack I work with.
       </MotionText>
 
 

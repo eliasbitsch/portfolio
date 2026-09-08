@@ -19,6 +19,31 @@ interface Publication {
 
 const publications: Publication[] = [
     {
+        id: 2,
+        // Bewusst nicht der echte Titel. Beide Arbeiten laufen durch eine
+        // anonyme Begutachtung, und ein Gutachter, der den Titel sucht,
+        // darf hier nicht landen. Was hier steht, ist das Themenfeld: das
+        // sagt, woran gearbeitet wird, ohne die Arbeit auffindbar zu
+        // machen.
+        title: 'How operators notice and understand robot errors',
+        authors: 'Co-author, with the AIT Center for Technology Experience',
+        venue: 'Submission in preparation, ACM CHI 2027, Pittsburgh',
+        status: 'In preparation',
+        statusColor: 'orange',
+        date: '2026',
+        tags: ['Human-Robot Interaction', 'Multimodal Feedback', 'User Study'],
+    },
+    {
+        id: 3,
+        title: 'How far perception can be pushed in extended reality',
+        authors: 'Co-author, with the AIT Center for Technology Experience',
+        venue: 'Submission in preparation, ACM CHI 2027, Pittsburgh',
+        status: 'In preparation',
+        statusColor: 'orange',
+        date: '2026',
+        tags: ['Extended Reality', 'Perception', 'Presence'],
+    },
+    {
         id: 1,
         title: 'MetaMove: Bare-Hand Mixed-Reality Teleoperation of a Collaborative Robot with a Distance-Based Speed-Scaling Safety Layer',
         authors: 'Elias Bitsch, Viktoriia Ovdiienko, Philip Stix, Alexandra Saliger, Nikolaus Angel, Horst Orsolits',
@@ -163,16 +188,7 @@ export default function Publications() {
                     ))}
                 </VStack>
 
-                {/* Bewusst ohne Titel und Koautoren. Beide laufen durch eine
-                    anonyme Begutachtung, und ein Titel samt Autorenliste auf
-                    einer persoenlichen Seite ist genau das, was diese
-                    Anonymitaet aushebelt. Die Pipeline ist trotzdem sichtbar. */}
-                <Box mt={6} fontSize="md" color="gray.400" lineHeight="1.7">
-                    Two further papers are in preparation with the AIT Center for Technology
-                    Experience, in human-robot interaction and in extended reality, both as a
-                    co-author. They are under anonymous review, so titles and co-authors follow
-                    once they are through.
-                </Box>
+
 
                 {/* Kein "Talks": gehalten wurde nie ein Vortrag, gezeigt wurde
                     jeweils ein laufendes System vor Publikum. */}
