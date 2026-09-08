@@ -71,6 +71,17 @@ const projectsData: Project[] = [
   },
   {
     id: 2,
+    category: ['Learning', 'Robotics', 'Web & Software'],
+    title: 'ROS online course',
+    description:
+      'A course that teaches ROS from the first node to a working robot, written as structured lessons with runnable examples so that readers learn by doing rather than by reading.',
+    imageUrl: '/images/rosCourse.png',
+    tags: ['Teaching', 'ROS', 'Next.js', 'MDX'],
+    icon: FaBook,
+    links: [{ label: 'Website', href: 'https://rosready.robolink.app/' }]
+  },
+  {
+    id: 3,
     category: ['XR & HRI', 'Electronics'],
     title: 'FlexiStylus',
     description:
@@ -95,18 +106,18 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 3,
-    category: ['Robotics', 'Computer Vision', 'Web & Software'],
+    id: 4,
+    category: ['Learning', 'Robotics', 'Computer Vision', 'Web & Software'],
     title: 'MONUMENTAL',
     description:
-      'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders and gamepad control, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. Master project in Robotics Engineering.',
+      'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. It is driven with a game controller, so the operator arrives already knowing the input device and can spend the learning time on the task instead of the interface. Master project in Robotics Engineering.',
     imageUrl: '/images/monumental.jpg',
-    tags: ['HMI', 'Behaviour Trees', 'Computer Vision', 'Gamepad', 'Robotics'],
+    tags: ['HMI', 'Skill Transfer', 'Behaviour Trees', 'Computer Vision', 'Gamepad'],
     icon: FaLaptopCode,
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MONUMENTAL' }]
   },
   {
-    id: 4,
+    id: 5,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description: 'Object detection using YOLO (You Only Look Once) for a robot arm manipulation-pipeline.',
@@ -119,7 +130,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     category: ['Robotics'],
     title: 'TurtleBot 4 linear controller',
     description:
@@ -131,7 +142,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/turtlebot4' }]
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
@@ -143,7 +154,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 7,
+    id: 8,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
@@ -163,7 +174,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -183,17 +194,6 @@ const projectsData: Project[] = [
         href: 'https://github.com/eliasbitsch/Docker-ROS-maze-solver',
       },
     ]
-  },
-  {
-    id: 9,
-    category: ['Web & Software'],
-    title: 'ROS online course',
-    description: 'An online course about ROS.',
-    imageUrl: '/images/rosCourse.png',
-    tags: ['Next.js', 'Nextra', 'mdx', 'Typescript'],
-    icon: FaLaptopCode,
-    links: [{ label: 'Website', href: 'https://rosready.robolink.app/' }]
-
   },
 
   {
@@ -252,6 +252,7 @@ export default function Projects() {
       <Wrap spacing={4} mt={4} justify="center" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
         {[
           { label: "All", icon: FaBolt, category: "All" },
+          { label: "Learning", icon: FaBook, category: "Learning" },
           { label: "XR & HRI", icon: FaVrCardboard, category: "XR & HRI" },
           { label: "Robotics", icon: FaRobot, category: "Robotics" },
           { label: "Computer Vision", icon: FaEye, category: "Computer Vision" },
