@@ -124,6 +124,16 @@ const projectsData: Project[] = [
   },
   {
     id: 5,
+    category: ['Robotics', 'Web & Software', 'XR & HRI'],
+    title: 'Crayler: operating an autonomous forklift',
+    description:
+      'A truck-mounted forklift that picks up timber on its own, driven from a tablet instead of a control panel. I operated it in front of visitors at an open air AIT event in Vienna, which is the part that matters: an interface only works if a stranger can use it while you stand next to them. The operator interface itself is not shown here.',
+    imageUrl: '/images/crayler-poster.jpg',
+    tags: ['Human-Robot Interaction', 'Tablet Interface', 'Autonomous Machines', 'Public demo'],
+    icon: FaGears,
+  },
+  {
+    id: 6,
     category: ['Robotics', 'Computer Vision'],
     title: 'Taurob-Tracker',
     description:
@@ -138,7 +148,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     category: ['Robotics'],
     title: 'TurtleBot 4 linear controller',
     description:
@@ -150,7 +160,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/turtlebot4' }]
   },
   {
-    id: 7,
+    id: 8,
     category: ['Robotics'],
     title: 'ABB robot cell in RobotStudio',
     description:
@@ -162,7 +172,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/vYTb_kCp25o' }]
   },
   {
-    id: 8,
+    id: 9,
     category: ['Robotics', 'Web & Software'],
     title: 'Conveyor belt with a digital twin',
     description:
@@ -173,7 +183,7 @@ const projectsData: Project[] = [
     icon: FaGears,
   },
   {
-    id: 9,
+    id: 10,
     category: ['Robotics', 'Electronics'],
     title: 'Ball Balancing Robot',
     description:
@@ -185,7 +195,7 @@ const projectsData: Project[] = [
     links: [{ label: 'Video', href: 'https://youtu.be/Y26tN3HcXMo' }]
   },
   {
-    id: 10,
+    id: 11,
     category: ['Robotics', 'Electronics'],
     title: 'Circuit-Crusher',
     description:
@@ -205,7 +215,7 @@ const projectsData: Project[] = [
     ]
   },
   {
-    id: 11,
+    id: 12,
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
@@ -228,7 +238,7 @@ const projectsData: Project[] = [
   },
 
   {
-    id: 12,
+    id: 13,
     category: ['Electronics', 'Robotics'],
     title: 'Hardware from scratch',
     description:
@@ -238,7 +248,7 @@ const projectsData: Project[] = [
     icon: FaGears,
   },
   {
-    id: 13,
+    id: 14,
     category: ['Web & Software'],
     title: 'Portfolio Website',
     description: 'A personal portfolio website built with Next.js, Typescript and Chakra UI.',

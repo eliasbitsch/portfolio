@@ -24,20 +24,28 @@ CLIPS = {
         'medien/metamove/metamove-teleoperation-abb-gofa.mov',
         'vids/metamove-loop.mp4', 768, 600,
         [
-            (5.0, 6.0, 0.42, 0.50, 1.14),
-            (21.0, 6.0, 0.36, 0.50, 1.12),
-            (54.0, 6.5, 0.46, 0.48, 1.16),
+            # Die Zeiten sind nicht geschaetzt. Die Bewegung des Arms im
+            # Bild wurde gemessen, der Wechsel von schnell auf langsam
+            # liegt bei 9,3 und bei 23,4 Sekunden. Beide Abschnitte
+            # enthalten einen davon.
+            (5.5, 6.0, 0.42, 0.50, 1.14,
+             'Bare-hand control: Meta Quest 3 to ABB GoFa'),
+            (20.5, 7.0, 0.36, 0.50, 1.12,
+             'Distance-based speed scaling: closer operator, slower robot'),
+            (54.0, 6.0, 0.46, 0.48, 1.16,
+             'Live digital twin over ROS 2, EGM at 250 Hz'),
         ],
     ),
 }
 
 BLENDE = 0.5
+FONT = r'C\:/Windows/Fonts/segoeuib.ttf'
 
 
 def bauen(name):
     quelle, ziel, W, H, akte = CLIPS[name]
     teile = []
-    for i, (start, dauer, cx, cy, zoom) in enumerate(akte):
+    for i, (start, dauer, cx, cy, zoom, text) in enumerate(akte):
         out = os.path.join(D, 'vids', '_akt_%s_%d.mp4' % (name, i))
         # Erst fest auf das Zielverhaeltnis beschneiden, dann die Fahrt.
         # `crop` wertet Breite und Hoehe nur beim Start aus, dort gibt es
@@ -53,6 +61,13 @@ def bauen(name):
             "x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps=30"
         ).format(ar=W / H, cx=cx, cy=cy, W2=W * 2, H2=H * 2,
                  schritt=(zoom - 1) / schritte, zoom=zoom, W=W, H=H)
+        if text:
+            sicher = text.replace(':', r'\:').replace("'", r"'")
+            vf += (
+                ",drawbox=x=0:y=ih-84:w=iw:h=84:color=black@0.55:t=fill"
+                ",drawtext=fontfile='{f}':text='{t}':fontcolor=white:"
+                "fontsize=25:x=(w-text_w)/2:y=h-54"
+            ).format(f=FONT, t=sicher)
         cmd = ['ffmpeg', '-y', '-v', 'error', '-ss', str(start), '-t', str(dauer),
                '-i', os.path.join(D, quelle), '-an', '-vf', vf,
                '-r', '30', '-c:v', 'libx264', '-crf', '23', '-preset', 'medium',

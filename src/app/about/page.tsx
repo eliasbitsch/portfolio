@@ -107,6 +107,7 @@ const skillsData = [
         description: 'Student volunteer',
         text: 'Student volunteer at the IEEE International Conference on Robotics and Automation in Vienna, the largest annual conference in robotics.',
         date: '2026',
+        photo: '/images/icra-2026.jpg',
         tags: ['Robotics', 'Conference', 'Volunteering'],
         url: 'https://www.linkedin.com/posts/uas-technikum-wien_changeourtomorrow-fhtechnikumwien-uastechnikumwien-activity-7477768452665937921-4nVw',
     },
@@ -147,6 +148,7 @@ interface SkillProps {
         url: string;
         logo?: string;
         logoIcon?: React.ElementType;
+        photo?: string;
     };
 }
 
@@ -223,6 +225,21 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                     <Box fontSize="sm" mt={1}>
                         {skill.text}
                     </Box>
+                    {/* Ein Foto sagt bei so einem Eintrag mehr als die Zeile
+                        darueber. Feste Hoehe, damit die Karte beim Laden
+                        nicht springt. */}
+                    {skill.photo && (
+                        <Image
+                            src={skill.photo}
+                            alt={skill.name}
+                            mt={3}
+                            width="100%"
+                            height={{ base: '200px', md: '280px' }}
+                            objectFit="cover"
+                            objectPosition="center 35%"
+                            borderRadius="md"
+                        />
+                    )}
                 </VStack>
                 <Wrap spacing={2} mt={3}>
                     {skill.tags.map(tag => (
