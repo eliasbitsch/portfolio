@@ -117,8 +117,10 @@ const projectsData: Project[] = [
     title: 'MONUMENTAL',
     description:
       'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. The same site can be driven with a pencil on a tablet or with a game controller, so the operator arrives already knowing the input device and spends the learning time on the task instead of the interface. Master project in Robotics Engineering.',
-    imageUrl: '/images/monumental-poster.jpg',
-    videoUrl: '/videos/monumental-loop.mp4',
+    // Kein Video mehr: die Ueberblendung zwischen Stift und Gamepad war
+    // ein Ersatz dafuer, dass man die beiden Fotos nicht sehen konnte.
+    // Jetzt blaettert man sie in der Karte durch.
+    imageUrl: '/gallery/monumental/monumental-03-bedienung-mit-stift.jpg',
     tags: ['HMI', 'Skill Transfer', 'Behaviour Trees', 'Computer Vision', 'Gamepad'],
     icon: FaLaptopCode,
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MONUMENTAL' }]
@@ -388,36 +390,42 @@ export default function Projects() {
                   {project.imageCredit}
                 </Box>
               )}
-              {project.videoUrl ? (
-                /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm, in
-                   der Schleife, ohne Bedienelemente. Das Standbild steht
-                   sofort da, damit beim Laden nichts springt. */
-                <Box
-                  as="video"
-                  src={project.videoUrl}
-                  poster={project.imageUrl}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  objectFit="cover"
-                  width="100%"
-                  height="300px"
-                  transition="transform 0.3s ease-in-out"
-                />
-              ) : (
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  objectFit={project.imageFit ?? 'cover'}
-                  bg={project.imageFit === 'contain' ? 'gray.800' : undefined}
-                  p={project.imageFit === 'contain' ? 3 : 0}
-                  width="100%"
-                  height="300px"
-                  transition="transform 0.3s ease-in-out"
-                />
-              )}
+              {/* Die Medienflaeche ist ein Blaetterwerk: seitlich wischen
+                  zeigt die weiteren Aufnahmen an Ort und Stelle, ein Tippen
+                  vergroessert. Punkte im Bild sagen, dass es weitergeht. */}
+              <Gallery
+                items={galleries[project.title] ?? []}
+                title={project.title}
+                hero={
+                  project.videoUrl ? (
+                    /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm,
+                       in der Schleife, ohne Bedienelemente. */
+                    <Box
+                      as="video"
+                      src={project.videoUrl}
+                      poster={project.imageUrl}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      objectFit="cover"
+                      width="100%"
+                      height="100%"
+                    />
+                  ) : (
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      objectFit={project.imageFit ?? 'cover'}
+                      bg={project.imageFit === 'contain' ? 'gray.800' : undefined}
+                      p={project.imageFit === 'contain' ? 3 : 0}
+                      width="100%"
+                      height="100%"
+                    />
+                  )
+                }
+              />
             </Box>
             <Box p={4}>
               <Text fontWeight="bold" fontSize="xl" mb={2}>{project.title}</Text>
@@ -461,10 +469,6 @@ export default function Projects() {
                 </Wrap>
               )}
 
-              {/* Die Bildleiste steht unter den Links, weil sie stoebern
-                  ist und nicht lesen. Wer die Beschreibung noch liest,
-                  soll nicht von Vorschaubildern abgelenkt werden. */}
-              <Gallery items={galleries[project.title] ?? []} title={project.title} />
             </Box>
           </MotionBox>
         ))}
