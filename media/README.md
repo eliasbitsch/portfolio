@@ -14,6 +14,8 @@ Quellen nicht verloren gehen.
 | `ball-balancing-full.mp4` | Quelle des Ball-Loops | eigener YouTube-Kanal |
 | `maze-line-follower-full.mp4` | Quelle des Maze-Loops | eigener YouTube-Kanal |
 | `turtlebot4-linear-controller.mp4` | Quelle des TurtleBot-Loops | eigene Aufnahme |
+| `taurob-tracker-full.mp4` | Quelle des Taurob-Loops | Projektvideo des Teams |
+| `portrait/` | Profilbild, Original und Fassungen | eigene Aufnahme |
 
 Die zugeschnittenen und verkleinerten Fassungen, die tatsaechlich
 ausgeliefert werden, liegen in `public/images` und `public/videos`.
