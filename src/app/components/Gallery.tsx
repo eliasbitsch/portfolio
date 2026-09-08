@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, HStack, IconButton, Portal } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -20,8 +20,28 @@ export type MediaItem = { src: string; thumb: string; type: 'image' | 'video' };
 
 const MotionBox = motion(Box);
 
-export default function Gallery({ items, title }: { items: MediaItem[]; title: string }) {
+export default function Gallery({
+    items,
+    title,
+    hero,
+}: {
+    items: MediaItem[];
+    title: string;
+    /* Das eigene Bild der Karte. Ist es gesetzt, wird die Medienflaeche
+       selbst zum Blaetterwerk: seitlich wischen zeigt die naechsten
+       Aufnahmen an Ort und Stelle, ein Tippen vergroessert. Die Leiste
+       sitzt dann direkt darunter und nicht am Fuss der Karte. */
+    hero?: React.ReactNode;
+}) {
     const [open, setOpen] = useState<number | null>(null);
+    const [seite, setSeite] = useState(0);
+    const spur = useRef<HTMLDivElement>(null);
+
+    const zuSeite = (i: number) => {
+        const el = spur.current;
+        if (!el) return;
+        el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' });
+    };
 
     const zeigen = useCallback(
         (richtung: number) => {
@@ -51,8 +71,130 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
     if (!items || items.length === 0) return null;
     const aktuell = open === null ? null : items[open];
 
+    const seiten = hero ? [null, ...items] : items;
+
     return (
         <>
+            {hero && (
+                <Box position="relative">
+                <Box
+                    ref={spur}
+                    onScroll={() => {
+                        const el = spur.current;
+                        if (el) setSeite(Math.round(el.scrollLeft / el.clientWidth));
+                    }}
+                    display="flex"
+                    height="300px"
+                    overflowX="auto"
+                    overflowY="hidden"
+                    borderTopRadius="lg"
+                    sx={{
+                        scrollSnapType: 'x mandatory',
+                        scrollbarWidth: 'none',
+                        '&::-webkit-scrollbar': { display: 'none' },
+                        overscrollBehaviorX: 'contain',
+                    }}
+                >
+                    {seiten.map((m, i) => (
+                        <Box
+                            key={m ? m.src : 'hero'}
+                            flexShrink={0}
+                            width="100%"
+                            height="100%"
+                            position="relative"
+                            scrollSnapAlign="start"
+                            scrollSnapStop="always"
+                            cursor="zoom-in"
+                            onClick={() => setOpen(hero ? Math.max(0, i - 1) : i)}
+                        >
+                            {m === null ? (
+                                hero
+                            ) : m.type === 'video' ? (
+                                <Box
+                                    as="video"
+                                    src={m.src}
+                                    muted
+                                    loop
+                                    playsInline
+                                    preload="none"
+                                    poster={m.thumb}
+                                    width="100%"
+                                    height="100%"
+                                    objectFit="cover"
+                                />
+                            ) : (
+                                <Box
+                                    as="img"
+                                    src={m.thumb}
+                                    alt=""
+                                    loading="lazy"
+                                    width="100%"
+                                    height="100%"
+                                    objectFit="cover"
+                                />
+                            )}
+                        </Box>
+                    ))}
+                </Box>
+
+                {/* Zaehler oben rechts, so wie bei Instagram. Sagt sofort,
+                    wie viel noch kommt, ohne dass man die Punkte zaehlen
+                    muss. */}
+                {seiten.length > 1 && (
+                    <Box
+                        position="absolute"
+                        top="10px"
+                        right="10px"
+                        px={2.5}
+                        py={1}
+                        borderRadius="full"
+                        bg="blackAlpha.700"
+                        backdropFilter="blur(6px)"
+                        fontSize="xs"
+                        fontWeight="medium"
+                        color="white"
+                        pointerEvents="none"
+                        zIndex={2}
+                    >
+                        {seite + 1} / {seiten.length}
+                    </Box>
+                )}
+
+                {/* Punkte im Bild, so wie man es von Instagram kennt. Sie
+                    sagen zugleich, dass es seitlich weitergeht, und
+                    brauchen keine eigene Zeile unter der Karte. */}
+                {seiten.length > 1 && seiten.length <= 8 && (
+                    <HStack
+                        position="absolute"
+                        bottom="12px"
+                        left="50%"
+                        transform="translateX(-50%)"
+                        spacing={1.5}
+                        px={2.5}
+                        py={1.5}
+                        borderRadius="full"
+                        bg="blackAlpha.600"
+                        backdropFilter="blur(6px)"
+                        pointerEvents="none"
+                    >
+                        {seiten.length <= 8 ? (
+                            seiten.map((_, i) => (
+                                <Box
+                                    key={i}
+                                    width={i === seite ? '16px' : '6px'}
+                                    height="6px"
+                                    borderRadius="full"
+                                    bg={i === seite ? 'white' : 'whiteAlpha.600'}
+                                    transition="width 0.25s cubic-bezier(0.16,1,0.3,1), background-color 0.25s"
+                                />
+                            ))
+                        ) : null}
+                    </HStack>
+                )}
+                </Box>
+            )}
+
+            {!hero && (
             <HStack
                 mt={4}
                 spacing={2}
@@ -68,7 +210,7 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
                     <Box
                         key={m.src}
                         as="button"
-                        onClick={() => setOpen(i)}
+                        onClick={() => (hero ? zuSeite(i + 1) : setOpen(i))}
                         aria-label={`${title}, Bild ${i + 1} von ${items.length} vergroessern`}
                         flexShrink={0}
                         position="relative"
@@ -77,7 +219,7 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
                         borderRadius="md"
                         overflow="hidden"
                         border="1px solid"
-                        borderColor="whiteAlpha.300"
+                        borderColor={hero && seite === i + 1 ? '#3C5AF0' : 'whiteAlpha.300'}
                         transition="transform 0.18s cubic-bezier(0.16,1,0.3,1), border-color 0.18s"
                         _hover={{ transform: 'translateY(-2px)', borderColor: '#3C5AF0' }}
                     >
@@ -111,6 +253,7 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
                     </Box>
                 ))}
             </HStack>
+            )}
 
             {/* Die Lightbox muss aus der Karte heraus. Die Karte traegt ein
                 transform, fuer Hover und fuer die Layout-Animation beim
@@ -152,6 +295,21 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.98, y: 4 }}
                             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                            /* Seitlich wischen statt Pfeile tippen. Die
+                               Grenzen sind null, das Bild federt also zurueck
+                               und laesst sich nicht wegziehen. Erst ab 70
+                               Pixeln oder genug Schwung wird geblaettert,
+                               sonst wechselt es schon beim Antippen. */
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 0 }}
+                            dragElastic={0.18}
+                            dragMomentum={false}
+                            onDragEnd={(_, info) => {
+                                const weit = Math.abs(info.offset.x) > 70;
+                                const schnell = Math.abs(info.velocity.x) > 320;
+                                if (!weit && !schnell) return;
+                                zeigen(info.offset.x < 0 ? 1 : -1);
+                            }}
                         >
                             {aktuell.type === 'video' ? (
                                 <Box
@@ -174,6 +332,8 @@ export default function Gallery({ items, title }: { items: MediaItem[]; title: s
                                     key={aktuell.src}
                                     src={aktuell.src}
                                     alt={`${title}`}
+                                    draggable={false}
+                                    userSelect="none"
                                     maxHeight={{ base: '70vh', md: '80vh' }}
                                     maxWidth="100%"
                                     objectFit="contain"
