@@ -12,6 +12,16 @@ Quellen nicht verloren gehen.
 | `monumental-*.jpg` | MONUMENTAL | eigene Aufnahmen |
 | `sumo-full.mp4` | Quelle des Sumo-Loops | eigener YouTube-Kanal |
 | `ball-balancing-full.mp4` | Quelle des Ball-Loops | eigener YouTube-Kanal |
+| `maze-line-follower-full.mp4` | Quelle des Maze-Loops | eigener YouTube-Kanal |
+| `turtlebot4-linear-controller.mp4` | Quelle des TurtleBot-Loops | eigene Aufnahme |
 
 Die zugeschnittenen und verkleinerten Fassungen, die tatsaechlich
 ausgeliefert werden, liegen in `public/images` und `public/videos`.
+
+## tools
+
+`tools/maze_follow.py` erzeugt den Maze-Loop. Das Skript verfolgt die lokale
+Costmap in RViz, die als einzige Flaeche im Fenster deutlich blau ist, glaettet
+den Pfad und zieht den Bildausschnitt mit. So bleibt der Roboter im Bild,
+statt in einer Gesamtansicht zu verschwinden. Nachvollziehbar, weil der
+Loop sonst nur ein fertiges mp4 waere, das niemand mehr neu bauen kann.
