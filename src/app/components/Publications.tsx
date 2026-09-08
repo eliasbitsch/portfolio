@@ -113,12 +113,19 @@ export default function Publications() {
     return (
         <Box p={5} pt={{ base: 24, md: 28 }} minH="100vh">
             <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
-                <SectionHeading>Publications</SectionHeading>
-                <Box fontSize="md" color="gray.400" mt={3} mb={6}>
+                <SectionHeading>Publications &amp; talks</SectionHeading>
+                <Box fontSize="md" color="gray.400" mt={3} mb={8}>
                     ORCID{' '}
                     <Link href="https://orcid.org/0009-0007-4777-554X" isExternal color="#3C5AF0">
                         0009-0007-4777-554X
                     </Link>
+                </Box>
+
+                {/* Beide Bloecke tragen dieselbe Ueberschriftenebene. Vorher
+                    stand der Auftritt unter "Publications" und las sich damit
+                    wie eine Unterkategorie davon. */}
+                <Box fontSize="xl" fontWeight="bold" color="white" mb={4}>
+                    Papers
                 </Box>
                 <VStack spacing={5} align="stretch">
                     {publications.map(publication => (
@@ -126,9 +133,7 @@ export default function Publications() {
                     ))}
                 </VStack>
 
-                {/* Eine Live-Demo auf einer Konferenz ist kein Paper und soll
-                    die Publikationsliste nicht verwaessern. */}
-                <Box fontSize="xl" fontWeight="bold" color="white" mt={10} mb={4}>
+                <Box fontSize="xl" fontWeight="bold" color="white" mt={12} mb={4}>
                     Talks &amp; demonstrations
                 </Box>
                 <VStack spacing={5} align="stretch">
