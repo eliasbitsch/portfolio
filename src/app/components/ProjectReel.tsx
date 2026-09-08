@@ -88,7 +88,13 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
     return (
         <Box
             ref={wurzel}
-            height="calc(100dvh - 88px)"
+            /* svh und nicht dvh. dvh misst das Fenster so, wie es gerade
+               ist, und beim Scrollen faehrt am Handy die Adressleiste ein
+               und aus. Die Seitenhoehe aendert sich dann mitten in der
+               Bewegung, und mit ihr wandern die Rasterpunkte. Genau das
+               fuehlt sich an, als wuerde es nicht sauber einrasten. svh
+               misst das kleinste Fenster und bleibt konstant. */
+            height="calc(100svh - 88px)"
             scrollSnapAlign="start"
             scrollSnapStop="always"
             position="relative"
