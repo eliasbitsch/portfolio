@@ -52,8 +52,11 @@ const projectsData: Project[] = [
     title: 'MetaMove',
     description:
       'Bare-hand mixed-reality teleoperation of an ABB GoFa cobot: Meta Quest 3 to ROS 2 with MoveIt Servo and an EGM bridge at 250 Hz, plus a distance-based speed-scaling safety layer and a live bidirectional digital twin. Accepted at the XR-SPro workshop, IEEE ISMAR 2026.',
-    imageUrl: '/images/metamove-paper.png',
-    imageFit: 'contain',
+    // Die erste Seite der Camera-Ready, exakt im Kartenverhaeltnis
+    // geschnitten. Vorher war es ein breiteres Bild mit `contain`, das
+    // die Karte oben und unten nicht ausgefuellt und die Bildunterschrift
+    // angeschnitten hat.
+    imageUrl: '/images/metamove-paper.jpg',
     imageCredit: '© 2026 IEEE · MetaMove, XR-SPro workshop, ISMAR-Adjunct 2026',
     tags: ['Mixed Reality', 'Unity', 'C#', 'ROS 2', 'MoveIt Servo', 'Meta Quest 3', 'ABB GoFa'],
     icon: FaLaptopCode,
