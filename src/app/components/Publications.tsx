@@ -153,6 +153,17 @@ export default function Publications() {
                     ))}
                 </VStack>
 
+                {/* Bewusst ohne Titel und Koautoren. Beide laufen durch eine
+                    anonyme Begutachtung, und ein Titel samt Autorenliste auf
+                    einer persoenlichen Seite ist genau das, was diese
+                    Anonymitaet aushebelt. Die Pipeline ist trotzdem sichtbar. */}
+                <Box mt={6} fontSize="md" color="gray.400" lineHeight="1.7">
+                    Two further papers are in preparation with the AIT Center for Technology
+                    Experience, in human-robot interaction and in extended reality. Both are
+                    under anonymous review, so titles and co-authors follow once they are
+                    through.
+                </Box>
+
                 {/* Kein "Talks": gehalten wurde nie ein Vortrag, gezeigt wurde
                     jeweils ein laufendes System vor Publikum. */}
                 <Box fontSize="xl" fontWeight="bold" color="white" mt={12} mb={4}>
