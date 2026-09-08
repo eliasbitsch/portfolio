@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image } from '@chakra-ui/react';
+import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image, Flex } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom, FaHandsHelping } from 'react-icons/fa'; // Importing the React icon
 import { SiDassaultsystemes } from 'react-icons/si';
@@ -265,6 +265,39 @@ export default function About() {
 
             <Box textAlign="left" maxWidth={{ base: "800px", xl: "1200px" }} width="100%" mx="auto">
                 <SectionHeading>About</SectionHeading>
+
+                {/* Das Portraet steht hier und nicht im Hero. Es ist kein
+                    Projekt und auch kein Aushaengeschild, sondern gehoert zu
+                    der Frage, wer das eigentlich ist. Der Ausschnitt ist
+                    bewusst weiter als ein Avatar, damit Kittel und Logo
+                    sichtbar bleiben. */}
+                <Flex
+                    mt={8}
+                    gap={{ base: 5, md: 8 }}
+                    align="center"
+                    direction={{ base: 'column', md: 'row' }}
+                    textAlign={{ base: 'center', md: 'left' }}
+                >
+                    <Image
+                        src="/images/profile-about.jpg"
+                        alt="Elias Bitsch at the AIT Center for Technology Experience"
+                        width={640}
+                        height={640}
+                        boxSize={{ base: '180px', md: '220px' }}
+                        borderRadius="full"
+                        objectFit="cover"
+                        flexShrink={0}
+                        border="3px solid"
+                        borderColor="#3C5AF0"
+                        boxShadow="0 10px 30px rgba(0,0,0,0.45)"
+                    />
+                    <Box fontSize={{ base: 'md', md: 'lg' }} color="gray.300" lineHeight="1.7">
+                        Technical assistant at the AIT Center for Technology Experience and
+                        Robotics Engineering master&apos;s student at UAS Technikum Wien. Most of
+                        my work happens between a lab bench and a robot cell: building the thing,
+                        then putting it in front of the people who are supposed to use it.
+                    </Box>
+                </Flex>
             </Box>
 
             <SimpleGrid

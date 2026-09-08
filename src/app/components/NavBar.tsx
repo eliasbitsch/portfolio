@@ -104,7 +104,7 @@ const NavBar = () => {
                         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
                         _hover={{ bg: 'rgba(255, 255, 255, 0.16)', color: 'white' }}
                         onClick={onToggle}
-                        mr="auto"
+                        ml="auto"
                         borderRadius="0.7rem"
                         backgroundColor="rgba(255, 255, 255, 0.08)"
                         color="white"

@@ -22,12 +22,15 @@ BLUR = 20                   # Staerke des weichen Hintergrunds
 # Scharfe Zone als Ellipse in Anteilen der Kante. Etwas hoeher als die
 # Mitte, weil das Gesicht oben sitzt, und unten breiter fuer die Schultern.
 E_CX, E_CY = 0.50, 0.44
-E_RX, E_RY = 0.36, 0.42
+E_RX, E_RY = 0.40, 0.46
 FEATHER = 0.22
 
 # Quadrat im Original. Mittelpunkt liegt auf dem Gesicht, die Kante ist so
 # gewaehlt, dass Kopf und Schultern hineinpassen.
-CROP_CX, CROP_CY, CROP_SIDE = 1075, 1250, 1250
+# Enger als eine Portraetaufnahme, weil das Bild fast immer klein und rund
+# ausgegeben wird. Bei 160 Pixeln Durchmesser bleibt vom Gesicht sonst kaum
+# etwas uebrig, und die Ecken schneidet der Kreis ohnehin weg.
+CROP_CX, CROP_CY, CROP_SIDE = 1075, 1165, 980
 
 im = Image.open(SRC).convert('RGB')
 W, H = im.size
