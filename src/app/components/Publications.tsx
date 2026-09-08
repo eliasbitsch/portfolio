@@ -33,6 +33,16 @@ const publications: Publication[] = [
 
 const appearances: Publication[] = [
     {
+        id: 99,
+        title: 'MetaMove: Bare-Hand Mixed-Reality Teleoperation of a Collaborative Robot with a Distance-Based Speed-Scaling Safety Layer',
+        authors: 'Elias Bitsch, Viktoriia Ovdiienko, Philip Stix, Alexandra Saliger, Nikolaus Angel, Horst Orsolits',
+        venue: 'Hands-on demo session, XR-SPro Workshop at IEEE ISMAR 2026, Bari, Italy',
+        status: 'Upcoming, 6 October 2026',
+        statusColor: 'purple',
+        date: '2026',
+        tags: ['Mixed Reality', 'Teleoperation', 'Live Demo'],
+    },
+    {
         id: 100,
         title: 'FlexiStylus: marking defects directly on a physical casting',
         authors: 'Elias Bitsch',
