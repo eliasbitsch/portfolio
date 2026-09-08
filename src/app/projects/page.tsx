@@ -110,8 +110,9 @@ const projectsData: Project[] = [
     category: ['Learning', 'Robotics', 'Computer Vision', 'Web & Software'],
     title: 'MONUMENTAL',
     description:
-      'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. It is driven with a game controller, so the operator arrives already knowing the input device and can spend the learning time on the task instead of the interface. Master project in Robotics Engineering.',
-    imageUrl: '/images/monumental.jpg',
+      'An operator interface for two rail-mounted brick-laying arms: a 3D view of the site, joint sliders, a wrist camera that detects the bricks, behaviour-tree missions and a prompt field for spoken commands. The same site can be driven with a pencil on a tablet or with a game controller, so the operator arrives already knowing the input device and spends the learning time on the task instead of the interface. Master project in Robotics Engineering.',
+    imageUrl: '/images/monumental-poster.jpg',
+    videoUrl: '/videos/monumental-loop.mp4',
     tags: ['HMI', 'Skill Transfer', 'Behaviour Trees', 'Computer Vision', 'Gamepad'],
     icon: FaLaptopCode,
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MONUMENTAL' }]
