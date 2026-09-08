@@ -33,6 +33,16 @@ const publications: Publication[] = [
 
 const appearances: Publication[] = [
     {
+        id: 98,
+        title: 'Theresian Tactical Holodeck: augmented reality for tactical training',
+        authors: 'Elias Bitsch',
+        venue: 'Lange Nacht der Forschung, AIT and the Theresian Military Academy',
+        status: 'Presented',
+        statusColor: 'blue',
+        date: '2026',
+        tags: ['Augmented Reality', 'Training', 'Public engagement'],
+    },
+    {
         id: 99,
         title: 'MetaMove: Bare-Hand Mixed-Reality Teleoperation of a Collaborative Robot with a Distance-Based Speed-Scaling Safety Layer',
         authors: 'Elias Bitsch, Viktoriia Ovdiienko, Philip Stix, Alexandra Saliger, Nikolaus Angel, Horst Orsolits',

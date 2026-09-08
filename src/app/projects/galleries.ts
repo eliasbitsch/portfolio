@@ -76,8 +76,9 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/monumental/monumental-04-bedienung-mit-gamepad.jpg", thumb: "/gallery/monumental/monumental-04-bedienung-mit-gamepad_t.jpg", type: "image" },
   ],
   "MetaMove": [
-    { src: "/gallery/metamove/metamove-laborzelle-mit-headset.jpg", thumb: "/gallery/metamove/metamove-laborzelle-mit-headset_t.jpg", type: "image" },
+    { src: "/gallery/metamove/metamove-bedienung-mit-headset.jpg", thumb: "/gallery/metamove/metamove-bedienung-mit-headset_t.jpg", type: "image" },
     { src: "/gallery/metamove/metamove-teleoperation-abb-gofa.mp4", thumb: "/gallery/metamove/metamove-teleoperation-abb-gofa_t.jpg", type: "video" },
+    { src: "/gallery/metamove/metamove-laborzelle-mit-headset.jpg", thumb: "/gallery/metamove/metamove-laborzelle-mit-headset_t.jpg", type: "image" },
   ],
   "ABB robot cell in RobotStudio": [
     { src: "/gallery/robotstudio/robotstudio-01-zelle-gesamtansicht.mp4", thumb: "/gallery/robotstudio/robotstudio-01-zelle-gesamtansicht_t.jpg", type: "video" },
@@ -92,5 +93,10 @@ export const galleries: Record<string, MediaItem[]> = {
   ],
   "TurtleBot 4 linear controller": [
     { src: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt.mp4", thumb: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt_t.jpg", type: "video" },
+  ],
+  "Crayler: operating an autonomous forklift": [
+    { src: "/gallery/crayler/crayler-bedienung-am-tablet.mp4", thumb: "/gallery/crayler/crayler-bedienung-am-tablet_t.jpg", type: "video" },
+    { src: "/gallery/crayler/crayler-bedienung-vor-ort.jpg", thumb: "/gallery/crayler/crayler-bedienung-vor-ort_t.jpg", type: "image" },
+    { src: "/gallery/crayler/crayler-stand-mit-kran.jpg", thumb: "/gallery/crayler/crayler-stand-mit-kran_t.jpg", type: "image" },
   ],
 };
