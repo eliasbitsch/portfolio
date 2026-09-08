@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image, Flex } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom, FaHandsHelping } from 'react-icons/fa'; // Importing the React icon
+import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom, FaHandsHelping, FaLinkedin } from 'react-icons/fa'; // Importing the React icon
 import { SiDassaultsystemes } from 'react-icons/si';
 import { PiCertificateLight } from "react-icons/pi";
 import { url } from 'inspector';
@@ -108,6 +108,7 @@ const skillsData = [
         text: 'Student volunteer at the IEEE International Conference on Robotics and Automation in Vienna, the largest annual conference in robotics.',
         date: '2026',
         photo: '/images/icra-2026.jpg',
+        linkText: 'View on LinkedIn',
         tags: ['Robotics', 'Conference', 'Volunteering'],
         url: 'https://www.linkedin.com/posts/uas-technikum-wien_changeourtomorrow-fhtechnikumwien-uastechnikumwien-activity-7477768452665937921-4nVw',
     },
@@ -149,6 +150,7 @@ interface SkillProps {
         logo?: string;
         logoIcon?: React.ElementType;
         photo?: string;
+        linkText?: string;
     };
 }
 
@@ -228,6 +230,30 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                     {/* Ein Foto sagt bei so einem Eintrag mehr als die Zeile
                         darueber. Feste Hoehe, damit die Karte beim Laden
                         nicht springt. */}
+                    {/* Sichtbarer Hinweis, wohin die Karte fuehrt. Bewusst
+                        kein eigenes <a>: die ganze Karte ist schon ein Link,
+                        und ein Link im Link ist ungueltiges HTML. Ein Klick
+                        auf das Abzeichen oeffnet denselben Beitrag. */}
+                    {skill.linkText && (
+                        <HStack
+                            mt={3}
+                            spacing={2}
+                            alignSelf="flex-start"
+                            px={3}
+                            py={1.5}
+                            borderRadius="full"
+                            borderWidth="1px"
+                            borderColor="gray.500"
+                            color="gray.200"
+                            fontSize="sm"
+                            fontWeight="medium"
+                            transition="background-color 0.2s ease, color 0.2s ease"
+                            _hover={{ bg: 'gray.600', color: 'white' }}
+                        >
+                            <Box as={FaLinkedin} boxSize="1em" color="#0A66C2" />
+                            <Box>{skill.linkText}</Box>
+                        </HStack>
+                    )}
                     {skill.photo && (
                         <Image
                             src={skill.photo}
