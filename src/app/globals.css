@@ -153,6 +153,17 @@ html {
   section {
     scroll-snap-align: start;
   }
+
+  /* Listen staffeln: jede Karte in Publications und About bekommt einen
+     eigenen Rasterpunkt, damit man sie einzeln durchblaettert statt in
+     einem langen Band zu scrollen. Ohne `scroll-snap-stop: always`,
+     damit ein schneller Wisch trotzdem mehrere ueberspringen darf. Die
+     Projektkarten des Rasters sind auf dem Handy ausgeblendet und
+     erzeugen deshalb keine Rasterpunkte. */
+  .card {
+    scroll-snap-align: start;
+    scroll-margin-top: 96px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
