@@ -33,14 +33,14 @@ const publications: Publication[] = [
 
 const appearances: Publication[] = [
     {
-        id: 98,
-        title: 'Theresian Tactical Holodeck: augmented reality for tactical training',
+        id: 101,
+        title: 'Human-Robot Interaction for Casting Parts and Defect Annotation',
         authors: 'Elias Bitsch',
-        venue: 'Lange Nacht der Forschung, AIT and the Theresian Military Academy',
-        status: 'Presented',
-        statusColor: 'blue',
+        venue: 'Applied AI Conference (AAIC), joint AIT and Fraunhofer session',
+        status: 'Upcoming, 24 September 2026',
+        statusColor: 'purple',
         date: '2026',
-        tags: ['Augmented Reality', 'Training', 'Public engagement'],
+        tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Defect Annotation'],
     },
     {
         id: 99,
@@ -53,6 +53,16 @@ const appearances: Publication[] = [
         tags: ['Mixed Reality', 'Teleoperation', 'Live Demo'],
     },
     {
+        id: 98,
+        title: 'Theresian Tactical Holodeck: augmented reality for tactical training',
+        authors: 'Elias Bitsch',
+        venue: 'Lange Nacht der Forschung, AIT and the Theresian Military Academy',
+        status: 'Presented',
+        statusColor: 'blue',
+        date: '2026',
+        tags: ['Augmented Reality', 'Training', 'Public engagement'],
+    },
+    {
         id: 100,
         title: 'FlexiStylus: marking defects directly on a physical casting',
         authors: 'Elias Bitsch',
@@ -61,16 +71,6 @@ const appearances: Publication[] = [
         statusColor: 'blue',
         date: '2026',
         tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Public engagement'],
-    },
-    {
-        id: 101,
-        title: 'Human-Robot Interaction for Casting Parts and Defect Annotation',
-        authors: 'Elias Bitsch',
-        venue: 'Applied AI Conference (AAIC), joint AIT and Fraunhofer session',
-        status: 'Live demonstration',
-        statusColor: 'blue',
-        date: '2026',
-        tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Defect Annotation'],
     },
 ];
 

@@ -139,34 +139,13 @@ html {
 }
 
 
-/* Handy: eine Bildschirmseite pro Projekt.
+/* Kein senkrechtes Rasten.
 
-   Das Raster sitzt am scrollenden Element, also an html, und gilt nur
-   auf schmalen Schirmen. Abschnitte, die hoeher sind als das Fenster,
-   bleiben trotzdem frei scrollbar: ein Rasterbereich, der groesser ist
-   als das Fenster, darf ueberall stehen. Deshalb rastet nur, was genau
-   eine Fensterhoehe hoch ist, naemlich die Projektseiten. */
-@media (max-width: 47.9375em) {
-  html {
-    scroll-snap-type: y mandatory;
-    /* Sanftes Scrollen und Rasten vertragen sich schlecht: der Browser
-       laesst die Rastbewegung dann ueber die Weichzeichnung laufen und
-       sie wirkt traege. Ankerspruenge aus dem Menue bleiben trotzdem
-       sanft, die laufen ueber scrollIntoView. */
-    scroll-behavior: auto;
-  }
-  section {
-    scroll-snap-align: start;
-  }
+   Eine Zeit lang rastete das Handy von Projekt zu Projekt ein, wie bei
+   Reels. Aufgegeben, weil es dem Nutzer vorschreibt, wo er stehen
+   bleiben darf. Frei scrollen zu koennen ist mehr wert als ein Effekt.
 
-  /* Die Listenkarten haben bewusst keine eigenen Rasterpunkte mehr.
-     Sie sind unterschiedlich hoch, und ungleich verteilte Rastpunkte
-     sind genau der Grund, warum sich ein Raster unentschlossen anfuehlt.
-     Gerastert wird nur, was gleich hoch ist: die Projektseiten. */
-}
+   Das Layout mit einem Projekt pro Bildschirm bleibt, ebenso das
+   waagrechte Blaettern durch die Medien. Dort ist das Rasten richtig:
+   es ist ein Blaetterwerk und kein Bildlauf. */
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: none;
-  }
-}
