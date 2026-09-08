@@ -179,7 +179,7 @@ const projectsData: Project[] = [
     category: ['Robotics', 'Computer Vision'],
     title: 'Maze solving Robot & Line follower',
     description:
-      'Two ROS behaviours on the same robot: following a line from the camera image with OpenCV, and finding its way through a maze with the ROS navigation stack, an A-Star planner and a k-nearest neighbour classifier. Packaged in Docker.',
+      'Two ROS behaviours on the same robot: finding its way through a maze with the ROS navigation stack, an A-Star planner and a k-nearest neighbour classifier, and following a line from the camera image with OpenCV. The clip ends on the camera view, where the red band is the region the detector looks at and the green dot is the line centre it steers to. Packaged in Docker.',
     imageUrl: '/images/maze-poster.jpg',
     videoUrl: '/videos/maze-loop.mp4',
     tags: ['ROS', 'Python', 'OpenCV', 'Path Planning', 'Docker'],
