@@ -403,10 +403,13 @@ export default function Projects() {
             overflow="hidden"
             display="flex"
             flexDirection="column"
-            _hover={{
-              boxShadow: 'lg',
-              '& img': { transform: 'scale(1.06)' },
-            }}>
+            /* Kein Zoom mehr auf den Bildern. Der Griff `& img` traf jedes
+               Bild in der Karte, auch die im waagrechten Blaetterwerk. Ein
+               Bild, das innerhalb eines Bildlaufbereichs waechst, veraendert
+               dessen Geometrie: es ruckelt am Rand und blutet in die
+               Nachbarseite. Seit die Medienflaeche zum Blaettern da ist,
+               braucht sie den Effekt ohnehin nicht mehr. */
+            _hover={{ boxShadow: 'lg' }}>
             <Box position="relative" overflow="hidden">
               {project.imageCredit && (
                 <Box

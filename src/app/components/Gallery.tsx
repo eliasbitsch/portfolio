@@ -118,6 +118,7 @@ export default function Gallery({
                             position="relative"
                             scrollSnapAlign="start"
                             scrollSnapStop="always"
+                            overflow="hidden"
                             cursor="zoom-in"
                             onClick={() => setOpen(hero ? Math.max(0, i - 1) : i)}
                         >
