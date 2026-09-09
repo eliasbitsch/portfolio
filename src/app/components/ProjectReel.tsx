@@ -89,12 +89,19 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
         el.querySelectorAll('video').forEach(v => {
             const i = Number((v as HTMLVideoElement).dataset.seite);
             if (sichtbar && i === seite) {
-                // Mit preload="metadata" sind oft noch keine Bilddaten da,
-                // und dann scheitert play() lautlos. Also erst versuchen und
-                // bei zu wenig Daten wiederholen, sobald sie eintreffen.
-                const los = () => v.play().catch(() => undefined);
-                if (v.readyState >= 2) los();
-                else v.addEventListener('loadeddata', los, { once: true });
+                // play() selbst stoesst das Laden an. Auf loadeddata zu
+                // warten, bevor man play() ruft, ist bei preload="none" eine
+                // Sackgasse: es laedt ja nichts, solange niemand abspielen
+                // will. Also immer zuerst play(), und nur wenn das scheitert,
+                // nach dem Laden noch einmal versuchen.
+                v.play().catch(() => {
+                    v.addEventListener(
+                        'loadeddata',
+                        () => v.play().catch(() => undefined),
+                        { once: true },
+                    );
+                    v.load();
+                });
             } else {
                 v.pause();
             }
@@ -146,19 +153,28 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
                             <Seite key={m ? m.src : 'hero'} bg="black">
                                 {/* Weichgezeichnete Kopie statt schwarzer
                                     Balken: die Aufnahmen sind breit, der
-                                    Schirm ist hochkant. */}
-                                <Box
-                                    position="absolute"
-                                    top={0}
-                                    right={0}
-                                    bottom={0}
-                                    left={0}
-                                    backgroundImage={'url(' + vorschau + ')'}
-                                    backgroundSize="cover"
-                                    backgroundPosition="center"
-                                    filter="blur(26px) brightness(0.4)"
-                                    transform="scale(1.15)"
-                                />
+                                    Schirm ist hochkant.
+
+                                    Nur hinter der Seite, die gerade zu sehen
+                                    ist. Vorher lag hinter jeder Seite jedes
+                                    Projekts eine, das waren achtundachtzig
+                                    weichgezeichnete Ebenen auf einer Seite,
+                                    und die kosten bei jedem Scrollbild
+                                    Rechenzeit. Genau daher kam das Ruckeln. */}
+                                {Math.abs(i - seite) <= 1 && (
+                                    <Box
+                                        position="absolute"
+                                        top={0}
+                                        right={0}
+                                        bottom={0}
+                                        left={0}
+                                        backgroundImage={'url(' + vorschau + ')'}
+                                        backgroundSize="cover"
+                                        backgroundPosition="center"
+                                        filter="blur(26px) brightness(0.4)"
+                                        transform="scale(1.15)"
+                                    />
+                                )}
                                 {istVideo ? (
                                     <Box
                                         as="video"
@@ -167,7 +183,7 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
                                         muted
                                         loop
                                         playsInline
-                                        preload="metadata"
+                                        preload="none"
                                         poster={vorschau}
                                         position="relative"
                                         width="100%"
