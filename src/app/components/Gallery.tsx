@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, HStack, IconButton, Portal } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
+import VideoPlayer from './VideoPlayer';
 
 /*
   Bildleiste an der Projektkarte, Klick oeffnet gross.
@@ -68,7 +69,11 @@ export default function Gallery({
         };
     }, [open, zeigen]);
 
-    if (!items || items.length === 0) return null;
+    // Frueher stand hier ein Abbruch, sobald keine Medien da sind. Das
+    // hat bei Projekten ohne Galerie auch das Kartenbild verschluckt,
+    // denn seit dem Umbau haengt es an dieser Komponente. Ohne Medien
+    // wird jetzt nur der Kopfinhalt gezeigt, ohne Blaetterwerk.
+    if ((!items || items.length === 0) && !hero) return null;
     const aktuell = open === null ? null : items[open];
 
     const seiten = hero ? [null, ...items] : items;
@@ -312,19 +317,11 @@ export default function Gallery({
                             }}
                         >
                             {aktuell.type === 'video' ? (
-                                <Box
-                                    as="video"
+                                <VideoPlayer
                                     key={aktuell.src}
                                     src={aktuell.src}
-                                    controls
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    preload="none"
-                                    maxHeight={{ base: '70vh', md: '80vh' }}
-                                    maxWidth="100%"
-                                    borderRadius="lg"
+                                    poster={aktuell.thumb}
+                                    maxHeight="calc(100dvh - 170px)"
                                 />
                             ) : (
                                 <Box
@@ -334,14 +331,28 @@ export default function Gallery({
                                     alt={`${title}`}
                                     draggable={false}
                                     userSelect="none"
-                                    maxHeight={{ base: '70vh', md: '80vh' }}
+                                    maxHeight="calc(100dvh - 170px)"
                                     maxWidth="100%"
                                     objectFit="contain"
                                     borderRadius="lg"
                                 />
                             )}
 
-                            <HStack mt={4} spacing={4} color="whiteAlpha.900">
+                        </MotionBox>
+
+                        {/* Die Zeile sitzt fest am unteren Rand des Fensters
+                            und nicht unter dem Bild. Sonst wandert sie mit
+                            jeder Bildhoehe, und man zielt bei jedem Wechsel
+                            woanders hin. */}
+                        <HStack
+                            position="absolute"
+                            bottom="22px"
+                            left="50%"
+                            transform="translateX(-50%)"
+                            spacing={4}
+                            color="whiteAlpha.900"
+                            onClick={e => e.stopPropagation()}
+                        >
                                 <IconButton
                                     aria-label="Vorheriges"
                                     icon={<span>←</span>}
@@ -361,8 +372,7 @@ export default function Gallery({
                                     color="white"
                                     _hover={{ bg: 'whiteAlpha.200' }}
                                 />
-                            </HStack>
-                        </MotionBox>
+                        </HStack>
 
                         <IconButton
                             aria-label="Schliessen"
