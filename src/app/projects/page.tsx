@@ -380,14 +380,22 @@ export default function Projects() {
           <MotionBox
             key={project.title}
             layout
-            initial={{ opacity: 0, scale: 0.96, y: 14 }}
+            /* Die Karten kommen mit einer Feder herein statt mit einer
+               Kurve. Eine Feder schiesst am Ziel leicht vorbei und
+               schwingt zurueck, und genau das liest das Auge als
+               Aufploppen. Wenig Ueberschwingen, sonst wirkt es
+               billig: damping 18 laesst etwa einen Prozent Ausschlag. */
+            initial={{ opacity: 0, scale: 0.9, y: 26 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: -10 }}
+            exit={{ opacity: 0, scale: 0.94, y: -12 }}
             transition={{
-              duration: 0.42,
-              ease: [0.16, 1, 0.3, 1],
-              delay: index * 0.045,
-              layout: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
+              type: 'spring',
+              stiffness: 320,
+              damping: 18,
+              mass: 0.7,
+              delay: index * 0.05,
+              opacity: { duration: 0.28, delay: index * 0.05 },
+              layout: { type: 'spring', stiffness: 300, damping: 26 },
             }}
             bg="gray.700"
             borderRadius="lg"
