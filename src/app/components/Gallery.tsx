@@ -25,6 +25,7 @@ export default function Gallery({
     items,
     title,
     hero,
+    heroSrc,
 }: {
     items: MediaItem[];
     title: string;
@@ -33,10 +34,18 @@ export default function Gallery({
        Aufnahmen an Ort und Stelle, ein Tippen vergroessert. Die Leiste
        sitzt dann direkt darunter und nicht am Fuss der Karte. */
     hero?: React.ReactNode;
+    /* Die Quelle des Kartenbildes, damit es nicht doppelt erscheint. */
+    heroSrc?: string;
 }) {
     const [open, setOpen] = useState<number | null>(null);
     const [seite, setSeite] = useState(0);
     const spur = useRef<HTMLDivElement>(null);
+
+    // Wenn das Kartenbild selbst aus der Galerie stammt, darf es nicht
+    // ein zweites Mal als eigene Seite auftauchen. Sonst blaettert man
+    // durch und sieht dasselbe Foto zweimal.
+    const ohneDoppel = heroSrc ? items.filter(m => m.src !== heroSrc) : items;
+    const anzahl = ohneDoppel.length;
 
     const zuSeite = (i: number) => {
         const el = spur.current;
@@ -46,9 +55,9 @@ export default function Gallery({
 
     const zeigen = useCallback(
         (richtung: number) => {
-            setOpen(i => (i === null ? null : (i + richtung + items.length) % items.length));
+            setOpen(i => (i === null ? null : (i + richtung + anzahl) % anzahl));
         },
-        [items.length],
+        [anzahl],
     );
 
     useEffect(() => {
@@ -74,9 +83,9 @@ export default function Gallery({
     // denn seit dem Umbau haengt es an dieser Komponente. Ohne Medien
     // wird jetzt nur der Kopfinhalt gezeigt, ohne Blaetterwerk.
     if ((!items || items.length === 0) && !hero) return null;
-    const aktuell = open === null ? null : items[open];
+    const aktuell = open === null ? null : ohneDoppel[open];
 
-    const seiten = hero ? [null, ...items] : items;
+    const seiten = hero ? [null, ...ohneDoppel] : ohneDoppel;
 
     return (
         <>
@@ -211,7 +220,7 @@ export default function Gallery({
                     '&::-webkit-scrollbar-thumb': { background: '#4A5568', borderRadius: '3px' },
                 }}
             >
-                {items.map((m, i) => (
+                {ohneDoppel.map((m, i) => (
                     <Box
                         key={m.src}
                         as="button"

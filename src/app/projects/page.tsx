@@ -193,6 +193,8 @@ const projectsData: Project[] = [
     title: 'Circuit-Crusher',
     description:
       'A Sumo-Bot for the RoboRingOut competition at UAS Technikum Wien. I led a team of eight through design, build and programming, and coached the members who had never written firmware or read a schematic before.',
+    // Kartenvideo ist die Lichtershow. Die einzelnen Kaempfe stehen als
+    // eigene Seiten in der Galerie, statt in einer Montage zu stecken.
     imageUrl: '/images/sumo-poster.jpg',
     videoUrl: '/videos/sumo-loop.mp4',
     tags: ['Team lead', 'Arduino', 'Robotics', 'Sumo-Bot', 'Mentoring'],
@@ -429,6 +431,7 @@ export default function Projects() {
               <Gallery
                 items={galleries[project.title] ?? []}
                 title={project.title}
+                heroSrc={project.imageUrl}
                 hero={
                   project.videoUrl ? (
                     /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm,
