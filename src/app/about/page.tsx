@@ -101,6 +101,17 @@ const skillsData = [
         url: 'https://www.gymnasium-neusiedl.at/'
     },
     {
+        id: 12,
+        category: 'Service',
+        name: 'UAS Technikum Wien',
+        description: 'Tour guide, open days',
+        logo: '/logos/technikum-wien.svg',
+        text: 'Showing prospective students around the robotics labs at the open days: what the machines do, what you learn on them, and what the degree actually looks like from the inside.',
+        date: '2023 - 2025',
+        tags: ['Outreach', 'Robotics', 'Teaching'],
+        url: 'https://www.technikum-wien.at/',
+    },
+    {
         id: 11,
         category: 'Service',
         name: 'IEEE ICRA 2026',

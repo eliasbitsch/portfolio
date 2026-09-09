@@ -50,6 +50,12 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/flexistylus-salz/salz2026-stand-team.jpg", thumb: "/gallery/flexistylus-salz/salz2026-stand-team_t.jpg", type: "image" },
   ],
   "Circuit-Crusher": [
+    { src: "/gallery/circuit-crusher/lichtershow.mp4", thumb: "/gallery/circuit-crusher/lichtershow_t.jpg", type: "video" },
+    { src: "/gallery/circuit-crusher/gruppenrunde-1.mp4", thumb: "/gallery/circuit-crusher/gruppenrunde-1_t.jpg", type: "video" },
+    { src: "/gallery/circuit-crusher/gruppenrunde-2.mp4", thumb: "/gallery/circuit-crusher/gruppenrunde-2_t.jpg", type: "video" },
+    { src: "/gallery/circuit-crusher/runde-1.mp4", thumb: "/gallery/circuit-crusher/runde-1_t.jpg", type: "video" },
+    { src: "/gallery/circuit-crusher/runde-2.mp4", thumb: "/gallery/circuit-crusher/runde-2_t.jpg", type: "video" },
+    { src: "/gallery/circuit-crusher/runde-3.mp4", thumb: "/gallery/circuit-crusher/runde-3_t.jpg", type: "video" },
     { src: "/gallery/circuit-crusher/bauphase-2023-12-erster-antrieb.mp4", thumb: "/gallery/circuit-crusher/bauphase-2023-12-erster-antrieb_t.jpg", type: "video" },
     { src: "/gallery/circuit-crusher/circuit-crusher-praesentation-fhtw.jpg", thumb: "/gallery/circuit-crusher/circuit-crusher-praesentation-fhtw_t.jpg", type: "image" },
     { src: "/gallery/circuit-crusher/circuit-crusher-roboter-beleuchtet.jpg", thumb: "/gallery/circuit-crusher/circuit-crusher-roboter-beleuchtet_t.jpg", type: "image" },
@@ -88,9 +94,15 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/foerderband/foerderband-hmi-und-digitaler-zwilling.mp4", thumb: "/gallery/foerderband/foerderband-hmi-und-digitaler-zwilling_t.jpg", type: "video" },
   ],
   "Taurob-Tracker": [
+    { src: "/gallery/taurob-tracker/taurob-projektvideo-2x.mp4", thumb: "/gallery/taurob-tracker/taurob-projektvideo-2x_t.jpg", type: "video" },
     { src: "/gallery/taurob-tracker/taurob-tracker-im-labor.jpg", thumb: "/gallery/taurob-tracker/taurob-tracker-im-labor_t.jpg", type: "image" },
   ],
   "TurtleBot 4 linear controller": [
     { src: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt.mp4", thumb: "/gallery/turtlebot4/turtlebot4-linearregler-fahrt_t.jpg", type: "video" },
+  ],
+  "Crayler: operating an autonomous forklift": [
+    { src: "/gallery/crayler/crayler-bedienung-am-tablet.mp4", thumb: "/gallery/crayler/crayler-bedienung-am-tablet_t.jpg", type: "video" },
+    { src: "/gallery/crayler/crayler-bedienung-vor-ort.jpg", thumb: "/gallery/crayler/crayler-bedienung-vor-ort_t.jpg", type: "image" },
+    { src: "/gallery/crayler/crayler-stand-mit-kran.jpg", thumb: "/gallery/crayler/crayler-stand-mit-kran_t.jpg", type: "image" },
   ],
 };
