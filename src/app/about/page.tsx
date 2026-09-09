@@ -205,20 +205,20 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                                     display="flex"
                                     alignItems="center"
                                     justifyContent="center"
-                                    minWidth="38px"
-                                    height="32px"
+                                    minWidth="64px"
+                                    height="52px"
                                 >
                                     {skill.logo ? (
                                         <Image
                                             src={skill.logo}
                                             alt={`${skill.name} logo`}
-                                            height="22px"
+                                            height="38px"
                                             width="auto"
                                             display="block"
                                         />
                                     ) : (
                                         skill.logoIcon && (
-                                            <Box as={skill.logoIcon} size="22px" color="gray.800" />
+                                            <Box as={skill.logoIcon} size="34px" color="gray.800" />
                                         )
                                     )}
                                 </Box>

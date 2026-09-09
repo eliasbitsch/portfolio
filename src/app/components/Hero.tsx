@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Heading, Text, Link, HStack, VStack, Tooltip, Flex } from '@chakra-ui/react';
+import { Box, Heading, Text, Link, HStack, VStack, Tooltip, Flex, Image } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -8,6 +8,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 const MotionText = motion(Text);
 const MotionHeading = motion(Heading);
+const MotionHStack = motion(HStack);
 
 export default function Hero() {
   return (
@@ -24,23 +25,47 @@ export default function Hero() {
       className="hero-motion"
     >
 
-      <MotionHeading
-        as="h1"
-        /* Auf einem iPhone SE stehen 667 Pixel zur Verfuegung. Mit den
-           alten Groessen war der Hero 860 hoch, die Symbolzeile lag unter
-           dem Rand und damit unsichtbar. Genau die ist aber das, was
-           jemand anklicken soll. */
-        fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}
+      {/* Portraet neben dem Namen, nicht darueber. Darueber schiebt es die
+          Symbolzeile unter den Rand, und auf einem iPhone SE ist dafuer
+          kein Platz: der Hero fuellt dort 603 von 667 Pixeln. Neben dem
+          Namen kostet es fast keine Hoehe. */}
+      <MotionHStack
+        spacing={{ base: 4, md: 6 }}
         mb={{ base: 3, md: 5 }}
-        fontWeight="1000"
-        color="#3C5AF0"
+        zIndex={1}
+        align="center"
         initial={{ opacity: 0, x: '-20vw' }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        zIndex={1}
       >
-        Elias Bitsch
-      </MotionHeading>
+        <Image
+          src="/images/profile.jpg"
+          alt="Elias Bitsch"
+          width={320}
+          height={320}
+          boxSize={{ base: '64px', sm: '84px', md: '104px' }}
+          borderRadius="full"
+          objectFit="cover"
+          flexShrink={0}
+          border="3px solid"
+          borderColor="#3C5AF0"
+          boxShadow="0 8px 24px rgba(0,0,0,0.45)"
+        />
+        <MotionHeading
+          as="h1"
+          /* Auf einem iPhone SE stehen 667 Pixel zur Verfuegung. Mit den
+             alten Groessen war der Hero 860 hoch und die Symbolzeile lag
+             unter dem Rand, also unsichtbar. Genau die soll aber
+             angeklickt werden. */
+          fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}
+          fontWeight="1000"
+          color="#3C5AF0"
+          mb={0}
+          textAlign="left"
+        >
+          Elias Bitsch
+        </MotionHeading>
+      </MotionHStack>
 
       <MotionText
         fontSize={{ base: 'sm', sm: 'lg', md: '2xl' }}
