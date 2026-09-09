@@ -146,7 +146,7 @@ test.describe('Projekte', () => {
         await ganzDurchscrollen(page);
         const stehen = await page.evaluate(async () => {
             const sichtbar = [...document.querySelectorAll('video')].filter(
-                v => v.offsetParent !== null && (v.currentSrc || v.src).includes('/videos/'),
+                v => v.offsetParent !== null && !(v.currentSrc || v.src).includes('/gallery/'),
             );
             const still: string[] = [];
             for (const v of sichtbar) {
@@ -156,9 +156,11 @@ test.describe('Projekte', () => {
                 await new Promise(r => setTimeout(r, 700));
                 if (v.currentTime <= vorher) still.push((v.currentSrc || v.src).split('/').pop() || '');
             }
-            return still;
+            return { still, gefunden: sichtbar.length };
         });
-        expect(stehen, 'ein stehendes Video sieht aus wie ein kaputtes Bild').toEqual([]);
+        expect(stehen.gefunden, 'ohne gefundene Videos prueft dieser Test nichts')
+            .toBeGreaterThan(3);
+        expect(stehen.still, 'ein stehendes Video sieht aus wie ein kaputtes Bild').toEqual([]);
     });
 });
 

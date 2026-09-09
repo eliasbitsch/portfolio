@@ -124,14 +124,14 @@ export default function Gallery({
                             {m === null ? (
                                 hero
                             ) : m.type === 'video' ? (
+                                /* Nur das Standbild zeigen. Das Video
+                                   selbst laeuft in der Lightbox, hier
+                                   wuerde es nur Bandbreite kosten. */
                                 <Box
-                                    as="video"
-                                    src={m.src}
-                                    muted
-                                    loop
-                                    playsInline
-                                    preload="none"
-                                    poster={m.thumb}
+                                    as="img"
+                                    src={m.thumb}
+                                    alt=""
+                                    loading="lazy"
                                     width="100%"
                                     height="100%"
                                     objectFit="cover"

@@ -11,6 +11,7 @@ import {
 import { FaGears, FaRobot, FaVrCardboard } from "react-icons/fa6";
 import SectionHeading from '../components/SectionHeading';
 import Gallery from '../components/Gallery';
+import LazyVideo from '../components/LazyVideo';
 import ProjectReel from '../components/ProjectReel';
 import { galleries } from './galleries';
 
@@ -436,19 +437,7 @@ export default function Projects() {
                   project.videoUrl ? (
                     /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm,
                        in der Schleife, ohne Bedienelemente. */
-                    <Box
-                      as="video"
-                      src={project.videoUrl}
-                      poster={project.imageUrl}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      objectFit="cover"
-                      width="100%"
-                      height="100%"
-                    />
+                    <LazyVideo src={project.videoUrl} poster={project.imageUrl} />
                   ) : (
                     <Image
                       src={project.imageUrl}
