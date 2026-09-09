@@ -92,7 +92,7 @@ const appearances: Publication[] = [
         title: 'FlexiStylus: marking defects directly on a physical casting',
         authors: 'Elias Bitsch',
         venue: 'SALZ 2026, innovation festival of the University of Salzburg',
-        status: 'Live demonstration',
+        status: 'Presented, March 2026',
         statusColor: 'blue',
         date: '2026',
         tags: ['Human-Robot Interaction', 'Tangible Interfaces', 'Public engagement'],

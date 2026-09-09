@@ -225,7 +225,7 @@ export default function Gallery({
                         key={m.src}
                         as="button"
                         onClick={() => (hero ? zuSeite(i + 1) : setOpen(i))}
-                        aria-label={`${title}, Bild ${i + 1} von ${items.length} vergroessern`}
+                        aria-label={`${title}, Bild ${i + 1} von ${anzahl} vergroessern`}
                         flexShrink={0}
                         position="relative"
                         width="86px"
@@ -371,7 +371,7 @@ export default function Gallery({
                                     _hover={{ bg: 'whiteAlpha.200' }}
                                 />
                                 <Box fontSize="sm" minWidth="70px" textAlign="center">
-                                    {(open ?? 0) + 1} / {items.length}
+                                    {(open ?? 0) + 1} / {anzahl}
                                 </Box>
                                 <IconButton
                                     aria-label="Naechstes"
