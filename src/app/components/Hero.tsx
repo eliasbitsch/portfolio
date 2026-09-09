@@ -30,7 +30,9 @@ export default function Hero() {
           kein Platz: der Hero fuellt dort 603 von 667 Pixeln. Neben dem
           Namen kostet es fast keine Hoehe. */}
       <MotionHStack
-        spacing={{ base: 4, md: 6 }}
+        flexWrap="wrap"
+        justify="center"
+        spacing={{ base: 4, md: 7 }}
         mb={{ base: 3, md: 5 }}
         zIndex={1}
         align="center"
@@ -41,9 +43,9 @@ export default function Hero() {
         <Image
           src="/images/profile.jpg"
           alt="Elias Bitsch"
-          width={320}
-          height={320}
-          boxSize={{ base: '64px', sm: '84px', md: '104px' }}
+          width={900}
+          height={900}
+          boxSize={{ base: '120px', sm: '160px', md: '220px' }}
           borderRadius="full"
           objectFit="cover"
           flexShrink={0}
@@ -79,26 +81,11 @@ export default function Hero() {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum Wien
-        and a technical assistant at the AIT Center for Technology Experience.
+        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum Wien and a
+        technical assistant at the AIT Center for Technology Experience, where I build
+        mixed-reality systems for human-robot collaboration and test them with real operators.
       </MotionText>
 
-      <MotionText
-        fontSize={{ base: 'sm', sm: 'lg', md: '2xl' }}
-        mb={{ base: 2, md: 3 }}
-        color="white"
-        lineHeight="1.6"
-        maxWidth={{ base: '100%', md: '700px', xl: '900px' }}
-        mx="auto"
-        initial={{ opacity: 0, x: '-20vw' }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.05 }}
-        zIndex={1}
-      >
-        I build mixed-reality systems for human-robot collaboration and test them with real
-        operators: bare-hand teleoperation across Unity and ROS 2, purpose-built feedback
-        hardware, and touch interfaces for supervising robots.
-      </MotionText>
 
       {/* Der Kern fuer alles, was mit Lernen zu tun hat. Steht bewusst als
           eigener kurzer Absatz und nicht am Ende des vorigen, sonst liest ihn
