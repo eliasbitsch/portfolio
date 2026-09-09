@@ -81,9 +81,9 @@ export default function Hero() {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         zIndex={1}
       >
-        I am a <b>Robotics Engineering master&apos;s student</b> at UAS Technikum Wien and a
-        technical assistant at the AIT Center for Technology Experience, where I build
-        mixed-reality systems for human-robot collaboration and test them with real operators.
+        I make machines <b>easier for people to work with</b>. Sometimes that means a headset
+        and your bare hands instead of a control panel. Sometimes it means pointing at a real
+        part instead of clicking on a screen.
       </MotionText>
 
 
@@ -102,9 +102,9 @@ export default function Hero() {
         transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.1 }}
         zIndex={1}
       >
-        What I care about is the <b>learning</b>: whether someone can still do the task once
-        the headset comes off. That question is where my research interest sits, and it is why
-        I wrote an online course on the stack I work with.
+        I build both sides, the hardware and the software, and I test them with the people who
+        have to use them. Robotics Engineering master&apos;s student at UAS Technikum Wien,
+        technical assistant at the AIT Center for Technology Experience.
       </MotionText>
 
 
