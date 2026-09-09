@@ -121,7 +121,7 @@ const projectsData: Project[] = [
     // Kein Video mehr: die Ueberblendung zwischen Stift und Gamepad war
     // ein Ersatz dafuer, dass man die beiden Fotos nicht sehen konnte.
     // Jetzt blaettert man sie in der Karte durch.
-    imageUrl: '/gallery/monumental/monumental-03-bedienung-mit-stift.jpg',
+    imageUrl: '/gallery/monumental/monumental-bedienung-mit-stift.jpg',
     tags: ['HMI', 'Skill Transfer', 'Behaviour Trees', 'Computer Vision', 'Gamepad'],
     icon: FaLaptopCode,
     links: [{ label: 'Repository', href: 'https://github.com/eliasbitsch/MONUMENTAL' }]

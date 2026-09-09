@@ -189,6 +189,17 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
                                         width="100%"
                                         height="100%"
                                         objectFit="contain"
+                                        /* Standbild auch als Hintergrund: ein
+                                           Video ohne Daten ist durchsichtig,
+                                           und darunter blitzte bisher Schwarz
+                                           durch. Das war das Flackern beim
+                                           ersten Abspielen. */
+                                        sx={{
+                                            backgroundImage: `url(${vorschau})`,
+                                            backgroundSize: 'contain',
+                                            backgroundPosition: 'center',
+                                            backgroundRepeat: 'no-repeat',
+                                        }}
                                     />
                                 ) : (
                                     <Box
