@@ -76,8 +76,6 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/circuit-crusher/roboringout-2024-zweikampf.jpg", thumb: "/gallery/circuit-crusher/roboringout-2024-zweikampf_t.jpg", type: "image" },
   ],
   "MONUMENTAL": [
-    { src: "/gallery/monumental/monumental-01-oberflaeche-am-tablet.jpg", thumb: "/gallery/monumental/monumental-01-oberflaeche-am-tablet_t.jpg", type: "image" },
-    { src: "/gallery/monumental/monumental-02-oberflaeche-am-tablet.jpg", thumb: "/gallery/monumental/monumental-02-oberflaeche-am-tablet_t.jpg", type: "image" },
     { src: "/gallery/monumental/monumental-03-bedienung-mit-stift.jpg", thumb: "/gallery/monumental/monumental-03-bedienung-mit-stift_t.jpg", type: "image" },
     { src: "/gallery/monumental/monumental-04-bedienung-mit-gamepad.jpg", thumb: "/gallery/monumental/monumental-04-bedienung-mit-gamepad_t.jpg", type: "image" },
   ],

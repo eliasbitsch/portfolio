@@ -7,6 +7,16 @@ import { fonts } from './fonts';
 import './globals.css'; // Import your global CSS file
 import { Box } from '@chakra-ui/react'; // Import Box from Chakra UI for layout
 
+/* Ohne das steht im Browsertab nur die Adresse, und das Symbol fehlt.
+   Next nimmt src/app/icon.png und apple-icon.png von selbst. */
+export const metadata = {
+  title: 'Elias Bitsch, robotics and mixed reality',
+  description:
+    'Robotics Engineering master student at UAS Technikum Wien and technical assistant at ' +
+    'the AIT Center for Technology Experience. Mixed-reality systems for human-robot ' +
+    'collaboration, tested with real operators.',
+};
+
 export default function RootLayout({
   children,
 }: {
