@@ -76,7 +76,6 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/monumental/monumental-04-bedienung-mit-gamepad.jpg", thumb: "/gallery/monumental/monumental-04-bedienung-mit-gamepad_t.jpg", type: "image" },
   ],
   "MetaMove": [
-    { src: "/gallery/metamove/metamove-bedienung-mit-headset.jpg", thumb: "/gallery/metamove/metamove-bedienung-mit-headset_t.jpg", type: "image" },
     { src: "/gallery/metamove/metamove-teleoperation-abb-gofa.mp4", thumb: "/gallery/metamove/metamove-teleoperation-abb-gofa_t.jpg", type: "video" },
     { src: "/gallery/metamove/metamove-laborzelle-mit-headset.jpg", thumb: "/gallery/metamove/metamove-laborzelle-mit-headset_t.jpg", type: "image" },
   ],
