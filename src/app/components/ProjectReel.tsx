@@ -52,7 +52,11 @@ function Seite({ children, ...rest }: React.ComponentProps<typeof Box>) {
     );
 }
 
-function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: MediaItem[]; erstes: boolean }) {
+function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medien: MediaItem[]; erstes: boolean }) {
+    // Dasselbe wie im Raster: stammt das Kartenbild aus der Galerie, darf
+    // es nicht ein zweites Mal als eigene Seite auftauchen. Das hatte ich
+    // hier vergessen, ein Test hat es gefunden.
+    const medien = alle.filter(m => m.src !== projekt.imageUrl);
     const spur = useRef<HTMLDivElement>(null);
     const [seite, setSeite] = useState(0);
     const [sichtbar, setSichtbar] = useState(false);
@@ -62,9 +66,15 @@ function Projekt({ projekt, medien, erstes }: { projekt: ReelProject; medien: Me
     useEffect(() => {
         const el = wurzel.current;
         if (!el) return;
+        // Nicht ueber den Anteil des Panels gehen: auf einem kleinen
+        // Schirm ist ein bildschirmhohes Panel nie zu 55 Prozent zu
+        // sehen, und dann lief das Video nie an. Der Test hat das auf
+        // dem iPhone SE gefunden, auf dem 12 Pro lief es zufaellig.
+        // Stattdessen: sichtbar heisst, das Panel reicht in das mittlere
+        // Drittel des Fensters.
         const beobachter = new IntersectionObserver(
-            ([e]) => setSichtbar(e.isIntersecting && e.intersectionRatio > 0.55),
-            { threshold: [0, 0.55, 1] },
+            ([e]) => setSichtbar(e.isIntersecting),
+            { threshold: 0, rootMargin: '-33% 0px -33% 0px' },
         );
         beobachter.observe(el);
         return () => beobachter.disconnect();
