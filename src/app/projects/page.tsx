@@ -433,7 +433,11 @@ export default function Projects() {
               <Gallery
                 items={galleries[project.title] ?? []}
                 title={project.title}
-                heroSrc={project.imageUrl}
+                heroItem={{
+                  src: project.videoUrl ?? project.imageUrl,
+                  thumb: project.imageUrl,
+                  type: project.videoUrl ? 'video' : 'image',
+                }}
                 hero={
                   project.videoUrl ? (
                     /* Laeuft wie ein GIF, wiegt aber einen Bruchteil: stumm,

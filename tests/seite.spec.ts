@@ -217,7 +217,58 @@ test.describe('Lightbox', () => {
         // Der Zaehler darf nicht mehr Seiten nennen, als das Blaetterwerk
         // hat. Das Kartenbild zaehlt dort mit, in der Lightbox nicht.
         const [, gesamt] = (ergebnis.zaehler || '0 / 0').split('/').map(s => Number(s.trim()));
-        expect(gesamt).toBe((ergebnis.seitenImBlaetterwerk || 1) - 1);
+        expect(gesamt).toBe(ergebnis.seitenImBlaetterwerk || 0);
+    });
+
+
+    test('zeigt gross, was man angeklickt hat', async ({ page }) => {
+        test.skip(test.info().project.name !== 'desktop', 'die Lightbox gibt es nur im Raster');
+        await page.goto('/');
+        await ganzDurchscrollen(page);
+
+        // Frueher war das Kartenmedium nicht Teil der Lightbox-Liste. Ein
+        // Klick auf die Karte oeffnete deshalb das erste Galeriebild statt
+        // des angeklickten. Geprueft wird die erste und eine mittlere Seite.
+        const ergebnis = await page.evaluate(async () => {
+            const pruefe = async (seite: number) => {
+                const spuren = [...document.querySelectorAll('div')].filter(
+                    d =>
+                        getComputedStyle(d).scrollSnapType.startsWith('x') &&
+                        d.offsetParent !== null &&
+                        d.children.length > 3,
+                );
+                const spur = spuren[0];
+                const ziel = spur.children[seite] as HTMLElement;
+                ziel.scrollIntoView({ block: 'center' });
+                await new Promise(r => setTimeout(r, 400));
+                const el = ziel.querySelector('img, video') as HTMLImageElement | HTMLVideoElement;
+                const aufKarte = ((el as HTMLVideoElement).currentSrc || (el as HTMLImageElement).src)
+                    .replace(/_t\.jpg$/, '.jpg')
+                    .split('/')
+                    .pop();
+                ziel.click();
+                await new Promise(r => setTimeout(r, 1200));
+                const ov = [...document.querySelectorAll('div')].find(d => {
+                    const cs = getComputedStyle(d);
+                    return cs.position === 'fixed' && cs.zIndex === '2000';
+                });
+                if (!ov) return { seite, fehler: 'Lightbox oeffnet nicht' };
+                const g = ov.querySelector('img, video') as HTMLImageElement | HTMLVideoElement;
+                const inGross = ((g as HTMLVideoElement).currentSrc || (g as HTMLImageElement).src)
+                    .split('/')
+                    .pop();
+                const schliessen = ov.querySelector('[aria-label="Schliessen"]') as HTMLElement;
+                schliessen?.click();
+                await new Promise(r => setTimeout(r, 600));
+                return { seite, aufKarte, inGross };
+            };
+            return [await pruefe(0), await pruefe(3)];
+        });
+
+        for (const r of ergebnis) {
+            expect(r.fehler, `Seite ${r.seite}`).toBeUndefined();
+            expect(r.inGross, `Seite ${r.seite} zeigt gross etwas anderes`).toBe(r.aufKarte);
+        }
     });
 });
 
