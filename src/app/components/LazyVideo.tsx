@@ -61,6 +61,17 @@ export default function LazyVideo({ src, poster }: { src: string; poster: string
             objectFit="cover"
             width="100%"
             height="100%"
+            /* Das Standbild liegt zusaetzlich als Hintergrund unter dem
+               Video. Ein <video> ohne geladene Daten ist durchsichtig, und
+               darunter kam bisher die schwarze Flaeche der Karte zum
+               Vorschein. Genau das war das kurze Flackern beim ersten
+               Abspielen: Standbild, dann schwarz, dann Bild. Mit dem
+               Standbild als Hintergrund gibt es nichts Schwarzes mehr. */
+            sx={{
+                backgroundImage: `url(${poster})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
         />
     );
 }

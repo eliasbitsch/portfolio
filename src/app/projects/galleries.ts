@@ -50,7 +50,6 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/flexistylus-salz/salz2026-stand-team.jpg", thumb: "/gallery/flexistylus-salz/salz2026-stand-team_t.jpg", type: "image" },
   ],
   "Circuit-Crusher": [
-    { src: "/gallery/circuit-crusher/lichtershow.mp4", thumb: "/gallery/circuit-crusher/lichtershow_t.jpg", type: "video" },
     { src: "/gallery/circuit-crusher/gruppenrunde-1.mp4", thumb: "/gallery/circuit-crusher/gruppenrunde-1_t.jpg", type: "video" },
     { src: "/gallery/circuit-crusher/gruppenrunde-2.mp4", thumb: "/gallery/circuit-crusher/gruppenrunde-2_t.jpg", type: "video" },
     { src: "/gallery/circuit-crusher/runde-1.mp4", thumb: "/gallery/circuit-crusher/runde-1_t.jpg", type: "video" },
@@ -76,7 +75,6 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/circuit-crusher/roboringout-2024-zweikampf.jpg", thumb: "/gallery/circuit-crusher/roboringout-2024-zweikampf_t.jpg", type: "image" },
   ],
   "MONUMENTAL": [
-    { src: "/gallery/monumental/monumental-03-bedienung-mit-stift.jpg", thumb: "/gallery/monumental/monumental-03-bedienung-mit-stift_t.jpg", type: "image" },
     { src: "/gallery/monumental/monumental-04-bedienung-mit-gamepad.jpg", thumb: "/gallery/monumental/monumental-04-bedienung-mit-gamepad_t.jpg", type: "image" },
   ],
   "MetaMove": [
