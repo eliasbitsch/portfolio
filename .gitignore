@@ -40,3 +40,6 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Wegwerf-Screenshots aus der Entwicklung
+/.entwicklungs-screenshots/
