@@ -82,7 +82,7 @@ const appearances: Publication[] = [
         title: 'Theresian Tactical Holodeck: augmented reality for tactical training',
         authors: 'Elias Bitsch',
         venue: 'Lange Nacht der Forschung, AIT and the Theresian Military Academy',
-        status: 'Presented',
+        status: 'Presented, 24 April 2026',
         statusColor: 'blue',
         date: '2026',
         tags: ['Augmented Reality', 'Training', 'Public engagement'],
