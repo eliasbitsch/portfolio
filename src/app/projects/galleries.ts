@@ -79,6 +79,7 @@ export const galleries: Record<string, MediaItem[]> = {
   ],
   "MetaMove": [
     { src: "/gallery/metamove/metamove-ismar-2026.mp4", thumb: "/gallery/metamove/metamove-ismar-2026_t.jpg", type: "video" },
+    { src: "/gallery/metamove/metamove-labor.mp4", thumb: "/gallery/metamove/metamove-labor_t.jpg", type: "video" },
     { src: "/gallery/metamove/metamove-laborzelle-mit-headset.jpg", thumb: "/gallery/metamove/metamove-laborzelle-mit-headset_t.jpg", type: "image" },
   ],
   "ABB robot cell in RobotStudio": [
