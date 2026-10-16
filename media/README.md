@@ -17,6 +17,7 @@ Quellen nicht verloren gehen.
 | `taurob-tracker-full.mp4` | Quelle des Taurob-Loops | Projektvideo des Teams |
 | `robotstudio-full.mp4` | Quelle des RobotStudio-Loops | eigener YouTube-Kanal |
 | `conveyor-hmi-twin-full.mp4` | Quelle des Foerderband-Loops | eigene Aufnahme, auf 1280 verkleinert |
+| `metamove-ismar-2026` (nicht im Repo) | MetaMove-Hauptvideo, ausgeliefert als public/gallery/metamove/metamove-ismar-2026.mp4 (30 fps, CRF 24) | eigenes LinkedIn-Video, Original 60 fps in Google Drive 3-Projekte/MetaMove/Videos |
 | `portrait/` | Profilbild, Original und Fassungen | eigene Aufnahme |
 
 Die zugeschnittenen und verkleinerten Fassungen, die tatsaechlich
