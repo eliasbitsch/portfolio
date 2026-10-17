@@ -441,6 +441,7 @@ export default function Projects() {
                   src: project.fullVideoUrl ?? project.videoUrl ?? project.imageUrl,
                   thumb: project.imageUrl,
                   type: project.videoUrl ? 'video' : 'image',
+                  ton: !!project.fullVideoUrl,
                 }}
                 hero={
                   project.videoUrl ? (

@@ -31,16 +31,19 @@ export default function VideoPlayer({
     src,
     poster,
     maxHeight,
+    ton = false,
 }: {
     src: string;
     poster?: string;
     maxHeight?: string;
+    ton?: boolean;
 }) {
     const v = useRef<HTMLVideoElement>(null);
     const [laeuft, setLaeuft] = useState(false);
     const [zeit, setZeit] = useState(0);
     const [dauer, setDauer] = useState(0);
     const [schnell, setSchnell] = useState(false);
+    const [stumm, setStumm] = useState(true);
     const haltenTimer = useRef<number | null>(null);
     const gehalten = useRef(false);
 
@@ -49,13 +52,36 @@ export default function VideoPlayer({
     useEffect(() => {
         const el = v.current;
         if (!el) return;
-        const starten = () => {
+        // Mit Ton zuerst versuchen: die Lightbox wurde ja angeklickt.
+        // Verweigert der Browser das (Safari am iPhone tut es oft), stumm
+        // starten und den Lautsprecher-Knopf zeigen, statt gar nicht.
+        const stummStarten = () => {
+            el.muted = true;
+            setStumm(true);
             el.play().then(() => setLaeuft(true)).catch(() => setLaeuft(false));
+        };
+        const starten = () => {
+            if (!ton) return stummStarten();
+            el.muted = false;
+            el.play()
+                .then(() => {
+                    setLaeuft(true);
+                    setStumm(false);
+                })
+                .catch(stummStarten);
         };
         if (el.readyState >= 2) starten();
         else el.addEventListener('loadeddata', starten, { once: true });
         return () => el.removeEventListener('loadeddata', starten);
-    }, [src]);
+    }, [src, ton]);
+
+    const tonUmschalten = useCallback(() => {
+        const el = v.current;
+        if (!el) return;
+        el.muted = !el.muted;
+        setStumm(el.muted);
+        if (el.paused) el.play().then(() => setLaeuft(true)).catch(() => undefined);
+    }, []);
 
     const springen = useCallback((s: number) => {
         const el = v.current;
@@ -210,6 +236,17 @@ export default function VideoPlayer({
                     fontSize="xs"
                     _hover={{ bg: 'whiteAlpha.300' }}
                 />
+                {ton && (
+                    <IconButton
+                        aria-label={stumm ? 'Ton an' : 'Ton aus'}
+                        icon={<span>{stumm ? '🔇' : '🔊'}</span>}
+                        onClick={tonUmschalten}
+                        size="sm"
+                        variant="ghost"
+                        color="white"
+                        _hover={{ bg: 'whiteAlpha.300' }}
+                    />
+                )}
                 <Box fontSize="xs" color="white" minWidth="72px" sx={{ fontVariantNumeric: 'tabular-nums' }}>
                     {Z(zeit)} / {Z(dauer)}
                 </Box>

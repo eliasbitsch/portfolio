@@ -17,7 +17,9 @@ import VideoPlayer from './VideoPlayer';
   zwoelf Projekten hundert Megabyte auf der Startseite.
 */
 
-export type MediaItem = { src: string; thumb: string; type: 'image' | 'video' };
+/* `ton`: das Video hat eine Tonspur, die man hoeren soll. Dann gibt es
+   einen Lautsprecher-Knopf, sonst bleibt alles stumm wie bisher. */
+export type MediaItem = { src: string; thumb: string; type: 'image' | 'video'; ton?: boolean };
 
 const MotionBox = motion(Box);
 
@@ -337,6 +339,7 @@ export default function Gallery({
                                 <VideoPlayer
                                     key={aktuell.src}
                                     src={aktuell.src}
+                                    ton={aktuell.ton}
                                     poster={aktuell.thumb}
                                     maxHeight="calc(100dvh - 170px)"
                                 />
