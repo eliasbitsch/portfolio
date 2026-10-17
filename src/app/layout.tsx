@@ -6,6 +6,7 @@ import { Providers } from './providers';
 import { fonts } from './fonts';
 import './globals.css'; // Import your global CSS file
 import { Box } from '@chakra-ui/react'; // Import Box from Chakra UI for layout
+import Script from 'next/script';
 
 /* Ohne das steht im Browsertab nur die Adresse, und das Symbol fehlt.
    Next nimmt src/app/icon.png und apple-icon.png von selbst. */
@@ -37,6 +38,14 @@ export default function RootLayout({
             </Box>
           </Box>
         </Providers>
+        {/* Besucherstatistik auf dem eigenen Server (Umami): ohne Cookies,
+            speichert keine IP-Adressen. Siehe /privacy. */}
+        <Script
+          src="https://analytics.eliasbitsch.com/s.js"
+          data-website-id="62dd316c-851a-45e6-bc11-9b98cace9b2d"
+          data-domains="eliasbitsch.com,www.eliasbitsch.com"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
