@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, Box } from '@chakra-ui/react';
+import { Text, Box, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -14,7 +15,10 @@ const Footer = () => {
             width="100%"
         >
             <Text fontSize="sm" color="gray.500">
-                © {currentYear} Elias Bitsch. All rights reserved.
+                © {currentYear} Elias Bitsch. All rights reserved. ·{' '}
+                <Link as={NextLink} href="/privacy" textDecoration="underline">
+                    Privacy
+                </Link>
             </Text>
         </Box>
     );
