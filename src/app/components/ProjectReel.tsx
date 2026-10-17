@@ -60,6 +60,8 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
     const spur = useRef<HTMLDivElement>(null);
     const [seite, setSeite] = useState(0);
     const [sichtbar, setSichtbar] = useState(false);
+    // Welche Seite gerade mit Ton laeuft. Nur eine, und nur auf Wunsch.
+    const [laut, setLaut] = useState<string | null>(null);
     const wurzel = useRef<HTMLDivElement>(null);
 
     // Nur das Projekt, das gerade auf dem Schirm ist, spielt Videos ab.
@@ -212,6 +214,34 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
                                         height="100%"
                                         objectFit="contain"
                                     />
+                                )}
+                                {istVideo && m?.ton && (
+                                    <Box
+                                        as="button"
+                                        aria-label={laut === m.src ? 'Ton aus' : 'Ton an'}
+                                        position="absolute"
+                                        bottom="14px"
+                                        right="12px"
+                                        px={3}
+                                        py={1.5}
+                                        borderRadius="full"
+                                        bg="blackAlpha.700"
+                                        color="white"
+                                        fontSize="sm"
+                                        zIndex={2}
+                                        onClick={(e: React.MouseEvent<HTMLElement>) => {
+                                            e.stopPropagation();
+                                            const an = laut !== m.src;
+                                            setLaut(an ? m.src : null);
+                                            const vid = e.currentTarget.parentElement?.querySelector('video');
+                                            if (vid) {
+                                                vid.muted = !an;
+                                                if (vid.paused) vid.play().catch(() => undefined);
+                                            }
+                                        }}
+                                    >
+                                        {laut === m.src ? '🔊 Ton aus' : '🔇 Ton an'}
+                                    </Box>
                                 )}
                             </Seite>
                         );

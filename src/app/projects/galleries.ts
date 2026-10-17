@@ -78,7 +78,7 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/monumental/monumental-04-bedienung-mit-gamepad.jpg", thumb: "/gallery/monumental/monumental-04-bedienung-mit-gamepad_t.jpg", type: "image" },
   ],
   "MetaMove": [
-    { src: "/gallery/metamove/metamove-ismar-2026.mp4", thumb: "/gallery/metamove/metamove-ismar-2026_t.jpg", type: "video" },
+    { src: "/gallery/metamove/metamove-ismar-2026.mp4", thumb: "/gallery/metamove/metamove-ismar-2026_t.jpg", type: "video", ton: true },
     { src: "/gallery/metamove/metamove-labor.mp4", thumb: "/gallery/metamove/metamove-labor_t.jpg", type: "video" },
     { src: "/gallery/metamove/metamove-laborzelle-mit-headset.jpg", thumb: "/gallery/metamove/metamove-laborzelle-mit-headset_t.jpg", type: "image" },
   ],
