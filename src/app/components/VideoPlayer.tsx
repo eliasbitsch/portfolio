@@ -238,7 +238,7 @@ export default function VideoPlayer({
                 />
                 {ton && (
                     <IconButton
-                        aria-label={stumm ? 'Ton an' : 'Ton aus'}
+                        aria-label={stumm ? 'Sound on' : 'Sound off'}
                         icon={<span>{stumm ? '🔇' : '🔊'}</span>}
                         onClick={tonUmschalten}
                         size="sm"
