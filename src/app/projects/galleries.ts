@@ -29,6 +29,16 @@ export const galleries: Record<string, MediaItem[]> = {
     { src: "/gallery/hardware-from-scratch/pneumatik-ventilinsel-und-steuerung.jpg", thumb: "/gallery/hardware-from-scratch/pneumatik-ventilinsel-und-steuerung_t.jpg", type: "image" },
     { src: "/gallery/hardware-from-scratch/technische-zeichnung.mp4", thumb: "/gallery/hardware-from-scratch/technische-zeichnung_t.jpg", type: "video" },
   ],
+  "ROS-Ready course": [
+    { src: "/gallery/rosready/01-landing-ros2-live-graph.jpg", thumb: "/gallery/rosready/01-landing-ros2-live-graph_t.jpg", type: "image" },
+    { src: "/gallery/rosready/02-landing-ros1-roscore.jpg", thumb: "/gallery/rosready/02-landing-ros1-roscore_t.jpg", type: "image" },
+    { src: "/gallery/rosready/03-learning-path.jpg", thumb: "/gallery/rosready/03-learning-path_t.jpg", type: "image" },
+    { src: "/gallery/rosready/04-exercise-card-solution.jpg", thumb: "/gallery/rosready/04-exercise-card-solution_t.jpg", type: "image" },
+    { src: "/gallery/rosready/05-chapter-quiz.jpg", thumb: "/gallery/rosready/05-chapter-quiz_t.jpg", type: "image" },
+    { src: "/gallery/rosready/06-spell-terminal-turtlesim.jpg", thumb: "/gallery/rosready/06-spell-terminal-turtlesim_t.jpg", type: "image" },
+    { src: "/gallery/rosready/07-potions-lab-turtlebot-circle.jpg", thumb: "/gallery/rosready/07-potions-lab-turtlebot-circle_t.jpg", type: "image" },
+    { src: "/gallery/rosready/08-house-points-ranks.jpg", thumb: "/gallery/rosready/08-house-points-ranks_t.jpg", type: "image" },
+  ],
   "FlexiStylus": [
     { src: "/gallery/flexistylus-salz/salz2026-01-stand-aufbau.jpg", thumb: "/gallery/flexistylus-salz/salz2026-01-stand-aufbau_t.jpg", type: "image" },
     { src: "/gallery/flexistylus-salz/salz2026-02-stylus-und-headset-am-stand.jpg", thumb: "/gallery/flexistylus-salz/salz2026-02-stylus-und-headset-am-stand_t.jpg", type: "image" },
