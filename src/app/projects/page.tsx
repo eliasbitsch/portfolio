@@ -81,11 +81,13 @@ const projectsData: Project[] = [
   {
     id: 2,
     category: ['Learning', 'Robotics', 'Web & Software'],
-    title: 'ROS online course',
+    title: 'ROS-Ready course',
     description:
-      'A course that teaches ROS from the first node to a working robot, written as structured lessons with runnable examples so that readers learn by doing rather than by reading.',
-    imageUrl: '/images/rosCourse.png',
-    tags: ['Teaching', 'ROS', 'Next.js', 'MDX'],
+      'An online course that takes learners from their first shell command to a robot that maps a room and navigates it on its own, for both ROS 1 Noetic and ROS 2 Humble. Every chapter ends with exercises and a quiz, and a browser playground checks the work instantly: a simulated ROS terminal with turtlesim, and a Python lab that runs real rclpy and rospy nodes against a virtual TurtleBot. House points and ranks keep it playful, with no accounts and nothing uploaded.',
+    // Kartenvideo: der Live-Graph der Startseite mit dem ROS-1/ROS-2-Wechsel
+    imageUrl: '/images/rosready-poster.jpg',
+    videoUrl: '/videos/rosready-loop.mp4',
+    tags: ['Teaching', 'ROS 1', 'ROS 2', 'Next.js', 'MDX', 'Pyodide', 'Gamification'],
     icon: FaBook,
     links: [{ label: 'Website', href: 'https://rosready.robolink.app/' }]
   },
