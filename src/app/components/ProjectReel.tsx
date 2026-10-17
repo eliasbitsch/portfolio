@@ -25,6 +25,9 @@ export type ReelProject = {
     description: string;
     imageUrl: string;
     videoUrl?: string;
+    /* Ganzes Video mit Ton: der Knopf auf der ersten Seite tauscht die
+       stumme Schleife dagegen aus. */
+    fullVideoUrl?: string;
     tags: string[];
     icon: IconType;
     links?: { label: string; href: string }[];
@@ -215,34 +218,42 @@ function Projekt({ projekt, medien: alle, erstes }: { projekt: ReelProject; medi
                                         objectFit="contain"
                                     />
                                 )}
-                                {istVideo && m?.ton && (
-                                    <Box
-                                        as="button"
-                                        aria-label={laut === m.src ? 'Ton aus' : 'Ton an'}
-                                        position="absolute"
-                                        bottom="14px"
-                                        right="12px"
-                                        px={3}
-                                        py={1.5}
-                                        borderRadius="full"
-                                        bg="blackAlpha.700"
-                                        color="white"
-                                        fontSize="sm"
-                                        zIndex={2}
-                                        onClick={(e: React.MouseEvent<HTMLElement>) => {
-                                            e.stopPropagation();
-                                            const an = laut !== m.src;
-                                            setLaut(an ? m.src : null);
-                                            const vid = e.currentTarget.parentElement?.querySelector('video');
-                                            if (vid) {
-                                                vid.muted = !an;
-                                                if (vid.paused) vid.play().catch(() => undefined);
-                                            }
-                                        }}
-                                    >
-                                        {laut === m.src ? '🔊 Ton aus' : '🔇 Ton an'}
-                                    </Box>
-                                )}
+                                {istVideo && (m ? m.ton : !!projekt.fullVideoUrl) && (() => {
+                                    const schluessel = m ? m.src : 'hero';
+                                    const an = laut === schluessel;
+                                    return (
+                                        <Box
+                                            as="button"
+                                            aria-label={an ? 'Sound off' : 'Sound on'}
+                                            position="absolute"
+                                            bottom="14px"
+                                            right="12px"
+                                            px={3}
+                                            py={1.5}
+                                            borderRadius="full"
+                                            bg="blackAlpha.700"
+                                            color="white"
+                                            fontSize="sm"
+                                            zIndex={2}
+                                            onClick={(e: React.MouseEvent<HTMLElement>) => {
+                                                e.stopPropagation();
+                                                const vid = e.currentTarget.parentElement?.querySelector('video');
+                                                setLaut(an ? null : schluessel);
+                                                if (!vid) return;
+                                                // Erste Seite: beim ersten Einschalten von der stummen
+                                                // Schleife auf das ganze Video wechseln, von vorne.
+                                                if (!m && projekt.fullVideoUrl && !an && !vid.src.endsWith(projekt.fullVideoUrl)) {
+                                                    vid.src = projekt.fullVideoUrl;
+                                                    vid.currentTime = 0;
+                                                }
+                                                vid.muted = an;
+                                                vid.play().catch(() => undefined);
+                                            }}
+                                        >
+                                            {an ? '🔊 Sound off' : '🔇 Sound on'}
+                                        </Box>
+                                    );
+                                })()}
                             </Seite>
                         );
                     })}
