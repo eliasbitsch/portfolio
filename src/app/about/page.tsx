@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HStack, VStack, Tag, Box, SimpleGrid, Spacer, Wrap, Text, Image, Flex } from '@chakra-ui/react';
+import { HStack, VStack, Tag, Box, SimpleGrid, Wrap, Text, Image, Flex } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaBriefcase, FaGraduationCap, FaCertificate, FaAtom, FaHandsHelping, FaLinkedin } from 'react-icons/fa'; // Importing the React icon
 import { SiDassaultsystemes } from 'react-icons/si';
@@ -193,8 +193,11 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                 transition="transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease-in-out"
             >
                 <VStack align="stretch" mb={3}>
-                    <HStack spacing={4} justify="space-between" align="center">
-                        <HStack spacing={3} align="center">
+                    {/* Darf umbrechen: auf dem Handy passen Logo, langer
+                        Firmenname und Datum nicht in eine Zeile, dann rutscht
+                        das Datum darunter statt aus der Karte zu ragen. */}
+                    <Flex wrap="wrap" columnGap={4} rowGap={1} justify="space-between" align="center">
+                        <HStack spacing={3} align="center" minW={0}>
                             {(skill.logo || skill.logoIcon) && (
                                 <Box
                                     bg="white"
@@ -206,14 +209,20 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                                     alignItems="center"
                                     justifyContent="center"
                                     minWidth="64px"
+                                    maxWidth="100%"
                                     height="52px"
                                 >
+                                    {/* Breite Wortmarken (Diakonie ist 7:1) schrumpfen
+                                        auf schmalen Handys mit, statt aus der Karte zu ragen */}
                                     {skill.logo ? (
                                         <Image
                                             src={skill.logo}
                                             alt={`${skill.name} logo`}
-                                            height="38px"
+                                            maxHeight="38px"
+                                            maxWidth="100%"
                                             width="auto"
+                                            height="auto"
+                                            objectFit="contain"
                                             display="block"
                                         />
                                     ) : (
@@ -223,15 +232,21 @@ const Skill: React.FC<SkillProps> = ({ skill }) => {
                                     )}
                                 </Box>
                             )}
-                            <Box fontSize="2xl" fontWeight="bold" color="white">
+                            <Box
+                                fontSize={{ base: 'lg', sm: 'xl', md: '2xl' }}
+                                fontWeight="bold"
+                                color="white"
+                                lineHeight="short"
+                                minW={0}
+                                overflowWrap="anywhere"
+                            >
                                 {skill.name}
                             </Box>
                         </HStack>
-                        <Spacer />
-                        <Box color="gray.500" fontSize="md">
+                        <Box color="gray.500" fontSize={{ base: 'sm', md: 'md' }} whiteSpace="nowrap">
                             {skill.date}
                         </Box>
-                    </HStack>
+                    </Flex>
                     <Box fontSize="sm" fontWeight="semibold" color="gray.400" mt={1}>
                         {skill.description}
                     </Box>

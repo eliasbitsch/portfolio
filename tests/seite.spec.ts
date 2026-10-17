@@ -18,7 +18,7 @@ import { test, expect, Page } from '@playwright/test';
 
 const PROJEKTE = [
     'MetaMove',
-    'ROS online course',
+    'ROS-Ready course',
     'FlexiStylus',
     'MONUMENTAL',
     'Taurob-Tracker',

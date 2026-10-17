@@ -166,13 +166,9 @@ function SkillCard({ skill }: { skill: Skill }) {
                     <Box fontWeight="bold" mb={1}>
                         {skill.name}
                     </Box>
-                    <Box
-                        fontSize="sm"
-                        color="gray.400"
-                        whiteSpace="nowrap"
-                        overflow="hidden"
-                        textOverflow="ellipsis"
-                    >
+                    {/* Umbrechen statt abschneiden: auf dem Handy verschwand
+                        sonst die Haelfte der Beschreibung hinter "..." */}
+                    <Box fontSize="sm" color="gray.400">
                         {skill.description}
                     </Box>
                 </Box>
